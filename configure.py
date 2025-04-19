@@ -144,8 +144,8 @@ if not config.non_matching:
 # Tool versions
 config.binutils_tag = "2.42-1"
 config.compilers_tag = "20240706"
-config.dtk_tag = "v1.3.0"
-config.objdiff_tag = "v2.4.0"
+config.dtk_tag = "v1.4.1"
+config.objdiff_tag = "v2.7.1"
 config.sjiswrap_tag = "v1.2.0"
 config.wibo_tag = "0.6.11"
 
@@ -266,6 +266,29 @@ config.warn_missing_config = True
 config.warn_missing_source = False
 config.libs = [
     {
+<<<<<<< Updated upstream
+=======
+
+        "lib": "SB",
+        "mw_version": config.linker_version,
+        "cflags": cflags_tssm,
+        "progress_category": "game",
+        "objects": [
+            Object(NonMatching, "SB/Game/zWadNME.cpp"),
+            Object(NonMatching, "SB/Game/zWad1.cpp"), 
+            Object(NonMatching, "SB/Game/zWad2.cpp"),
+            Object(NonMatching, "SB/Game/zWad3.cpp"),
+            Object(NonMatching, "SB/Game/zWadEnt.cpp"),
+            Object(NonMatching, "SB/Game/zWadHud.cpp"),
+            Object(NonMatching, "SB/Game/zWadUI.cpp"),
+            Object(NonMatching, "SB/Core/x/xWad4.cpp"),
+            Object(NonMatching, "SB/Core/x/xWad2.cpp"),
+            Object(NonMatching, "SB/Core/x/xWad3.cpp"),
+            Object(NonMatching, "SB/Core/x/xWad1.cpp"),
+            Object(NonMatching, "SB/Core/x/xWad5.cpp"),
+        ],
+
+>>>>>>> Stashed changes
         "lib": "Runtime.PPCEABI.H",
         "mw_version": config.linker_version,
         "cflags": cflags_runtime,

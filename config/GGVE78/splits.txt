@@ -7,8 +7,2492 @@ Sections:
 	.dtors      type:rodata align:32
 	.rodata     type:rodata align:64
 	.data       type:data align:32
+<<<<<<< Updated upstream
 	.bss        type:bss align:4
 	.sdata      type:data align:16
 	.sbss       type:bss align:32
 	.sdata2     type:rodata align:16
 	.sbss2      type:bss align:32
+=======
+	.bss        type:bss align:32
+	.sdata      type:data align:8
+	.sbss       type:bss align:8
+	.sdata2     type:rodata align:8
+	.sbss2      type:bss align:8
+
+SB/Game/zWadNME.cpp:
+	.text       start:0x800057E0 end:0x8000585C
+	.text       start:0x8000585C end:0x800079F4
+	.text       start:0x800079F4 end:0x80007A24
+	.text       start:0x80007A24 end:0x80008590
+	.text       start:0x80008590 end:0x80008904
+	.text       start:0x80008904 end:0x80008908
+	.text       start:0x80008908 end:0x80008938
+	.text       start:0x80008938 end:0x8000896C
+	.text       start:0x8000896C end:0x800089F0
+	.text       start:0x800089F0 end:0x8000C164
+	.text       start:0x8000C164 end:0x8000C16C
+	.text       start:0x8000C16C end:0x8000C16C
+	.text       start:0x8000C16C end:0x8000CF8C
+	.text       start:0x8000CF8C end:0x8000E068
+	.text       start:0x8000E068 end:0x8000E45C
+	.text       start:0x8000E45C end:0x8000F04C
+	.text       start:0x8000F04C end:0x8001174C
+	.text       start:0x8001174C end:0x80011CA0
+	.text       start:0x80011CA0 end:0x80018778
+	.text       start:0x80018778 end:0x80018824
+	.text       start:0x80018824 end:0x8001E034
+	.text       start:0x8001E034 end:0x80021504
+	.text       start:0x80021504 end:0x80021B04
+	.text       start:0x80021B04 end:0x800223B0
+	.text       start:0x800223B0 end:0x80026F1C
+	.text       start:0x80026F1C end:0x8002C0D0
+	.text       start:0x8002C0D0 end:0x8002FE40
+	.text       start:0x8002FE40 end:0x8002FEFC
+	.text       start:0x8002FEFC end:0x80035398
+	.text       start:0x80035398 end:0x8003B05C
+	.text       start:0x8003B05C end:0x8003E390
+	.text       start:0x8003E390 end:0x80046140
+	.text       start:0x80046140 end:0x800461D4
+	.text       start:0x800461D4 end:0x80046AD4
+	.text       start:0x80046AD4 end:0x80046B78
+	.text       start:0x80046B78 end:0x80048F34
+	.text       start:0x80048F34 end:0x8004B014
+	.text       start:0x8004B014 end:0x8004D074
+	.text       start:0x8004D074 end:0x8004D760
+	.text       start:0x8004D760 end:0x80053B5C
+	.text       start:0x80053B5C end:0x80056124
+	.text       start:0x80056124 end:0x80067768
+	.text       start:0x80067768 end:0x80067A98
+	.text       start:0x80067A98 end:0x80067C78
+	.text       start:0x80067C78 end:0x80067C90
+	.text       start:0x80067C90 end:0x80067D30
+	.text       start:0x80067D30 end:0x8006EF54
+	.text       start:0x8006EF54 end:0x8006EF60
+	.text       start:0x8006EF60 end:0x8007562C
+	.text       start:0x8007562C end:0x8007AFD0
+	.text       start:0x8007AFD0 end:0x8007AFD0
+	.text       start:0x8007AFD0 end:0x8007D77C
+	.text       start:0x8007D77C end:0x8007F2A8
+	.text       start:0x8007F2A8 end:0x800817CC
+	.text       start:0x800817CC end:0x800818BC
+	.text       start:0x800818BC end:0x800818BC
+	.text       start:0x800818BC end:0x80083BBC
+	.text       start:0x80083BBC end:0x80085588
+	.text       start:0x80085588 end:0x80086428
+	.text       start:0x80086428 end:0x80087374
+	.text       start:0x80087374 end:0x80088C6C
+	.text       start:0x80088C6C end:0x8008980C
+	.text       start:0x8008980C end:0x8008C2F4
+	.text       start:0x8008C2F4 end:0x8008CA24
+	.text       start:0x8008CA24 end:0x8008CDA4
+	.text       start:0x8008CDA4 end:0x8008D32C
+	.text       start:0x8008D32C end:0x8008D5A8
+	.text       start:0x8008D5A8 end:0x8008DAD4
+	.text       start:0x8008DAD4 end:0x8008F1F8
+	.text       start:0x8008F1F8 end:0x8008FC18
+	.text       start:0x8008FC18 end:0x8008FC18
+	.text       start:0x8008FC18 end:0x800AF440
+	.text       start:0x800AF440 end:0x800AF440
+	.text       start:0x800AF440 end:0x800B1484
+	.text       start:0x800B1484 end:0x800B59B4
+	.text       start:0x800B59B4 end:0x800B5A04
+	.text       start:0x800B5A04 end:0x800B5A04
+	.text       start:0x800B5A04 end:0x800B5AE8
+	.text       start:0x800B5AE8 end:0x800B6EB8
+	.text       start:0x800B6EB8 end:0x800B72B8
+	.text       start:0x800B72B8 end:0x800B7644
+	.text       start:0x800B7644 end:0x800B764C
+	.text       start:0x800B764C end:0x800B7694
+	.text       start:0x800B7694 end:0x800B76B4
+	.text       start:0x800B76B4 end:0x800B7750
+	.text       start:0x800B7750 end:0x800B7778
+	.text       start:0x800B7778 end:0x800B7824
+	.text       start:0x800B7824 end:0x800B78D0
+	.text       start:0x800B78D0 end:0x800B7984
+	.text       start:0x800B7984 end:0x800B7A30
+	.text       start:0x800B7A30 end:0x800B7A58
+	.text       start:0x800B7A58 end:0x800B7B88
+	.text       start:0x800B7B88 end:0x800B7BB8
+	.text       start:0x800B7BB8 end:0x800B7CC8
+	.text       start:0x800B7CC8 end:0x800B7D84
+	.text       start:0x800B7D84 end:0x800B7E94
+	.text       start:0x800B7E94 end:0x800B7F60
+	.text       start:0x800B7F60 end:0x800B7F90
+	.text       start:0x800B7F90 end:0x800B804C
+	.text       start:0x800B804C end:0x800B8074
+	.text       start:0x800B8074 end:0x800B83D4
+	.text       start:0x800B83D4 end:0x800B8B54
+	.text       start:0x800B8B54 end:0x800B8B54
+	.text       start:0x800B8B54 end:0x800B8B54
+	.text       start:0x800B8B54 end:0x800B8B64
+	.ctors      start:0x8035F4C4 end:0x8035F4C8
+	.rodata     start:0x8035F540 end:0x80362CF4
+	.data       start:0x8037F6A0 end:0x8038A1E8
+	.bss        start:0x803C4A00 end:0x803E1C40
+	.sdata      start:0x804B0060 end:0x804B0064
+	.sbss       start:0x804B08C0 end:0x804B0A68
+	.sdata2     start:0x804B2440 end:0x804B28F8
+	.sbss2      start:0x804B5000 end:0x804B5030
+
+SB/Game/zWad1.cpp:
+	.text       start:0x800B8B64 end:0x800B8B64
+	.text       start:0x800B8B64 end:0x800B90D0
+	.text       start:0x800B90D0 end:0x800B90D0
+	.text       start:0x800B90D0 end:0x800B94CC
+	.text       start:0x800B94CC end:0x800BA374
+	.text       start:0x800BA374 end:0x800BC1C0
+	.text       start:0x800BC1C0 end:0x800BDD74
+	.text       start:0x800BDD74 end:0x800C02F4
+	.text       start:0x800C02F4 end:0x800C14C4
+	.text       start:0x800C14C4 end:0x800C14C4
+	.text       start:0x800C14C4 end:0x800C1FA0
+	.text       start:0x800C1FA0 end:0x800C23A8
+	.text       start:0x800C23A8 end:0x800C2750
+	.text       start:0x800C2750 end:0x800CA94C
+	.text       start:0x800CA94C end:0x800CA94C
+	.text       start:0x800CA94C end:0x800CAB50
+	.text       start:0x800CAB50 end:0x800CB514
+	.text       start:0x800CB514 end:0x800CBD94
+	.text       start:0x800CBD94 end:0x800CBED8
+	.text       start:0x800CBED8 end:0x800CF5F4
+	.text       start:0x800CF5F4 end:0x800D111C
+	.text       start:0x800D111C end:0x800D1330
+	.text       start:0x800D1330 end:0x800D1A4C
+	.text       start:0x800D1A4C end:0x800D1F64
+	.text       start:0x800D1F64 end:0x800D1F64
+	.text       start:0x800D1F64 end:0x800D1F64
+	.text       start:0x800D1F64 end:0x800D22C8
+	.text       start:0x800D22C8 end:0x800D3100
+	.text       start:0x800D3100 end:0x800D3518
+	.text       start:0x800D3518 end:0x800D3518
+	.text       start:0x800D3518 end:0x800D37C0
+	.text       start:0x800D37C0 end:0x800D390C
+	.text       start:0x800D390C end:0x800D390C
+	.rodata     start:0x80365240 end:0x80369B20
+	.data       start:0x8038A1E8 end:0x8038EC50
+	.bss        start:0x803E1C40 end:0x803ED010
+	.sdata      start:0x804B00B0 end:0x804B01B8
+	.sbss       start:0x804B0A68 end:0x804B0C38
+	.sdata2     start:0x804B28F8 end:0x804B2AF8
+	.sbss2      start:0x804B5030 end:0x804B5038
+
+SB/Game/zWad2.cpp:
+	.text       start:0x800D390C end:0x800D390C
+	.text       start:0x800D390C end:0x800D485C
+	.text       start:0x800D485C end:0x800D4860
+	.text       start:0x800D4860 end:0x800D5030
+	.text       start:0x800D5030 end:0x800D5030
+	.text       start:0x800D5030 end:0x800D506C
+	.text       start:0x800D506C end:0x800D5BA0
+	.text       start:0x800D5BA0 end:0x800D66CC
+	.text       start:0x800D66CC end:0x800D69D0
+	.text       start:0x800D69D0 end:0x800DAB38
+	.text       start:0x800DAB38 end:0x800DBBBC
+	.text       start:0x800DBBBC end:0x800DC4F0
+	.text       start:0x800DC4F0 end:0x800DC7C8
+	.text       start:0x800DC7C8 end:0x800DFC7C
+	.text       start:0x800DFC7C end:0x800E04A8
+	.text       start:0x800E04A8 end:0x800E0CA0
+	.text       start:0x800E0CA0 end:0x800E6574
+	.text       start:0x800E6574 end:0x800E6574
+	.text       start:0x800E6574 end:0x800E6574
+	.text       start:0x800E6574 end:0x800E6E7C
+	.text       start:0x800E6E7C end:0x800E6E7C
+	.text       start:0x800E6E7C end:0x800E75CC
+	.text       start:0x800E75CC end:0x800E7C5C
+	.text       start:0x800E7C5C end:0x800E8EE0
+	.text       start:0x800E8EE0 end:0x800EBF34
+	.text       start:0x800EBF34 end:0x800EC234
+	.text       start:0x800EC234 end:0x800F2D10
+	.text       start:0x800F2D10 end:0x800F3A38
+	.text       start:0x800F3A38 end:0x800F3A38
+	.text       start:0x800F3A38 end:0x800F3A48
+	.text       start:0x800F3A48 end:0x800F3A48
+	.text       start:0x800F3A48 end:0x800F3A4C
+	.text       start:0x800F3A4C end:0x800F3A4C
+	.rodata     start:0x80369B20 end:0x8036B7D8
+	.data       start:0x8038EC50 end:0x80390BC0
+	.bss        start:0x803ED010 end:0x803F96C0
+	.sdata      start:0x804B01B8 end:0x804B0278
+	.sbss       start:0x804B0C38 end:0x804B0E20
+	.sdata2     start:0x804B2AF8 end:0x804B2CC0
+	.sbss2      start:0x804B5038 end:0x804B5048
+
+SB/Game/zWad3.cpp:
+	.text       start:0x800F3A4C end:0x800F3A4C
+	.text       start:0x800F3A4C end:0x800F3A4C
+	.text       start:0x800F3A4C end:0x800F3F10
+	.text       start:0x800F3F10 end:0x800F40D8
+	.text       start:0x800F40D8 end:0x800F4E9C
+	.text       start:0x800F4E9C end:0x800F6B1C
+	.text       start:0x800F6B1C end:0x800F6B1C
+	.text       start:0x800F6B1C end:0x800FA7C8
+	.text       start:0x800FA7C8 end:0x800FABA4
+	.text       start:0x800FABA4 end:0x800FAF78
+	.text       start:0x800FAF78 end:0x800FAF78
+	.text       start:0x800FAF78 end:0x800FC2F4
+	.text       start:0x800FC2F4 end:0x800FC67C
+	.text       start:0x800FC67C end:0x800FE934
+	.text       start:0x800FE934 end:0x800FF034
+	.text       start:0x800FF034 end:0x80103124
+	.text       start:0x80103124 end:0x8010364C
+	.text       start:0x8010364C end:0x8010ADE8
+	.text       start:0x8010ADE8 end:0x8010AE20
+	.text       start:0x8010AE20 end:0x8010AE20
+	.text       start:0x8010AE20 end:0x8010AE20
+	.text       start:0x8010AE20 end:0x8011357C
+	.text       start:0x8011357C end:0x80114350
+	.text       start:0x80114350 end:0x801159C8
+	.text       start:0x801159C8 end:0x80117A70
+	.text       start:0x80117A70 end:0x80118ADC
+	.text       start:0x80118ADC end:0x80118C18
+	.text       start:0x80118C18 end:0x80119680
+	.text       start:0x80119680 end:0x801197B8
+	.text       start:0x801197B8 end:0x80119F00
+	.text       start:0x80119F00 end:0x8011A358
+	.text       start:0x8011A358 end:0x8011B46C
+	.text       start:0x8011B46C end:0x801206A8
+	.text       start:0x801206A8 end:0x801206A8
+	.text       start:0x801206A8 end:0x80120780
+	.text       start:0x80120780 end:0x80120D10
+	.text       start:0x80120D10 end:0x80122E70
+	.text       start:0x80122E70 end:0x80122F3C
+	.text       start:0x80122F3C end:0x80123A70
+	.text       start:0x80123A70 end:0x80123A74
+	.text       start:0x80123A74 end:0x80123A80
+	.text       start:0x80123A80 end:0x80123D38
+	.rodata     start:0x8036B7D8 end:0x8036D790
+	.data       start:0x80390BC0 end:0x80392C70
+	.bss        start:0x803F96C0 end:0x804040F0
+	.sdata      start:0x804B0278 end:0x804B02D0
+	.sbss       start:0x804B0E20 end:0x804B0F78
+	.sdata2     start:0x804B2CC0 end:0x804B2CC0
+	.sbss2      start:0x804B5048 end:0x804B5058
+
+SB/Game/zWadEnt.cpp:
+	.text       start:0x80123D38 end:0x80123D38
+	.text       start:0x80123D38 end:0x80124970
+	.text       start:0x80124970 end:0x80126450
+	.text       start:0x80126450 end:0x801264F0
+	.text       start:0x801264F0 end:0x801269A0
+	.text       start:0x801269A0 end:0x8012959C
+	.text       start:0x8012959C end:0x8012CEB4
+	.text       start:0x8012CEB4 end:0x8012D9B4
+	.text       start:0x8012D9B4 end:0x80135708
+	.text       start:0x80135708 end:0x80136F60
+	.text       start:0x80136F60 end:0x80160084
+	.text       start:0x80160084 end:0x8016CF18
+	.text       start:0x8016CF18 end:0x8016D0A8
+	.text       start:0x8016D0A8 end:0x8016D0A8
+	.text       start:0x8016D0A8 end:0x8016D168
+	.text       start:0x8016D168 end:0x8016D248
+	.text       start:0x8016D248 end:0x8016D248
+	.text       start:0x8016D248 end:0x8016D274
+	.text       start:0x8016D274 end:0x8016D57C
+	.text       start:0x8016D57C end:0x8016D65C
+	.text       start:0x8016D65C end:0x8016D6E8
+	.text       start:0x8016D6E8 end:0x8016D778
+	.text       start:0x8016D778 end:0x8016D780
+	.text       start:0x8016D780 end:0x8016D7B4
+	.text       start:0x8016D7B4 end:0x80175944
+	.text       start:0x80175944 end:0x8017A71C
+	.text       start:0x8017A71C end:0x8017A71C
+	.text       start:0x8017A71C end:0x8017AF20
+	.text       start:0x8017AF20 end:0x8017B348
+	.text       start:0x8017B348 end:0x8017C5BC
+	.text       start:0x8017C5BC end:0x8017DFC0
+	.text       start:0x8017DFC0 end:0x8017DFC0
+	.text       start:0x8017DFC0 end:0x8017E4B0
+	.ctors      start:0x8035F4C8 end:0x8035F4CC
+	.rodata     start:0x8036D790 end:0x80372950
+	.data       start:0x80392C70 end:0x803959A8
+	.bss        start:0x804040F0 end:0x80407260
+	.sdata      start:0x804B02D0 end:0x804B0390
+	.sbss       start:0x804B0F78 end:0x804B1400
+	.sdata2     start:0x804B2E90 end:0x804B3330
+	.sbss2      start:0x804B5058 end:0x804B5078
+
+SB/Game/zWadHud.cpp:
+	.text       start:0x8017E4B0 end:0x8017E4B0
+	.text       start:0x8017E4B0 end:0x8017E4B8
+	.text       start:0x8017E4B8 end:0x8017EBEC
+	.text       start:0x8017EBEC end:0x8017EC0C
+	.text       start:0x8017EC0C end:0x8017F3BC
+	.text       start:0x8017F3BC end:0x8017F5E0
+	.text       start:0x8017F5E0 end:0x80180098
+	.text       start:0x80180098 end:0x801801F8
+	.text       start:0x801801F8 end:0x801801F8
+	.text       start:0x801801F8 end:0x80182CF4
+	.text       start:0x80182CF4 end:0x801833CC
+	.text       start:0x801833CC end:0x80183980
+	.text       start:0x80183980 end:0x80183DF4
+	.rodata     start:0x80372950 end:0x80372EC8
+	.data       start:0x803959A8 end:0x80395B68
+	.sbss       start:0x804B1400 end:0x804B1420
+	.sdata2     start:0x804B3330 end:0x804B33D0
+
+SB/Game/zWadUI.cpp:
+	.text       start:0x80183DF4 end:0x80183DF4
+	.text       start:0x80183DF4 end:0x80184828
+	.text       start:0x80184828 end:0x80184CB0
+	.text       start:0x80184CB0 end:0x80184DA8
+	.text       start:0x80184DA8 end:0x8018523C
+	.text       start:0x8018523C end:0x801859CC
+	.text       start:0x801859CC end:0x8018604C
+	.text       start:0x8018604C end:0x801869BC
+	.text       start:0x801869BC end:0x80187B8C
+	.text       start:0x80187B8C end:0x80188B0C
+	.text       start:0x80188B0C end:0x8018D3A8
+	.text       start:0x8018D3A8 end:0x8018D544
+	.text       start:0x8018D544 end:0x8018D544
+	.text       start:0x8018D544 end:0x8018D550
+	.text       start:0x8018D550 end:0x8018D564
+	.text       start:0x8018D564 end:0x8018D570
+	.text       start:0x8018D570 end:0x8018D57C
+	.text       start:0x8018D57C end:0x8018D588
+	.text       start:0x8018D588 end:0x8018DA28
+	.rodata     start:0x80372EC8 end:0x80372EE0
+	.data       start:0x80395B68 end:0x80395EF8
+	.bss        start:0x80407260 end:0x804082C0
+	.sdata      start:0x804B0390 end:0x804B0398
+	.sbss       start:0x804B1420 end:0x804B1458
+	.sdata2     start:0x804B33D0 end:0x804B3438
+
+SB/Core/x/xWad4.cpp:
+	.text       start:0x8018DA28 end:0x8018DA28
+	.text       start:0x8018DA28 end:0x8018DA3C
+	.text       start:0x8018DA3C end:0x801906F4
+	.text       start:0x801906F4 end:0x8019075C
+	.text       start:0x8019075C end:0x80192D14
+	.text       start:0x80192D14 end:0x80193834
+	.text       start:0x80193834 end:0x80193D80
+	.text       start:0x80193D80 end:0x80193EE0
+	.text       start:0x80193EE0 end:0x80193FD4
+	.text       start:0x80193FD4 end:0x80194014
+	.text       start:0x80194014 end:0x80194080
+	.text       start:0x80194080 end:0x80194C70
+	.text       start:0x80194C70 end:0x80195970
+	.text       start:0x80195970 end:0x801966AC
+	.text       start:0x801966AC end:0x801995B4
+	.text       start:0x801995B4 end:0x80199C54
+	.text       start:0x80199C54 end:0x8019B164
+	.text       start:0x8019B164 end:0x8019C70C
+	.text       start:0x8019C70C end:0x8019C8A8
+	.text       start:0x8019C8A8 end:0x8019CEEC
+	.text       start:0x8019CEEC end:0x801A5E64
+	.text       start:0x801A5E64 end:0x801A81F8
+	.text       start:0x801A81F8 end:0x801AA9B0
+	.text       start:0x801AA9B0 end:0x801AAA38
+	.text       start:0x801AAA38 end:0x801AB460
+	.text       start:0x801AB460 end:0x801AB7AC
+	.text       start:0x801AB7AC end:0x801ABF64
+	.ctors      start:0x8035F4CC end:0x8035F4D0
+	.rodata     start:0x80372EE0 end:0x80373B08
+	.data       start:0x80395EF8 end:0x803A3AD8
+	.bss        start:0x804082C0 end:0x8040EF30
+	.sdata      start:0x804B0398 end:0x804B03A8
+	.sbss       start:0x804B1458 end:0x804B14E0
+	.sdata2     start:0x804B3438 end:0x804B34D0
+	.sbss2      start:0x804B5078 end:0x804B5080
+
+SB/Core/x/xWad2.cpp:
+	.text       start:0x801ABF64 end:0x801ABF64
+	.text       start:0x801ABF64 end:0x801AC0C4
+	.text       start:0x801AC0C4 end:0x801AC82C
+	.text       start:0x801AC82C end:0x801AC9C8
+	.text       start:0x801AC9C8 end:0x801AF9BC
+	.text       start:0x801AF9BC end:0x801B03E4
+	.text       start:0x801B03E4 end:0x801B0404
+	.text       start:0x801B0404 end:0x801B0DE0
+	.text       start:0x801B0DE0 end:0x801B1378
+	.text       start:0x801B1378 end:0x801B1984
+	.text       start:0x801B1984 end:0x801B260C
+	.text       start:0x801B260C end:0x801B42C4
+	.text       start:0x801B42C4 end:0x801B4F9C
+	.text       start:0x801B4F9C end:0x801B4F9C
+	.text       start:0x801B4F9C end:0x801B54C4
+	.text       start:0x801B54C4 end:0x801B55B4
+	.text       start:0x801B55B4 end:0x801B6EA4
+	.text       start:0x801B6EA4 end:0x801BD42C
+	.text       start:0x801BD42C end:0x801BDA44
+	.text       start:0x801BDA44 end:0x801BDEB4
+	.text       start:0x801BDEB4 end:0x801C854C
+	.text       start:0x801C854C end:0x801C8700
+	.text       start:0x801C8700 end:0x801C8910
+	.text       start:0x801C8910 end:0x801C8910
+	.text       start:0x801C8910 end:0x801C8910
+	.text       start:0x801C8910 end:0x801C8F5C
+	.text       start:0x801C8F5C end:0x801C9550
+	.text       start:0x801C9550 end:0x801C9818
+	.text       start:0x801C9818 end:0x801C9A38
+	.text       start:0x801C9A38 end:0x801CDC10
+	.text       start:0x801CDC10 end:0x801CF1D4
+	.text       start:0x801CF1D4 end:0x801D4A68
+	.text       start:0x801D4A68 end:0x801D9B60
+	.text       start:0x801D9B60 end:0x801E11D4
+	.text       start:0x801E11D4 end:0x801E11EC
+	.text       start:0x801E11EC end:0x801E1254
+	.text       start:0x801E1254 end:0x801E1CA4
+	.text       start:0x801E1CA4 end:0x801E1CA4
+	.rodata     start:0x80373B08 end:0x80374568
+	.data       start:0x803A3AD8 end:0x803A6250
+	.bss        start:0x8040EF30 end:0x80420A20
+	.sdata      start:0x804B03A8 end:0x804B0418
+	.sbss       start:0x804B14E0 end:0x804B1628
+	.sdata2     start:0x804B34D0 end:0x804B3678
+	.sbss2      start:0x804B5080 end:0x804B50D8
+
+SB/Core/x/xWad3.cpp:
+	.text       start:0x801E1CA4 end:0x801E1CA4
+	.text       start:0x801E1CA4 end:0x801E228C
+	.text       start:0x801E228C end:0x801E228C
+	.text       start:0x801E228C end:0x801E228C
+	.text       start:0x801E228C end:0x801E228C
+	.text       start:0x801E228C end:0x801E2874
+	.text       start:0x801E2874 end:0x801E2AE4
+	.text       start:0x801E2AE4 end:0x801E4570
+	.text       start:0x801E4570 end:0x801E75C8
+	.text       start:0x801E75C8 end:0x801E75C8
+	.text       start:0x801E75C8 end:0x801E83F0
+	.text       start:0x801E83F0 end:0x801E849C
+	.text       start:0x801E849C end:0x801E8CE0
+	.text       start:0x801E8CE0 end:0x801E9684
+	.text       start:0x801E9684 end:0x801ED3E8
+	.text       start:0x801ED3E8 end:0x801EE504
+	.text       start:0x801EE504 end:0x801EE504
+	.text       start:0x801EE504 end:0x801EE634
+	.text       start:0x801EE634 end:0x801EEA44
+	.text       start:0x801EEA44 end:0x801F00FC
+	.text       start:0x801F00FC end:0x801F02E8
+	.text       start:0x801F02E8 end:0x801F02E8
+	.text       start:0x801F02E8 end:0x801F06D0
+	.rodata     start:0x80374568 end:0x80374A00
+	.data       start:0x803A6250 end:0x803A62B0
+	.bss        start:0x80420A20 end:0x80424B40
+	.sdata      start:0x804B0418 end:0x804B0428
+	.sbss       start:0x804B1628 end:0x804B16C0
+	.sdata2     start:0x804B3678 end:0x804B3748
+	.sbss2      start:0x804B50D8 end:0x804B50E8
+
+SB/Core/x/xWad1.cpp:
+	.text       start:0x801F06D0 end:0x801F06D0
+	.text       start:0x801F06D0 end:0x801F06D0
+	.text       start:0x801F06D0 end:0x801F06D0
+	.text       start:0x801F06D0 end:0x801F2BD0
+	.text       start:0x801F2BD0 end:0x801F2BD8
+	.text       start:0x801F2BD8 end:0x801F2D44
+	.text       start:0x801F2D44 end:0x801F3288
+	.text       start:0x801F3288 end:0x801F3418
+	.text       start:0x801F3418 end:0x801F3418
+	.text       start:0x801F3418 end:0x801F621C
+	.text       start:0x801F621C end:0x801F9928
+	.text       start:0x801F9928 end:0x801F994C
+	.text       start:0x801F994C end:0x801FCA20
+	.text       start:0x801FCA20 end:0x801FFEA8
+	.text       start:0x801FFEA8 end:0x80200010
+	.text       start:0x80200010 end:0x80208178
+	.text       start:0x80208178 end:0x80209674
+	.text       start:0x80209674 end:0x8020B580
+	.text       start:0x8020B580 end:0x8020BDA8
+	.text       start:0x8020BDA8 end:0x8020BDA8
+	.text       start:0x8020BDA8 end:0x8020E290
+	.text       start:0x8020E290 end:0x8020FF40
+	.text       start:0x8020FF40 end:0x80211334
+	.text       start:0x80211334 end:0x80211390
+	.text       start:0x80211390 end:0x80212A08
+	.text       start:0x80212A08 end:0x80212A08
+	.text       start:0x80212A08 end:0x80212A08
+	.text       start:0x80212A08 end:0x80212CA8
+	.text       start:0x80212CA8 end:0x80212CA8
+	.text       start:0x80212CA8 end:0x80212CA8
+	.text       start:0x80212CA8 end:0x80212DAC
+	.text       start:0x80212DAC end:0x80215434
+	.text       start:0x80215434 end:0x80215434
+	.text       start:0x80215434 end:0x8021B700
+	.text       start:0x8021B700 end:0x8021C3AC
+	.text       start:0x8021C3AC end:0x8021C3B4
+	.text       start:0x8021C3B4 end:0x8021C490
+	.rodata     start:0x80374A00 end:0x80375058
+	.data       start:0x803A62B0 end:0x803A7768
+	.bss        start:0x80424B40 end:0x80427260
+	.sdata      start:0x804B0428 end:0x804B0450
+	.sbss       start:0x804B16C0 end:0x804B1740
+	.sdata2     start:0x804B3748 end:0x804B3880
+	.sbss2      start:0x804B50E8 end:0x804B5130
+
+SB/Core/x/xWad5.cpp:
+	.text       start:0x8021C490 end:0x8021C490
+	.text       start:0x8021C490 end:0x8021C714
+	.text       start:0x8021C714 end:0x8021C7E4
+	.text       start:0x8021C7E4 end:0x8021CF8C
+	.text       start:0x8021CF8C end:0x8021DB90
+	.text       start:0x8021DB90 end:0x8021EA7C
+	.text       start:0x8021EA7C end:0x8021EB00
+	.text       start:0x8021EB00 end:0x8021EFF4
+	.text       start:0x8021EFF4 end:0x80220D00
+	.text       start:0x80220D00 end:0x80220D00
+	.text       start:0x80220D00 end:0x8022112C
+	.text       start:0x8022112C end:0x80221298
+	.text       start:0x80221298 end:0x80221810
+	.text       start:0x80221810 end:0x802227C4
+	.text       start:0x802227C4 end:0x80224874
+	.text       start:0x80224874 end:0x802257B4
+	.text       start:0x802257B4 end:0x80227EC0
+	.text       start:0x80227EC0 end:0x80228B48
+	.text       start:0x80228B48 end:0x80228B58
+	.text       start:0x80228B58 end:0x80229C64
+	.text       start:0x80229C64 end:0x8022D170
+	.text       start:0x8022D170 end:0x8022D5C0
+	.text       start:0x8022D5C0 end:0x8022F578
+	.text       start:0x8022F578 end:0x8023353C
+	.text       start:0x8023353C end:0x802347C8
+	.text       start:0x802347C8 end:0x80235614
+	.text       start:0x80235614 end:0x8023A098
+	.text       start:0x8023A098 end:0x8023A098
+	.text       start:0x8023A098 end:0x8023BDD4
+	.text       start:0x8023BDD4 end:0x8023C31C
+	.text       start:0x8023C31C end:0x8023C95C
+	.ctors      start:0x8035F4D0 end:0x8035F4D4
+	.rodata     start:0x80375058 end:0x803754F8
+	.data       start:0x803A7768 end:0x803A9760
+	.bss        start:0x80427260 end:0x8043C260
+	.sdata      start:0x804B0450 end:0x804B0480
+	.sbss       start:0x804B1740 end:0x804B1860
+	.sdata2     start:0x804B3880 end:0x804B3A50
+	.sbss2      start:0x804B5130 end:0x804B5140
+
+SB/Core/gc/iWad.cpp:
+	.text       start:0x8023C95C end:0x8023C95C
+	.text       start:0x8023C95C end:0x8023CA50
+	.text       start:0x8023CA50 end:0x8023DE68
+	.text       start:0x8023DE68 end:0x80240600
+	.text       start:0x80240600 end:0x80243F58
+	.text       start:0x80243F58 end:0x80243F58
+	.text       start:0x80243F58 end:0x802461E4
+	.text       start:0x802461E4 end:0x80246B2C
+	.text       start:0x80246B2C end:0x80249400
+	.text       start:0x80249400 end:0x8024C8FC
+	.text       start:0x8024C8FC end:0x8024D520
+	.text       start:0x8024D520 end:0x8024F57C
+	.text       start:0x8024F57C end:0x8024F5E8
+	.text       start:0x8024F5E8 end:0x8024F940
+	.text       start:0x8024F940 end:0x8024FC98
+	.text       start:0x8024FC98 end:0x80250ED8
+	.text       start:0x80250ED8 end:0x80251930
+	.text       start:0x80251930 end:0x80252400
+	.text       start:0x80252400 end:0x80252630
+	.text       start:0x80252630 end:0x80253344
+	.text       start:0x80253344 end:0x80253490
+	.text       start:0x80253490 end:0x80255250
+	.text       start:0x80255250 end:0x80255AA4
+	.ctors      start:0x8035F4D4 end:0x8035F4D8
+	.rodata     start:0x803754F8 end:0x80378508
+	.data       start:0x803A9760 end:0x803A9D68
+	.bss        start:0x8043C260 end:0x80458188
+	.sdata      start:0x804B0480 end:0x804B0490
+	.sbss       start:0x804B1860 end:0x804B19A0
+	.sdata2     start:0x804B3A50 end:0x804B3B38
+	.sbss2      start:0x804B5140 end:0x804B5160
+
+SB/Game/zMain.cpp:
+	.text       start:0x80255AA4 end:0x80259488
+	.ctors      start:0x8035F4D8 end:0x8035F4DC
+	.rodata     start:0x80378508 end:0x80379308
+	.data       start:0x803A9D68 end:0x803A9E10
+	.sdata      start:0x804B0490 end:0x804B04B0
+	.sbss       start:0x804B19A0 end:0x804B19D0
+	.sdata2     start:0x804B3B38 end:0x804B3C20
+	.sbss2      start:0x804B5160 end:0x804B5170
+
+SB/Core/gc/iTRC.cpp:
+	.text       start:0x80259488 end:0x8025A8F8
+	.rodata     start:0x80379308 end:0x80379558
+	.data       start:0x803A9E10 end:0x803A9E48
+	.sdata      start:0x804B04B0 end:0x804B04C0
+	.sbss       start:0x804B19D0 end:0x804B1A30
+	.sdata2     start:0x804B3C20 end:0x804B3C40
+	.sbss2      start:0x804B5170 end:0x804B5178
+
+SB/Core/x/xFXHighDynamicRange.cpp:
+	.text       start:0x8025A8F8 end:0x8025BA30
+	.rodata     start:0x80379558 end:0x80379578
+	.data       start:0x803A9E48 end:0x803A9E70
+	.bss        start:0x80458188 end:0x804581B8
+	.sdata      start:0x804B04C0 end:0x804B04E0
+	.sbss       start:0x804B1A30 end:0x804B1A48
+	.sdata2     start:0x804B3C40 end:0x804B3C80
+
+SB/Game/zTalkBox.cpp:
+	.text       start:0x8025BA30 end:0x802605C0
+	.text       start:0x802605C0 end:0x802605CC
+	.ctors      start:0x8035F4DC end:0x8035F4E0
+	.rodata     start:0x80379578 end:0x80379700
+	.data       start:0x803A9E70 end:0x803A9FC8
+	.bss        start:0x804581B8 end:0x804608F0
+	.sdata      start:0x804B04E0 end:0x804B04E8
+	.sbss       start:0x804B1A48 end:0x804B1A68
+	.sdata2     start:0x804B3C80 end:0x804B3C98
+	.sbss2      start:0x804B5178 end:0x804B5188
+
+SB/Game/zTaskBox.cpp:
+	.text       start:0x802605CC end:0x802615E4
+	.text       start:0x802615E4 end:0x802615E4
+	.text       start:0x802615E4 end:0x802615E8
+	.data       start:0x803A9FC8 end:0x803A9FF8
+	.bss        start:0x804608F0 end:0x80460900
+	.sbss       start:0x804B1A68 end:0x804B1A78
+
+SB/Game/zSmoke.cpp:
+	.text       start:0x802615E8 end:0x802626E4
+	.text       start:0x802626E4 end:0x802626E4
+	.text       start:0x802626E4 end:0x80262764
+	.rodata     start:0x80379700 end:0x80379710
+	.bss        start:0x80460900 end:0x80460A10
+	.sbss       start:0x804B1A78 end:0x804B1A90
+	.sdata2     start:0x804B3C98 end:0x804B3CF0
+
+SB/Game/zSplash.cpp:
+	.text       start:0x80262764 end:0x80265980
+	.text       start:0x80265980 end:0x80265980
+	.bss        start:0x80460A10 end:0x80460A30
+	.sdata      start:0x804B04E8 end:0x804B04F0
+	.sbss       start:0x804B1A90 end:0x804B1AD8
+	.sdata2     start:0x804B3CF0 end:0x804B3D60
+
+SB/Game/zExplosion.cpp:
+	.text       start:0x80265980 end:0x8026C478
+	.text       start:0x8026C478 end:0x8026C478
+	.rodata     start:0x80379710 end:0x80379E40
+	.data       start:0x803A9FF8 end:0x803AA130
+	.bss        start:0x80460A30 end:0x804611E0
+	.sbss       start:0x804B1AD8 end:0x804B1B28
+	.sdata2     start:0x804B3D60 end:0x804B3E30
+	.sbss2      start:0x804B5188 end:0x804B5190
+
+SB/Game/zFMV.cpp:
+	.text       start:0x8026C478 end:0x8026C5F4
+	.rodata     start:0x80379E40 end:0x8037A098
+	.data       start:0x803AA130 end:0x803AA380
+	.sdata2     start:0x804B3E30 end:0x804B3E38
+
+SB/Core/gc/iException.cpp:
+	.text       start:0x8026C5F4 end:0x8026C670
+	.rodata     start:0x8037A098 end:0x8037A0D8
+
+SB/Game/zJSPExtraData.cpp:
+	.text       start:0x8026C670 end:0x8026C92C
+	.sbss       start:0x804B1B28 end:0x804B1B30
+
+SB/Core/gc/iScrFX.cpp:
+	.text       start:0x8026C92C end:0x8026D77C
+	.data       start:0x803AA380 end:0x803AA400
+	.bss        start:0x804611E0 end:0x80461240
+	.sdata      start:0x804B04F0 end:0x804B0500
+	.sbss       start:0x804B1B30 end:0x804B1B38
+	.sdata2     start:0x804B3E38 end:0x804B3E60
+
+SB/Game/zTextBox.cpp:
+	.text       start:0x8026D77C end:0x8026EB6C
+	.rodata     start:0x8037A0D8 end:0x8037A220
+	.data       start:0x803AA400 end:0x803AA428
+	.sdata      start:0x804B0500 end:0x804B0508
+	.sbss       start:0x804B1B38 end:0x804B1B40
+	.sdata2     start:0x804B3E60 end:0x804B3E80
+
+SB/Game/zDust.cpp:
+	.text       start:0x8026EB6C end:0x80270130
+	.rodata     start:0x8037A220 end:0x8037A258
+	.bss        start:0x80461240 end:0x804612C0
+	.sdata      start:0x804B0508 end:0x804B0510
+	.sbss       start:0x804B1B40 end:0x804B1B60
+	.sdata2     start:0x804B3E80 end:0x804B3F00
+
+SB/Core/x/xFXCameraTexture.cpp:
+	.text       start:0x80270130 end:0x80270C7C
+	.sdata2     start:0x804B3F00 end:0x804B3F28
+
+SB/Game/zReactiveAnimation.cpp:
+	.text       start:0x80270C7C end:0x802726D8
+	.text       start:0x802726D8 end:0x802726D8
+	.text       start:0x802726D8 end:0x80272878
+	.rodata     start:0x8037A258 end:0x8037A290
+	.bss        start:0x804612C0 end:0x804612D0
+	.sbss       start:0x804B1B60 end:0x804B1B80
+	.sdata2     start:0x804B3F28 end:0x804B3F40
+
+SB/Game/zFire.cpp:
+	.text       start:0x80272878 end:0x80275D38
+	.text       start:0x80275D38 end:0x80276A40
+	.text       start:0x80276A40 end:0x80276D8C
+	.rodata     start:0x8037A290 end:0x8037A468
+	.bss        start:0x804612D0 end:0x804613D0
+	.sbss       start:0x804B1B80 end:0x804B1BC0
+	.sdata2     start:0x804B3F40 end:0x804B4008
+
+SB/Game/zBossCam.cpp:
+	.text       start:0x80276D8C end:0x80277AF8
+	.text       start:0x80277AF8 end:0x80277AF8
+	.rodata     start:0x8037A468 end:0x8037A5D0
+	.data       start:0x803AA428 end:0x803AA450
+	.sdata2     start:0x804B4008 end:0x804B4038
+
+SB/Game/zParticleGenerator.cpp:
+	.text       start:0x80277AF8 end:0x802784A0
+	.text       start:0x802784A0 end:0x802784C0
+	.rodata     start:0x8037A5D0 end:0x8037A5F8
+	.data       start:0x803AA450 end:0x803AA468
+	.bss        start:0x804613D0 end:0x80461408
+	.sbss       start:0x804B1BC0 end:0x804B1BD8
+	.sdata2     start:0x804B4038 end:0x804B4048
+
+SB/Game/zParticleLocator.cpp:
+	.text       start:0x802784C0 end:0x80279F8C
+	.rodata     start:0x8037A5F8 end:0x8037A618
+	.sbss       start:0x804B1BD8 end:0x804B1BE0
+	.sdata2     start:0x804B4048 end:0x804B4088
+
+SB/Game/zParticleSystems.cpp:
+	.text       start:0x80279F8C end:0x8027A0E4
+	.text       start:0x8027A0E4 end:0x8027A0F4
+	.data       start:0x803AA468 end:0x803AA4D0
+
+SB/Game/zParticleSystemWaterfall.cpp:
+	.text       start:0x8027A0F4 end:0x8027C324
+	.text       start:0x8027C324 end:0x8027C324
+	.text       start:0x8027C324 end:0x8027C324
+	.data       start:0x803AA4D0 end:0x803AA5A8
+	.sdata2     start:0x804B4088 end:0x804B40D8
+
+SB/Core/x/xModelBlur.cpp:
+	.text       start:0x8027C324 end:0x8027CD7C
+	.bss        start:0x80461408 end:0x80461450
+	.sdata      start:0x804B0510 end:0x804B0518
+	.sbss       start:0x804B1BE0 end:0x804B1BE8
+	.sdata2     start:0x804B40D8 end:0x804B40F8
+
+SB/Core/x/xCamera.cpp:
+	.text       start:0x8027CD7C end:0x8027FDD4
+	.sdata      start:0x804B0518 end:0x804B0528
+	.sbss       start:0x804B1BE8 end:0x804B1C00
+	.sdata2     start:0x804B40F8 end:0x804B4190
+
+SB/Game/zWadCine.cpp:
+	.text       start:0x8027FDD4 end:0x8027FDD4
+	.text       start:0x8027FDD4 end:0x8027FEE0
+	.text       start:0x8027FEE0 end:0x8027FEE4
+	.text       start:0x8027FEE4 end:0x8027FEE4
+	.text       start:0x8027FEE4 end:0x8027FEE4
+	.text       start:0x8027FEE4 end:0x802800B0
+	.text       start:0x802800B0 end:0x802800B0
+	.text       start:0x802800B0 end:0x802800B0
+	.text       start:0x802800B0 end:0x802800B0
+	.text       start:0x802800B0 end:0x80280BD4
+	.text       start:0x80280BD4 end:0x80280F34
+	.text       start:0x80280F34 end:0x80280F34
+	.text       start:0x80280F34 end:0x80280F34
+	.text       start:0x80280F34 end:0x80280F4C
+	.text       start:0x80280F4C end:0x802817D0
+	.text       start:0x802817D0 end:0x80281D1C
+	.text       start:0x80281D1C end:0x8028230C
+	.text       start:0x8028230C end:0x8028230C
+	.text       start:0x8028230C end:0x802828A0
+	.text       start:0x802828A0 end:0x802828A0
+	.text       start:0x802828A0 end:0x80283264
+	.text       start:0x80283264 end:0x80283264
+	.text       start:0x80283264 end:0x802832D8
+	.text       start:0x802832D8 end:0x80283D4C
+	.text       start:0x80283D4C end:0x80284548
+	.text       start:0x80284548 end:0x80286084
+	.text       start:0x80286084 end:0x80286FE4
+	.text       start:0x80286FE4 end:0x80286FE4
+	.rodata     start:0x8037A618 end:0x8037B328
+	.data       start:0x803AA5A8 end:0x803B5068
+	.bss        start:0x80461450 end:0x804614B8
+	.sdata      start:0x804B0528 end:0x804B0530
+	.sbss       start:0x804B1C00 end:0x804B1C08
+	.sdata2     start:0x804B4190 end:0x804B4208
+
+SB/Core/gc/iARAMTmp.cpp:
+	.text       start:0x80286FE4 end:0x802873E4
+	.bss        start:0x804614B8 end:0x80461AB8
+	.sbss       start:0x804B1C08 end:0x804B1C10
+
+SB/Game/zParticleCustom.cpp:
+	.text       start:0x802873E4 end:0x80288D10
+	.text       start:0x80288D10 end:0x80288D10
+	.text       start:0x80288D10 end:0x80288D10
+	.data       start:0x803B5068 end:0x803B5068
+	.bss        start:0x80461AB8 end:0x80461ACC
+	.sbss       start:0x804B1C10 end:0x804B1C20
+	.sdata2     start:0x804B4208 end:0x804B4268
+
+bink/src/sdk/decode/ngc/binkngc.c:
+	.text       start:0x80288D10 end:0x8028900C
+	.text       start:0x8028900C end:0x8028900C
+	.rodata     start:0x8037B328 end:0x8037B370
+	.data       start:0x803B5068 end:0x803B5070
+	.data       start:0x803B5070 end:0x803B5070
+
+bink/src/sdk/decode/ngc/ngcsnd.c:
+	.text       start:0x8028900C end:0x8028A330
+	.text       start:0x8028A330 end:0x8028A330
+	.rodata     start:0x8037B370 end:0x8037B400
+	.data       start:0x803B5070 end:0x803B5078
+	.data       start:0x803B5078 end:0x803B5078
+	.bss        start:0x80461ACC end:0x80461ACC
+
+bink/src/sdk/decode/binkread.c:
+	.text       start:0x8028A330 end:0x8028E4BC
+	.text       start:0x8028E4BC end:0x8028E4BC
+	.data       start:0x803B5078 end:0x803B8AC0
+	.data       start:0x803B8AC0 end:0x803B8AC0
+	.bss        start:0x80461ACC end:0x80461BD0
+
+bink/src/sdk/decode/ngc/ngcfile.c:
+	.text       start:0x8028E4BC end:0x8028EFBC
+	.text       start:0x8028EFBC end:0x8028EFBC
+	.data       start:0x803B8AC0 end:0x803B8AC0
+
+radmem.c:
+	.text       start:0x8028EFBC end:0x8028F0E8
+	.text       start:0x8028F0E8 end:0x8028F0E8
+	.data       start:0x803B8AC0 end:0x803B8AE0
+	.data       start:0x803B8AE0 end:0x803B9B70
+	.bss        start:0x80461BD0 end:0x80461BF0
+
+bink/src/sdk/decode/yuv.c:
+	.text       start:0x8028F0E8 end:0x8029460C
+	.text       start:0x8029460C end:0x8029460C
+	.rodata     start:0x8037B400 end:0x8037B440
+	.data       start:0x803B9B70 end:0x803B9D80
+	.data       start:0x803B9D80 end:0x803B9D80
+	.bss        start:0x80461BF0 end:0x80461BF8
+
+bink/src/sdk/decode/binkacd.c:
+	.text       start:0x8029460C end:0x802951F0
+	.text       start:0x802951F0 end:0x802951F0
+	.data       start:0x803B9D80 end:0x803BA258
+	.data       start:0x803BA258 end:0x803BA260
+
+bink/shared/time/radcb.c:
+	.text       start:0x802951F0 end:0x8029599C
+	.text       start:0x8029599C end:0x8029599C
+	.rodata     start:0x8037B440 end:0x8037B440
+	.data       start:0x803BA260 end:0x803BA260
+
+bink/src/sdk/decode/expand.c:
+	.text       start:0x8029599C end:0x80298DA0
+	.text       start:0x80298DA0 end:0x80298DA0
+	.rodata     start:0x8037B440 end:0x8037B900
+	.data       start:0x803BA260 end:0x803BA2A0
+	.data       start:0x803BA2A0 end:0x803BA2A0
+	.bss        start:0x80461BF8 end:0x80461BF8
+
+bink/src/sdk/popmal.c:
+	.text       start:0x80298DA0 end:0x80298F68
+	.text       start:0x80298F68 end:0x80298F68
+	.data       start:0x803BA2A0 end:0x803BA2B8
+	.data       start:0x803BA2B8 end:0x803BA2B8
+	.bss        start:0x80461BF8 end:0x80461CF8
+
+bink/src/sdk/decode/ngc/ngcrgb.c:
+	.text       start:0x80298F68 end:0x8029AEE8
+	.text       start:0x8029AEE8 end:0x8029AEE8
+
+bink/src/sdk/decode/ngc/ngcyuy2.c:
+	.text       start:0x8029AEE8 end:0x8029BBF4
+	.text       start:0x8029BBF4 end:0x8029BBF4
+	.rodata     start:0x8037B900 end:0x8037B960
+
+bink/src/sdk/fft.c:
+	.text       start:0x8029BBF4 end:0x8029FEC0
+	.text       start:0x8029FEC0 end:0x8029FEC0
+	.rodata     start:0x8037B960 end:0x8037B960
+
+bink/src/sdk/dct.c:
+	.text       start:0x8029FEC0 end:0x802A0960
+	.text       start:0x802A0960 end:0x802A0960
+	.rodata     start:0x8037B960 end:0x8037D9A0
+	.rodata     start:0x8037D9A0 end:0x8037DE20
+
+bink/src/sdk/bitplane.c:
+	.text       start:0x802A0960 end:0x802A1FAC
+
+ios.cpp:
+	extab       start:0x80005600 end:0x80005608
+	extabindex  start:0x80005700 end:0x8000570C
+	.text       start:0x802A1FAC end:0x802A2000
+	.rodata     start:0x8037DE20 end:0x8037DE40
+	.data       start:0x803BA2B8 end:0x803BA2C8
+	.sdata      start:0x804B0530 end:0x804B0538
+
+PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Src/abort_exit.c:
+	.text       start:0x802A2000 end:0x802A218C
+	.bss        start:0x80461CF8 end:0x80461DF8
+	.sbss       start:0x804B1C20 end:0x804B1C30
+
+PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Src/alloc.c:
+	.text       start:0x802A218C end:0x802A388C
+	.rodata     start:0x8037DE40 end:0x8037DE58
+	.bss        start:0x80461DF8 end:0x80461E30
+	.sbss       start:0x804B1C30 end:0x804B1C38
+
+PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Src/errno.c:
+	.sbss       start:0x804B1C38 end:0x804B1C40
+
+PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Src/ansi_files.c:
+	.text       start:0x802A388C end:0x802A39A4
+	.data       start:0x803BA2C8 end:0x803BA408
+	.bss        start:0x80461E30 end:0x80462130
+
+PowerPC_EABI_Support/MSL/MSL_C/MSL_Common_Embedded/Src/ansi_fp.c:
+	.text       start:0x802A39A4 end:0x802A6F80
+	.rodata     start:0x8037DE58 end:0x8037DF38
+	.data       start:0x803BA408 end:0x803BA570
+	.sdata2     start:0x804B4268 end:0x804B4298
+
+PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Src/arith.c:
+	.text       start:0x802A6F80 end:0x802A6F90
+
+bsearch.c:
+	.text       start:0x802A6F90 end:0x802A707C
+
+PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Src/buffer_io.c:
+	.text       start:0x802A707C end:0x802A7174
+
+PowerPC_EABI_Support/MSL/MSL_C/PPC_EABI/SRC/critical_regions.gamecube.c:
+	.text       start:0x802A7174 end:0x802A7180
+
+PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Src/ctype.c:
+	.text       start:0x802A7180 end:0x802A71A4
+	.data       start:0x803BA570 end:0x803BA870
+
+PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Src/locale.c:
+	.rodata     start:0x8037DF38 end:0x8037DF40
+	.data       start:0x803BA870 end:0x803BA8A8
+
+PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Src/direct_io.c:
+	.text       start:0x802A71A4 end:0x802A752C
+
+PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Src/file_io.c:
+	.text       start:0x802A752C end:0x802A7820
+
+PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Src/FILE_POS.C:
+	.text       start:0x802A7820 end:0x802A7BE0
+
+PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Src/mbstring.c:
+	.text       start:0x802A7BE0 end:0x802A7F04
+	.sdata2     start:0x804B4298 end:0x804B42A0
+
+PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Src/mem.c:
+	.text       start:0x802A7F04 end:0x802A8074
+
+PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Src/mem_funcs.c:
+	.text       start:0x802A8074 end:0x802A8344
+
+PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Src/misc_io.c:
+	.text       start:0x802A8344 end:0x802A8354
+
+PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Src/printf.c:
+	.text       start:0x802A8354 end:0x802AA454
+	.rodata     start:0x8037DF40 end:0x8037DF68
+	.data       start:0x803BA8A8 end:0x803BAAD8
+	.sdata      start:0x804B0538 end:0x804B0540
+	.sdata2     start:0x804B42A0 end:0x804B42A8
+
+PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Src/qsort.c:
+	.text       start:0x802AA454 end:0x802AA5C0
+
+PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Src/rand.c:
+	.text       start:0x802AA5C0 end:0x802AA5E0
+	.sdata      start:0x804B0540 end:0x804B0548
+
+PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Src/scanf.c:
+	.text       start:0x802AA5E0 end:0x802AB628
+	.rodata     start:0x8037DF68 end:0x8037DF90
+	.data       start:0x803BAAD8 end:0x803BABA8
+
+PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Src/signal.c:
+	.text       start:0x802AB628 end:0x802AB6E8
+	.bss        start:0x80462130 end:0x80462148
+
+PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Src/string.c:
+	.text       start:0x802AB6E8 end:0x802ABBB4
+	.rodata     start:0x8037DF90 end:0x8037E320
+	.sdata      start:0x804B0548 end:0x804B0550
+
+PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Src/float.c:
+	.sdata      start:0x804B0550 end:0x804B0588
+
+PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Src/strtold.c:
+	.text       start:0x802ABBB4 end:0x802ACC4C
+	.rodata     start:0x8037E320 end:0x8037E358
+	.sdata2     start:0x804B42A8 end:0x804B42C0
+
+PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Src/strtoul.c:
+	.text       start:0x802ACC4C end:0x802AD490
+	.data       start:0x803BABA8 end:0x803BAC30
+
+PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Src/wchar_io.c:
+	.text       start:0x802AD490 end:0x802AD518
+
+PowerPC_EABI_Support/MSL/MSL_C/MSL_Common_Embedded/Src/uart_console_io_gcn.c:
+	.text       start:0x802AD518 end:0x802AD5F0
+	.sbss       start:0x804B1C40 end:0x804B1C48
+
+PowerPC_EABI_Support/MSL/MSL_C/MSL_Common_Embedded/Math/Double_precision/e_acos.c:
+	.text       start:0x802AD5F0 end:0x802AD82C
+	.sdata2     start:0x804B42C0 end:0x804B4348
+
+PowerPC_EABI_Support/MSL/MSL_C/MSL_Common_Embedded/Math/Double_precision/e_asin.c:
+	.text       start:0x802AD82C end:0x802ADA64
+	.sdata2     start:0x804B4348 end:0x804B43D0
+
+PowerPC_EABI_Support/MSL/MSL_C/MSL_Common_Embedded/Math/Double_precision/e_atan2.c:
+	.text       start:0x802ADA64 end:0x802ADCF4
+	.sdata2     start:0x804B43D0 end:0x804B4428
+
+PowerPC_EABI_Support/MSL/MSL_C/MSL_Common_Embedded/Math/Double_precision/e_exp.c:
+	.text       start:0x802ADCF4 end:0x802ADF18
+	.rodata     start:0x8037E358 end:0x8037E388
+	.sdata2     start:0x804B4428 end:0x804B44A0
+
+PowerPC_EABI_Support/MSL/MSL_C/MSL_Common_Embedded/Math/Double_precision/e_fmod.c:
+	.text       start:0x802ADF18 end:0x802AE254
+	.rodata     start:0x8037E388 end:0x8037E398
+
+PowerPC_EABI_Support/MSL/MSL_C/MSL_Common_Embedded/Math/Double_precision/e_log.c:
+	.text       start:0x802AE254 end:0x802AE4D0
+	.sbss       start:0x804B1C48 end:0x804B1C50
+	.sdata2     start:0x804B44A0 end:0x804B4520
+
+PowerPC_EABI_Support/MSL/MSL_C/MSL_Common_Embedded/Math/Double_precision/e_pow.c:
+	.text       start:0x802AE4D0 end:0x802AED00
+	.rodata     start:0x8037E398 end:0x8037E3C8
+	.sdata2     start:0x804B4520 end:0x804B4630
+
+PowerPC_EABI_Support/MSL/MSL_C/MSL_Common_Embedded/Math/Double_precision/e_rem_pio2.c:
+	.text       start:0x802AED00 end:0x802AF0A0
+	.rodata     start:0x8037E3C8 end:0x8037E550
+	.sdata2     start:0x804B4630 end:0x804B4688
+
+PowerPC_EABI_Support/MSL/MSL_C/MSL_Common_Embedded/Math/Double_precision/k_cos.c:
+	.text       start:0x802AF0A0 end:0x802AF194
+	.sdata2     start:0x804B4688 end:0x804B46D0
+
+PowerPC_EABI_Support/MSL/MSL_C/MSL_Common_Embedded/Math/Double_precision/k_rem_pio2.c:
+	.text       start:0x802AF194 end:0x802AFFE8
+	.rodata     start:0x8037E550 end:0x8037E5A0
+	.sdata2     start:0x804B46D0 end:0x804B4710
+
+PowerPC_EABI_Support/MSL/MSL_C/MSL_Common_Embedded/Math/Double_precision/k_sin.c:
+	.text       start:0x802AFFE8 end:0x802B0088
+	.sdata2     start:0x804B4710 end:0x804B4748
+
+PowerPC_EABI_Support/MSL/MSL_C/MSL_Common_Embedded/Math/Double_precision/k_tan.c:
+	.text       start:0x802B0088 end:0x802B029C
+	.rodata     start:0x8037E5A0 end:0x8037E608
+	.sdata2     start:0x804B4748 end:0x804B4780
+
+PowerPC_EABI_Support/MSL/MSL_C/MSL_Common_Embedded/Math/Double_precision/s_atan.c:
+	.text       start:0x802B029C end:0x802B04B4
+	.rodata     start:0x8037E608 end:0x8037E6A0
+	.sdata2     start:0x804B4780 end:0x804B47A8
+
+PowerPC_EABI_Support/MSL/MSL_C/MSL_Common_Embedded/Math/Double_precision/s_ceil.c:
+	.text       start:0x802B04B4 end:0x802B05F8
+	.sdata2     start:0x804B47A8 end:0x804B47B8
+
+PowerPC_EABI_Support/MSL/MSL_C/MSL_Common_Embedded/Math/Double_precision/s_copysign.c:
+	.text       start:0x802B05F8 end:0x802B0620
+
+PowerPC_EABI_Support/MSL/MSL_C/MSL_Common_Embedded/Math/Double_precision/s_cos.c:
+	.text       start:0x802B0620 end:0x802B06F4
+	.sdata2     start:0x804B47B8 end:0x804B47C0
+
+PowerPC_EABI_Support/MSL/MSL_C/MSL_Common_Embedded/Math/Double_precision/s_floor.c:
+	.text       start:0x802B06F4 end:0x802B083C
+	.sdata2     start:0x804B47C0 end:0x804B47D0
+
+PowerPC_EABI_Support/MSL/MSL_C/MSL_Common_Embedded/Math/Double_precision/s_frexp.c:
+	.text       start:0x802B083C end:0x802B08C8
+	.sdata2     start:0x804B47D0 end:0x804B47D8
+
+PowerPC_EABI_Support/MSL/MSL_C/MSL_Common_Embedded/Math/Double_precision/s_ldexp.c:
+	.text       start:0x802B08C8 end:0x802B0A8C
+	.sdata2     start:0x804B47D8 end:0x804B4800
+
+PowerPC_EABI_Support/MSL/MSL_C/MSL_Common_Embedded/Math/Double_precision/s_modf.c:
+	.text       start:0x802B0A8C end:0x802B0B88
+
+PowerPC_EABI_Support/MSL/MSL_C/MSL_Common_Embedded/Math/Double_precision/s_sin.c:
+	.text       start:0x802B0B88 end:0x802B0C60
+	.sdata2     start:0x804B4800 end:0x804B4808
+
+PowerPC_EABI_Support/MSL/MSL_C/MSL_Common_Embedded/Math/Double_precision/s_tan.c:
+	.text       start:0x802B0C60 end:0x802B0CD8
+	.sdata2     start:0x804B4808 end:0x804B4810
+
+PowerPC_EABI_Support/MSL/MSL_C/MSL_Common_Embedded/Math/Double_precision/w_acos.c:
+	.text       start:0x802B0CD8 end:0x802B0CF8
+
+PowerPC_EABI_Support/MSL/MSL_C/MSL_Common_Embedded/Math/Double_precision/w_asin.c:
+	.text       start:0x802B0CF8 end:0x802B0D18
+
+PowerPC_EABI_Support/MSL/MSL_C/MSL_Common_Embedded/Math/Double_precision/w_atan2.c:
+	.text       start:0x802B0D18 end:0x802B0D38
+
+PowerPC_EABI_Support/MSL/MSL_C/MSL_Common_Embedded/Math/Double_precision/w_exp.c:
+	.text       start:0x802B0D38 end:0x802B0D58
+
+PowerPC_EABI_Support/MSL/MSL_C/MSL_Common_Embedded/Math/Double_precision/w_fmod.c:
+	.text       start:0x802B0D58 end:0x802B0D78
+
+PowerPC_EABI_Support/MSL/MSL_C/MSL_Common_Embedded/Math/Double_precision/w_log.c:
+	.text       start:0x802B0D78 end:0x802B0D98
+
+PowerPC_EABI_Support/MSL/MSL_C/MSL_Common_Embedded/Math/Double_precision/w_pow.c:
+	.text       start:0x802B0D98 end:0x802B0DB8
+
+PowerPC_EABI_Support/MSL/MSL_C/MSL_Common_Embedded/Math/Double_precision/e_sqrt.c:
+	.text       start:0x802B0DB8 end:0x802B0FDC
+	.sdata2     start:0x804B4810 end:0x804B4818
+
+PowerPC_EABI_Support/MSL/MSL_C/PPC_EABI/SRC/math_ppc.c:
+	.text       start:0x802B0FDC end:0x802B1048
+
+PowerPC_EABI_Support/MSL/MSL_C/MSL_Common_Embedded/Math/Double_precision/w_sqrt.c:
+	.text       start:0x802B1048 end:0x802B1068
+
+PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Src/extras.c:
+	.text       start:0x802B1068 end:0x802B11C4
+
+PowerPC_EABI_Support/Runtime/Src/__va_arg.c:
+	.text       start:0x802B11C4 end:0x802B128C
+
+PowerPC_EABI_Support/Runtime/Src/global_destructor_chain.c:
+	.text       start:0x802B128C end:0x802B12EC
+	.dtors      start:0x8035F508 end:0x8035F50C
+	.sbss       start:0x804B1C50 end:0x804B1C58
+
+PowerPC_EABI_Support/Runtime/Src/CPlusLibPPC.cp:
+	.text       start:0x802B12EC end:0x802B131C
+
+PowerPC_EABI_Support/Runtime/Src/New.cp:
+	extab       start:0x80005608 end:0x80005630
+	extabindex  start:0x8000570C end:0x80005718
+	.text       start:0x802B131C end:0x802B1368
+
+PowerPC_EABI_Support/Runtime/Src/NMWException.cp:
+	extab       start:0x80005630 end:0x80005688
+	extabindex  start:0x80005718 end:0x8000576C
+	.text       start:0x802B1368 end:0x802B18E4
+	.sdata      start:0x804B0588 end:0x804B0590
+
+PowerPC_EABI_Support/Runtime/Src/runtime.c:
+	.text       start:0x802B18E4 end:0x802B2074
+	.rodata     start:0x8037E6A0 end:0x8037E6B8
+
+PowerPC_EABI_Support/Runtime/Src/__init_cpp_exceptions.cpp:
+	.text       start:0x802B2074 end:0x802B20F0
+	.ctors      start:0x8035F4C0 end:0x8035F4C4
+	.dtors      start:0x8035F500 end:0x8035F508
+	.sdata      start:0x804B0590 end:0x804B0598
+
+PowerPC_EABI_Support/Runtime/Src/Gecko_ExceptionPPC.cp:
+	extab       start:0x80005688 end:0x800056FC
+	extabindex  start:0x8000576C end:0x800057C0
+	.text       start:0x802B20F0 end:0x802B3528
+	.rodata     start:0x8037E6B8 end:0x8037E750
+	.data       start:0x803BAC30 end:0x803BAD18
+	.bss        start:0x80462148 end:0x80462158
+	.sdata      start:0x804B0598 end:0x804B05A8
+
+PowerPC_EABI_Support/Runtime/Src/GCN_mem_alloc.c:
+	.text       start:0x802B3528 end:0x802B3698
+	.rodata     start:0x8037E750 end:0x8037E7C8
+
+TRK_MINNOW_DOLPHIN/Portable/mainloop.c:
+	.text       start:0x802B3698 end:0x802B3790
+
+TRK_MINNOW_DOLPHIN/Portable/nubevent.c:
+	.text       start:0x802B3790 end:0x802B39B8
+	.bss        start:0x80462158 end:0x80462180
+
+TRK_MINNOW_DOLPHIN/Portable/nubinit.c:
+	.text       start:0x802B39B8 end:0x802B3B50
+	.rodata     start:0x8037E7C8 end:0x8037E7F8
+	.bss        start:0x80462180 end:0x80462188
+
+TRK_MINNOW_DOLPHIN/Portable/msg.c:
+	.text       start:0x802B3B50 end:0x802B3B94
+	.rodata     start:0x8037E7F8 end:0x8037E820
+
+TRK_MINNOW_DOLPHIN/Portable/msgbuf.c:
+	.text       start:0x802B3B94 end:0x802B43D0
+	.rodata     start:0x8037E820 end:0x8037E840
+	.bss        start:0x80462188 end:0x80463B38
+
+TRK_MINNOW_DOLPHIN/Portable/serpoll.c:
+	.text       start:0x802B43D0 end:0x802B4688
+	.rodata     start:0x8037E840 end:0x8037E9D0
+	.bss        start:0x80463B38 end:0x80463B50
+	.sbss       start:0x804B1C58 end:0x804B1C60
+
+TRK_MINNOW_DOLPHIN/Portable/usr_put.c:
+	.text       start:0x802B4688 end:0x802B4714
+
+TRK_MINNOW_DOLPHIN/Portable/dispatch.c:
+	.text       start:0x802B4714 end:0x802B488C
+	.rodata     start:0x8037E9D0 end:0x8037EA10
+	.data       start:0x803BAD18 end:0x803BAD88
+
+TRK_MINNOW_DOLPHIN/Portable/msghndlr.c:
+	.text       start:0x802B488C end:0x802B58FC
+	.rodata     start:0x8037EA10 end:0x8037EBF8
+	.data       start:0x803BAD88 end:0x803BADC0
+	.bss        start:0x80463B50 end:0x80463B58
+
+TRK_MINNOW_DOLPHIN/Portable/support.c:
+	.text       start:0x802B58FC end:0x802B6010
+	.rodata     start:0x8037EBF8 end:0x8037ECA0
+
+TRK_MINNOW_DOLPHIN/Portable/mutex_TRK.c:
+	.text       start:0x802B6010 end:0x802B6028
+
+TRK_MINNOW_DOLPHIN/Portable/notify.c:
+	.text       start:0x802B6028 end:0x802B60C0
+
+TRK_MINNOW_DOLPHIN/ppc/Generic/flush_cache.c:
+	.text       start:0x802B60C0 end:0x802B60F8
+
+PowerPC_EABI_Support/Runtime/Src/__mem.c:
+	.init       start:0x80003100 end:0x80003130
+
+TRK_MINNOW_DOLPHIN/Portable/mem_TRK.c:
+	.init       start:0x80003238 end:0x8000328C
+	.text       start:0x802B60F8 end:0x802B61B0
+
+TRK_MINNOW_DOLPHIN/ppc/Generic/targimpl.c:
+	.text       start:0x802B61B0 end:0x802B7D40
+	.rodata     start:0x8037ECA0 end:0x8037ED38
+	.data       start:0x803BADC0 end:0x803BADF0
+	.bss        start:0x80463B58 end:0x804640D8
+
+TRK_MINNOW_DOLPHIN/ppc/Export/targsupp.s:
+	.text       start:0x802B7D40 end:0x802B7D60
+
+TRK_MINNOW_DOLPHIN/ppc/Generic/mpc_7xx_603e.c:
+	.text       start:0x802B7D60 end:0x802B80D0
+
+TRK_MINNOW_DOLPHIN/ppc/Generic/__exception.s:
+	.init       start:0x8000328C end:0x800051C0
+
+TRK_MINNOW_DOLPHIN/Os/dolphin/dolphin_trk.c:
+	.init       start:0x800051C0 end:0x800051EC
+	.text       start:0x802B80D0 end:0x802B870C
+	.data       start:0x803BADF0 end:0x803BAE30
+	.bss        start:0x804640D8 end:0x804640E0
+
+TRK_MINNOW_DOLPHIN/Portable/main_TRK.c:
+	.text       start:0x802B870C end:0x802B8764
+	.rodata     start:0x8037ED38 end:0x8037ED48
+	.bss        start:0x804640E0 end:0x804640E8
+
+TRK_MINNOW_DOLPHIN/Os/dolphin/dolphin_trk_glue.c:
+	.text       start:0x802B8764 end:0x802B8CBC
+	.rodata     start:0x8037ED48 end:0x8037EE50
+	.data       start:0x803BAE30 end:0x803BAE58
+	.bss        start:0x804640E8 end:0x804640F0
+
+TRK_MINNOW_DOLPHIN/Os/dolphin/targcont.c:
+	.text       start:0x802B8CBC end:0x802B8CF0
+
+TRK_MINNOW_DOLPHIN/Os/dolphin/target_options.c:
+	.text       start:0x802B8CF0 end:0x802B8D0C
+	.bss        start:0x804640F0 end:0x804640F8
+
+TRK_MINNOW_DOLPHIN/MetroTRK/Export/mslsupp.c:
+	.text       start:0x802B8D0C end:0x802B8E84
+
+UDP_Stubs.c:
+	.text       start:0x802B8E84 end:0x802B8ECC
+
+main.c:
+	.text       start:0x802B8ECC end:0x802B9210
+	.rodata     start:0x8037EE50 end:0x8037EF30
+	.bss        start:0x804640F8 end:0x80464918
+	.sbss       start:0x804B1C60 end:0x804B1C68
+
+CircleBuffer.c:
+	.text       start:0x802B9210 end:0x802B9478
+
+DupeCDir/main.c_1:
+	.text       start:0x802B9478 end:0x802B97C4
+	.rodata     start:0x8037EF30 end:0x8037F010
+	.bss        start:0x80464918 end:0x80464E38
+	.sbss       start:0x804B1C68 end:0x804B1C70
+
+MWTrace.c:
+	.text       start:0x802B97C4 end:0x802B9814
+
+MWCriticalSection_gc.cpp:
+	.text       start:0x802B9814 end:0x802B986C
+
+fmusic.c:
+	.text       start:0x802B986C end:0x802BA764
+	.rodata     start:0x8037F010 end:0x8037F020
+	.sdata2     start:0x804B4818 end:0x804B4830
+
+format_fsb.c:
+	.text       start:0x802BA764 end:0x802BBCDC
+	.rodata     start:0x8037F020 end:0x8037F030
+	.sdata2     start:0x804B4830 end:0x804B4840
+
+format_gcadpcm.c:
+	.text       start:0x802BBCDC end:0x802BC18C
+	.rodata     start:0x8037F030 end:0x8037F048
+
+fsound.c:
+	.text       start:0x802BC18C end:0x802BCF50
+	.rodata     start:0x8037F048 end:0x8037F070
+	.sdata      start:0x804B05A8 end:0x804B05B0
+	.sbss       start:0x804B1C70 end:0x804B1C80
+	.sdata2     start:0x804B4840 end:0x804B4850
+
+fsound_3d.c:
+	.text       start:0x802BCF50 end:0x802BD3A4
+	.data       start:0x803BAE58 end:0x803BAF78
+	.sdata      start:0x804B05B0 end:0x804B05C0
+	.sbss       start:0x804B1C80 end:0x804B1C88
+	.sdata2     start:0x804B4850 end:0x804B4858
+
+fsound_device.c:
+	.data       start:0x803BAF78 end:0x803BB258
+
+fsound_async.c:
+	.text       start:0x802BD3A4 end:0x802BD70C
+	.bss        start:0x80464E38 end:0x80468E38
+
+fsound_channel.c:
+	.text       start:0x802BD70C end:0x802C14B8
+	.rodata     start:0x8037F070 end:0x8037F100
+	.sdata2     start:0x804B4858 end:0x804B4870
+
+fsound_dsp.c:
+	.text       start:0x802C14B8 end:0x802C184C
+	.rodata     start:0x8037F100 end:0x8037F110
+
+fsound_gc.c:
+	.text       start:0x802C184C end:0x802C1F88
+	.rodata     start:0x8037F110 end:0x8037F120
+	.data       start:0x803BB258 end:0x803BB658
+	.sbss       start:0x804B1C88 end:0x804B1C90
+
+fsound_sample.c:
+	.text       start:0x802C1F88 end:0x802C4670
+	.rodata     start:0x8037F120 end:0x8037F140
+	.sdata2     start:0x804B4870 end:0x804B4880
+
+fsound_stream.c:
+	.text       start:0x802C4670 end:0x802C89AC
+	.rodata     start:0x8037F140 end:0x8037F1A0
+	.sdata      start:0x804B05C0 end:0x804B05C8
+	.sbss       start:0x804B1C90 end:0x804B1C98
+	.sdata2     start:0x804B4880 end:0x804B48B8
+	.sbss2      start:0x804B5190 end:0x804B5198
+
+mixer.c:
+	.rodata     start:0x8037F1A0 end:0x8037F308
+	.data       start:0x803BB658 end:0x803BB930
+
+fsound_stream_decode.c:
+	.text       start:0x802C89AC end:0x802C8DB8
+
+mixer_clipcopy.c:
+	.text       start:0x802C8DB8 end:0x802C9178
+
+music_formatfsb.c:
+	.text       start:0x802C9178 end:0x802C9BCC
+	.rodata     start:0x8037F308 end:0x8037F330
+	.sdata      start:0x804B05C8 end:0x804B05D0
+
+output_gc.c:
+	.text       start:0x802C9BCC end:0x802CCD74
+	.rodata     start:0x8037F330 end:0x8037F428
+	.data       start:0x803BB930 end:0x803BB990
+	.bss        start:0x80468E38 end:0x80468F58
+	.sdata      start:0x804B05D0 end:0x804B05D8
+	.sbss       start:0x804B1C98 end:0x804B1CF0
+	.sdata2     start:0x804B48B8 end:0x804B48D0
+
+output_nosound.c:
+	.text       start:0x802CCD74 end:0x802CD288
+	.rodata     start:0x8037F428 end:0x8037F438
+	.data       start:0x803BB990 end:0x803BBA48
+	.sdata2     start:0x804B48D0 end:0x804B48D8
+
+sound_software.c:
+	.text       start:0x802CD288 end:0x802CFD64
+	.rodata     start:0x8037F438 end:0x8037F450
+	.data       start:0x803BBA48 end:0x803BBB48
+	.sbss       start:0x804B1CF0 end:0x804B1CF8
+	.sdata2     start:0x804B48D8 end:0x804B4928
+
+sound_software_3d.c:
+	.text       start:0x802CFD64 end:0x802D059C
+	.sdata2     start:0x804B4928 end:0x804B4960
+
+system_file.c:
+	.text       start:0x802D059C end:0x802D13BC
+	.rodata     start:0x8037F450 end:0x8037F460
+	.bss        start:0x80468F58 end:0x80469658
+	.sdata      start:0x804B05D8 end:0x804B05E0
+	.sbss       start:0x804B1CF8 end:0x804B1D20
+	.sdata2     start:0x804B4960 end:0x804B4968
+
+system_memory.c:
+	.text       start:0x802D13BC end:0x802D1EE0
+	.rodata     start:0x8037F460 end:0x8037F470
+
+system_misc_gc.c:
+	.text       start:0x802D1EE0 end:0x802D2DB0
+	.rodata     start:0x8037F470 end:0x8037F4A8
+	.data       start:0x803BBB48 end:0x803BBBB0
+	.sdata      start:0x804B05E0 end:0x804B05E8
+	.sbss       start:0x804B1D20 end:0x804B1D28
+
+system_thread.c:
+	.text       start:0x802D2DB0 end:0x802D3264
+	.rodata     start:0x8037F4A8 end:0x8037F4B8
+
+system_time.c:
+	.text       start:0x802D3264 end:0x802D3520
+	.sdata2     start:0x804B4968 end:0x804B4988
+
+system_string.c:
+	.text       start:0x802D3520 end:0x802D3754
+
+dolphin/ai/src/ai.c:
+	.text       start:0x802D3754 end:0x802D4040
+	.data       start:0x803BBBB0 end:0x803BBBF8
+	.sdata      start:0x804B05E8 end:0x804B05F0
+	.sbss       start:0x804B1D28 end:0x804B1D68
+
+dolphin/amcstubs/src/AmcExi2Stubs.c:
+	.text       start:0x802D4040 end:0x802D4070
+
+dolphin/ar/src/ar.c:
+	.text       start:0x802D4070 end:0x802D5B50
+	.data       start:0x803BBBF8 end:0x803BBC40
+	.sdata      start:0x804B05F0 end:0x804B05F8
+	.sbss       start:0x804B1D68 end:0x804B1D88
+
+dolphin/ar/src/arq.c:
+	.text       start:0x802D5B50 end:0x802D5EEC
+	.data       start:0x803BBC40 end:0x803BBC88
+	.sdata      start:0x804B05F8 end:0x804B0600
+	.sbss       start:0x804B1D88 end:0x804B1DB0
+
+dolphin/ax/src/AX.c:
+	.text       start:0x802D5EEC end:0x802D5F90
+	.data       start:0x803BBC88 end:0x803BBCD0
+	.sdata      start:0x804B0600 end:0x804B0608
+
+dolphin/ax/src/AXAlloc.c:
+	.text       start:0x802D5F90 end:0x802D6500
+	.bss        start:0x80469658 end:0x80469760
+	.sbss       start:0x804B1DB0 end:0x804B1DB8
+
+dolphin/ax/src/AXAux.c:
+	.text       start:0x802D6500 end:0x802D69A0
+	.bss        start:0x80469760 end:0x8046C460
+	.sbss       start:0x804B1DB8 end:0x804B1DF0
+
+dolphin/ax/src/AXCL.c:
+	.text       start:0x802D69A0 end:0x802D70D0
+	.bss        start:0x8046C460 end:0x8046CA60
+	.sbss       start:0x804B1DF0 end:0x804B1E08
+
+dolphin/ax/src/AXOut.c:
+	.text       start:0x802D70D0 end:0x802D78DC
+	.bss        start:0x8046CA60 end:0x80471500
+	.sbss       start:0x804B1E08 end:0x804B1E40
+
+dolphin/ax/src/AXSPB.c:
+	.text       start:0x802D78DC end:0x802D7DA4
+	.bss        start:0x80471500 end:0x80471540
+	.sbss       start:0x804B1E40 end:0x804B1E68
+
+dolphin/ax/src/AXVPB.c:
+	.text       start:0x802D7DA4 end:0x802D8E84
+	.data       start:0x803BBCD0 end:0x803BBDC0
+	.bss        start:0x80471540 end:0x80482D40
+	.sbss       start:0x804B1E68 end:0x804B1E78
+	.sdata2     start:0x804B4988 end:0x804B4990
+
+dolphin/ax/src/AXComp.c:
+	.data       start:0x803BBDC0 end:0x803BD800
+
+dolphin/ax/src/DSPCode.c:
+	.data       start:0x803BD800 end:0x803BF6C0
+	.sdata      start:0x804B0608 end:0x804B0610
+
+dolphin/ax/src/AXProf.c:
+	.text       start:0x802D8E84 end:0x802D8ECC
+	.sbss       start:0x804B1E78 end:0x804B1E88
+
+reverb_hi.c:
+	.text       start:0x802D8ECC end:0x802D9D10
+	.data       start:0x803BF6C0 end:0x803BF6E0
+	.sdata2     start:0x804B4990 end:0x804B49D0
+
+reverb_std.c:
+	.text       start:0x802D9D10 end:0x802D9E58
+
+chorus.c:
+	.text       start:0x802D9E58 end:0x802D9EA8
+
+delay.c:
+	.text       start:0x802D9EA8 end:0x802D9F38
+
+axfx.c:
+	.text       start:0x802D9F38 end:0x802D9F88
+	.sdata      start:0x804B0610 end:0x804B0618
+
+reverb_hi_4ch.c:
+	.text       start:0x802D9F88 end:0x802DAC68
+	.data       start:0x803BF6E0 end:0x803BF708
+	.sdata2     start:0x804B49D0 end:0x804B4A08
+
+dolphin/base/src/PPCArch.c:
+	.text       start:0x802DAC68 end:0x802DAD7C
+
+dolphin/card/src/CARDBios.c:
+	.text       start:0x802DAD7C end:0x802DC16C
+	.data       start:0x803BF708 end:0x803BF760
+	.bss        start:0x80482D40 end:0x80482F80
+	.sdata      start:0x804B0618 end:0x804B0620
+	.sbss       start:0x804B1E88 end:0x804B1E90
+
+dolphin/card/src/CARDUnlock.c:
+	.text       start:0x802DC16C end:0x802DD3CC
+	.data       start:0x803BF760 end:0x803BF8C0
+	.sdata      start:0x804B0620 end:0x804B0628
+
+dolphin/card/src/CARDRdwr.c:
+	.text       start:0x802DD3CC end:0x802DD664
+
+dolphin/card/src/CARDBlock.c:
+	.text       start:0x802DD664 end:0x802DDA68
+
+dolphin/card/src/CARDDir.c:
+	.text       start:0x802DDA68 end:0x802DDCCC
+
+dolphin/card/src/CARDCheck.c:
+	.text       start:0x802DDCCC end:0x802DEC90
+
+dolphin/card/src/CARDMount.c:
+	.text       start:0x802DEC90 end:0x802DF750
+	.data       start:0x803BF8C0 end:0x803BF900
+
+dolphin/card/src/CARDFormat.c:
+	.text       start:0x802DF750 end:0x802DFF88
+
+dolphin/card/src/CARDOpen.c:
+	.text       start:0x802DFF88 end:0x802E053C
+
+dolphin/card/src/CARDCreate.c:
+	.text       start:0x802E053C end:0x802E088C
+
+dolphin/card/src/CARDRead.c:
+	.text       start:0x802E088C end:0x802E0D04
+
+dolphin/card/src/CARDWrite.c:
+	.text       start:0x802E0D04 end:0x802E1038
+
+dolphin/card/src/CARDDelete.c:
+	.text       start:0x802E1038 end:0x802E11EC
+
+dolphin/card/src/CARDStat.c:
+	.text       start:0x802E11EC end:0x802E16CC
+
+dolphin/card/src/CARDStatEx.c:
+	.text       start:0x802E16CC end:0x802E19DC
+
+dolphin/card/src/CARDNet.c:
+	.text       start:0x802E19DC end:0x802E1A60
+	.sdata      start:0x804B0628 end:0x804B0630
+
+dolphin/db/src/db.c:
+	.text       start:0x802E1A60 end:0x802E1B4C
+	.data       start:0x803BF900 end:0x803BF918
+	.sbss       start:0x804B1E90 end:0x804B1E98
+
+dolphin/dsp/src/dsp.c:
+	.text       start:0x802E1B4C end:0x802E1DDC
+	.data       start:0x803BF918 end:0x803BF998
+	.sdata      start:0x804B0630 end:0x804B0638
+	.sbss       start:0x804B1E98 end:0x804B1EA0
+
+dolphin/dsp/src/dsp_debug.c:
+	.text       start:0x802E1DDC end:0x802E1E2C
+
+dolphin/dsp/src/dsp_task.c:
+	.text       start:0x802E1E2C end:0x802E26B0
+	.data       start:0x803BF998 end:0x803BFAD8
+	.sbss       start:0x804B1EA0 end:0x804B1EB8
+
+dolphin/dvd/src/dvdlow.c:
+	.text       start:0x802E26B0 end:0x802E352C
+	.bss        start:0x80482F80 end:0x80483060
+	.sdata      start:0x804B0638 end:0x804B0640
+	.sbss       start:0x804B1EB8 end:0x804B1F00
+
+dolphin/dvd/src/dvdfs.c:
+	.text       start:0x802E352C end:0x802E3D94
+	.data       start:0x803BFAD8 end:0x803BFC38
+	.sdata      start:0x804B0640 end:0x804B0648
+	.sbss       start:0x804B1F00 end:0x804B1F20
+
+dolphin/dvd/src/dvd.c:
+	.text       start:0x802E3D94 end:0x802E6594
+	.data       start:0x803BFC38 end:0x803BFDB8
+	.bss        start:0x80483060 end:0x804830F8
+	.sdata      start:0x804B0648 end:0x804B0660
+	.sbss       start:0x804B1F20 end:0x804B1F68
+
+dolphin/dvd/src/dvdqueue.c:
+	.text       start:0x802E6594 end:0x802E678C
+	.bss        start:0x804830F8 end:0x80483118
+
+dolphin/dvd/src/dvderror.c:
+	.text       start:0x802E678C end:0x802E6924
+	.data       start:0x803BFDB8 end:0x803BFE00
+
+dolphin/dvd/src/dvdidutils.c:
+	.text       start:0x802E6924 end:0x802E6A1C
+
+dolphin/dvd/src/dvdFatal.c:
+	.text       start:0x802E6A1C end:0x802E6A4C
+	.sbss       start:0x804B1F68 end:0x804B1F70
+
+dolphin/dvd/src/emu_level2/fstload.c:
+	.text       start:0x802E6A4C end:0x802E6C8C
+	.data       start:0x803BFE00 end:0x803BFE70
+	.bss        start:0x80483118 end:0x80483188
+	.sdata      start:0x804B0660 end:0x804B0670
+	.sbss       start:0x804B1F70 end:0x804B1F80
+
+dolphin/exi/src/EXIBios.c:
+	.text       start:0x802E6C8C end:0x802E8668
+	.data       start:0x803BFE70 end:0x803BFF80
+	.bss        start:0x80483188 end:0x80483248
+	.sdata      start:0x804B0670 end:0x804B0678
+	.sbss       start:0x804B1F80 end:0x804B1F88
+
+dolphin/exi/src/EXIUart.c:
+	.text       start:0x802E8668 end:0x802E8C3C
+	.sbss       start:0x804B1F88 end:0x804B1F98
+
+dolphin/gx/src/GXInit.c:
+	.text       start:0x802E8C3C end:0x802E9FBC
+	.data       start:0x803BFF80 end:0x803C01C0
+	.bss        start:0x80483248 end:0x80483878
+	.sdata      start:0x804B0678 end:0x804B0680
+	.sbss       start:0x804B1F98 end:0x804B1FC0
+	.sdata2     start:0x804B4A08 end:0x804B4A30
+
+dolphin/gx/src/GXFifo.c:
+	.text       start:0x802E9FBC end:0x802EA7B8
+	.sbss       start:0x804B1FC0 end:0x804B1FE0
+
+dolphin/gx/src/GXAttr.c:
+	.text       start:0x802EA7B8 end:0x802EB50C
+	.data       start:0x803C01C0 end:0x803C0320
+	.sdata      start:0x804B0680 end:0x804B0690
+
+dolphin/gx/src/GXMisc.c:
+	.text       start:0x802EB50C end:0x802EBBF4
+	.sbss       start:0x804B1FE0 end:0x804B1FF8
+
+dolphin/gx/src/GXGeometry.c:
+	.text       start:0x802EBBF4 end:0x802EBF74
+
+dolphin/gx/src/GXFrameBuf.c:
+	.text       start:0x802EBF74 end:0x802ECB10
+	.data       start:0x803C0320 end:0x803C0410
+	.sdata2     start:0x804B4A30 end:0x804B4A40
+
+dolphin/gx/src/GXLight.c:
+	.text       start:0x802ECB10 end:0x802ED124
+	.data       start:0x803C0410 end:0x803C0430
+	.sdata2     start:0x804B4A40 end:0x804B4A70
+
+dolphin/gx/src/GXTexture.c:
+	.text       start:0x802ED124 end:0x802EE1CC
+	.data       start:0x803C0430 end:0x803C0560
+	.sdata      start:0x804B0690 end:0x804B06D0
+	.sdata2     start:0x804B4A70 end:0x804B4AA8
+
+dolphin/gx/src/GXBump.c:
+	.text       start:0x802EE1CC end:0x802EE6A4
+	.sdata2     start:0x804B4AA8 end:0x804B4AB0
+
+dolphin/gx/src/GXTev.c:
+	.text       start:0x802EE6A4 end:0x802EEE08
+	.data       start:0x803C0560 end:0x803C05D8
+
+dolphin/gx/src/GXPixel.c:
+	.text       start:0x802EEE08 end:0x802EF450
+	.data       start:0x803C05D8 end:0x803C05F8
+	.sdata2     start:0x804B4AB0 end:0x804B4AE8
+
+dolphin/gx/src/GXDisplayList.c:
+	.text       start:0x802EF450 end:0x802EF4C0
+
+dolphin/gx/src/GXTransform.c:
+	.text       start:0x802EF4C0 end:0x802EFA54
+	.sdata2     start:0x804B4AE8 end:0x804B4AF8
+
+dolphin/gx/src/GXPerf.c:
+	.text       start:0x802EFA54 end:0x802F0414
+	.data       start:0x803C05F8 end:0x803C06E8
+
+mix.c:
+	.text       start:0x802F0414 end:0x802F2748
+	.data       start:0x803C06E8 end:0x803C12A8
+	.bss        start:0x80483878 end:0x80485080
+	.sbss       start:0x804B1FF8 end:0x804B2008
+
+dolphin/mtx/src/mtx.c:
+	.text       start:0x802F2748 end:0x802F2868
+	.sdata      start:0x804B06D0 end:0x804B06D8
+	.sdata2     start:0x804B4AF8 end:0x804B4B00
+
+dolphin/mtx/src/mtx44.c:
+	.text       start:0x802F2868 end:0x802F2900
+	.sdata2     start:0x804B4B00 end:0x804B4B10
+
+dolphin/odenotstub/src/odenotstub.c:
+	.text       start:0x802F2900 end:0x802F2908
+
+dolphin/os/src/OS.c:
+	.text       start:0x802F2908 end:0x802F33D4
+	.data       start:0x803C12A8 end:0x803C14A0
+	.bss        start:0x80485080 end:0x804850F0
+	.sdata      start:0x804B06D8 end:0x804B06E8
+	.sbss       start:0x804B2008 end:0x804B2040
+
+dolphin/os/src/OSAlarm.c:
+	.text       start:0x802F33D4 end:0x802F3BAC
+	.data       start:0x803C14A0 end:0x803C14B0
+	.sbss       start:0x804B2040 end:0x804B2048
+
+dolphin/os/src/OSAlloc.c:
+	.text       start:0x802F3BAC end:0x802F3EBC
+	.sdata      start:0x804B06E8 end:0x804B06F0
+	.sbss       start:0x804B2048 end:0x804B2058
+
+dolphin/os/src/OSArena.c:
+	.text       start:0x802F3EBC end:0x802F3F08
+	.sdata      start:0x804B06F0 end:0x804B06F8
+	.sbss       start:0x804B2058 end:0x804B2060
+
+dolphin/os/src/OSAudioSystem.c:
+	.text       start:0x802F3F08 end:0x802F419C
+	.data       start:0x803C14B0 end:0x803C1530
+
+dolphin/os/src/OSCache.c:
+	.text       start:0x802F419C end:0x802F45D4
+	.data       start:0x803C1530 end:0x803C1760
+
+dolphin/os/src/OSContext.c:
+	.text       start:0x802F45D4 end:0x802F4E44
+	.data       start:0x803C1760 end:0x803C1938
+
+dolphin/os/src/OSError.c:
+	.text       start:0x802F4E44 end:0x802F54F0
+	.data       start:0x803C1938 end:0x803C1C58
+	.bss        start:0x804850F0 end:0x80485140
+	.sdata      start:0x804B06F8 end:0x804B0700
+
+OSExec.c:
+	.text       start:0x802F54F0 end:0x802F5E50
+	.data       start:0x803C1C58 end:0x803C1C68
+	.sdata      start:0x804B0700 end:0x804B0708
+	.sbss       start:0x804B2060 end:0x804B2068
+
+dolphin/os/src/OSFont.c:
+	.text       start:0x802F5E50 end:0x802F6BB0
+	.data       start:0x803C1C68 end:0x803C2778
+	.sdata      start:0x804B0708 end:0x804B0710
+	.sbss       start:0x804B2068 end:0x804B2078
+	.sdata2     start:0x804B4B10 end:0x804B4B18
+
+dolphin/os/src/OSInterrupt.c:
+	.text       start:0x802F6BB0 end:0x802F741C
+	.data       start:0x803C2778 end:0x803C27A8
+	.sbss       start:0x804B2078 end:0x804B2090
+
+dolphin/os/src/OSLink.c:
+	.text       start:0x802F741C end:0x802F7434
+
+dolphin/os/src/OSMemory.c:
+	.text       start:0x802F7434 end:0x802F770C
+	.data       start:0x803C27A8 end:0x803C27B8
+
+dolphin/os/src/OSMutex.c:
+	.text       start:0x802F770C end:0x802F7928
+
+dolphin/os/src/OSReboot.c:
+	.text       start:0x802F7928 end:0x802F79AC
+	.sbss       start:0x804B2090 end:0x804B2098
+
+dolphin/os/src/OSReset.c:
+	.text       start:0x802F79AC end:0x802F7E30
+	.data       start:0x803C27B8 end:0x803C2808
+	.sbss       start:0x804B2098 end:0x804B20A8
+
+dolphin/os/src/OSResetSW.c:
+	.text       start:0x802F7E30 end:0x802F8230
+	.sbss       start:0x804B20A8 end:0x804B20C8
+
+dolphin/os/src/OSRtc.c:
+	.text       start:0x802F8230 end:0x802F8DD0
+	.bss        start:0x80485140 end:0x80485198
+
+OSSemaphore.c:
+	.text       start:0x802F8DD0 end:0x802F8EF8
+
+dolphin/os/src/OSSync.c:
+	.text       start:0x802F8EF8 end:0x802F8F7C
+
+dolphin/os/src/OSThread.c:
+	.text       start:0x802F8F7C end:0x802FAA58
+	.data       start:0x803C2808 end:0x803C3018
+	.bss        start:0x80485198 end:0x80485B90
+	.sdata      start:0x804B0710 end:0x804B0718
+	.sbss       start:0x804B20C8 end:0x804B20D8
+
+dolphin/os/src/OSTime.c:
+	.text       start:0x802FAA58 end:0x802FAED4
+	.data       start:0x803C3018 end:0x803C3078
+
+dolphin/os/src/init/__start.c:
+	.init       start:0x800051EC end:0x800054EC
+	.sbss       start:0x804B20D8 end:0x804B20E0
+
+dolphin/os/src/init/__ppc_eabi_init.cpp:
+	.init       start:0x800054EC end:0x80005544
+	.text       start:0x802FAED4 end:0x802FAF68
+
+dolphin/pad/src/Padclamp.c:
+	.text       start:0x802FAF68 end:0x802FB1AC
+	.rodata     start:0x8037F4B8 end:0x8037F4C8
+
+dolphin/pad/src/Pad.c:
+	.text       start:0x802FB1AC end:0x802FCAF4
+	.data       start:0x803C3078 end:0x803C30D0
+	.bss        start:0x80485B90 end:0x80485BE0
+	.sdata      start:0x804B0718 end:0x804B0738
+	.sbss       start:0x804B20E0 end:0x804B2110
+
+dolphin/si/src/SIBios.c:
+	.text       start:0x802FCAF4 end:0x802FE1E4
+	.data       start:0x803C30D0 end:0x803C31E8
+	.bss        start:0x80485BE0 end:0x80485DE0
+	.sdata      start:0x804B0738 end:0x804B0740
+	.sbss       start:0x804B2110 end:0x804B2120
+
+dolphin/si/src/SISamplingRate.c:
+	.text       start:0x802FE1E4 end:0x802FE2EC
+	.data       start:0x803C31E8 end:0x803C3280
+	.sbss       start:0x804B2120 end:0x804B2128
+
+dolphin/vi/src/vi.c:
+	.text       start:0x802FE2EC end:0x802FFE0C
+	.data       start:0x803C3280 end:0x803C3650
+	.bss        start:0x80485DE0 end:0x80485F28
+	.sdata      start:0x804B0740 end:0x804B0750
+	.sbss       start:0x804B2128 end:0x804B2180
+
+OdemuExi2/DebuggerDriver.c:
+	.text       start:0x802FFE0C end:0x8030088C
+	.sdata      start:0x804B0750 end:0x804B0758
+	.sbss       start:0x804B2180 end:0x804B2198
+
+ctdata.c:
+	.text       start:0x8030088C end:0x803011A4
+
+colldata.c:
+	.text       start:0x803011A4 end:0x80301604
+	.sbss       start:0x804B2198 end:0x804B21B0
+
+collquery.c:
+	.text       start:0x80301604 end:0x803036D0
+	.sdata2     start:0x804B4B18 end:0x804B4B30
+
+rwsdk/plugin/hanim/stdkey.c:
+	.text       start:0x803036D0 end:0x803043E0
+	.sdata2     start:0x804B4B30 end:0x804B4B98
+
+rwsdk/plugin/hanim/rphanim.c:
+	.text       start:0x803043E0 end:0x80304E54
+	.bss        start:0x80485F28 end:0x80485F50
+	.sdata      start:0x804B0758 end:0x804B0760
+	.sbss       start:0x804B21B0 end:0x804B21B8
+
+rwsdk/plugin/matfx/rpmatfx.c:
+	.text       start:0x80304E54 end:0x803074F0
+	.rodata     start:0x8037F4C8 end:0x8037F508
+	.data       start:0x803C3650 end:0x803C3678
+	.bss        start:0x80485F50 end:0x80485F78
+	.sdata      start:0x804B0760 end:0x804B0768
+	.sbss       start:0x804B21B8 end:0x804B21C8
+	.sdata2     start:0x804B4B98 end:0x804B4BB0
+
+rwsdk/plugin/matfx/gcn/effectPipesGcn.c:
+	.text       start:0x803074F0 end:0x80309E2C
+	.bss        start:0x80485F78 end:0x80485F88
+	.sbss       start:0x804B21C8 end:0x804B21D8
+	.sdata2     start:0x804B4BB0 end:0x804B4BE8
+
+rwsdk/plugin/matfx/gcn/multiTexGcnData.c:
+	.text       start:0x80309E2C end:0x8030A988
+
+rwsdk/plugin/matfx/gcn/multiTexGcnPipe.c:
+	.text       start:0x8030A988 end:0x8030B4D4
+	.sbss       start:0x804B21D8 end:0x804B21E0
+	.sdata2     start:0x804B4BE8 end:0x804B4BF8
+
+rwsdk/plugin/matfx/gcn/multiTexGcn.c:
+	.text       start:0x8030B4D4 end:0x8030B53C
+
+nbtGen.c:
+	.text       start:0x8030B53C end:0x8030CEFC
+	.sdata2     start:0x804B4BF8 end:0x804B4C20
+
+rwsdk/plugin/matfx/multiTex.c:
+	.text       start:0x8030CEFC end:0x8030D958
+	.bss        start:0x80485F88 end:0x80486028
+	.sdata      start:0x804B0768 end:0x804B0770
+
+rwsdk/plugin/matfx/multiTexEffect.c:
+	.text       start:0x8030D958 end:0x8030E458
+	.bss        start:0x80486028 end:0x804860F0
+	.sbss       start:0x804B21E0 end:0x804B21E8
+
+rwsdk/plugin/ptank/rpptank.c:
+	.text       start:0x8030E458 end:0x8030F47C
+	.rodata     start:0x8037F508 end:0x8037F550
+	.sbss       start:0x804B21E8 end:0x804B21F0
+	.sdata2     start:0x804B4C20 end:0x804B4C38
+	.sbss2      start:0x804B5198 end:0x804B51A0
+
+rwsdk/plugin/ptank/gcn/ptankgcn.c:
+	.text       start:0x8030F47C end:0x8030F518
+	.sbss       start:0x804B21F0 end:0x804B21F8
+
+rwsdk/plugin/ptank/gcn/ptankgcncallbacks.c:
+	.text       start:0x8030F518 end:0x8030FB70
+	.data       start:0x803C3678 end:0x803C3688
+	.sdata2     start:0x804B4C38 end:0x804B4C48
+
+rwsdk/plugin/ptank/gcn/ptankgcnrender.c:
+	.text       start:0x8030FB70 end:0x803100CC
+	.sdata2     start:0x804B4C48 end:0x804B4C68
+
+rwsdk/plugin/ptank/gcn/ptankgcntransforms.c:
+	.rodata     start:0x8037F550 end:0x8037F570
+	.sdata      start:0x804B0770 end:0x804B0778
+	.sdata2     start:0x804B4C68 end:0x804B4C78
+
+rwsdk/plugin/ptank/gcn/ptankgcn_nc_ppm.c:
+	.text       start:0x803100CC end:0x80310490
+
+rwsdk/plugin/ptank/gcn/ptankgcn_cc_ppm.c:
+	.text       start:0x80310490 end:0x80310854
+
+rwsdk/plugin/ptank/gcn/ptankgcn_nc_cs_nr.c:
+	.text       start:0x80310854 end:0x80310C1C
+
+rwsdk/plugin/ptank/gcn/ptankgcn_cc_cs_nr.c:
+	.text       start:0x80310C1C end:0x80311028
+
+rwsdk/plugin/ptank/gcn/ptankgcn_nc_pps_nr.c:
+	.text       start:0x80311028 end:0x80311400
+
+rwsdk/plugin/ptank/gcn/ptankgcn_cc_pps_nr.c:
+	.text       start:0x80311400 end:0x803117FC
+
+rwsdk/plugin/ptank/gcn/ptankgcn_nc_cs_ppr.c:
+	.text       start:0x803117FC end:0x80311C68
+
+rwsdk/plugin/ptank/gcn/ptankgcn_cc_cs_ppr.c:
+	.text       start:0x80311C68 end:0x803120D0
+
+rwsdk/plugin/ptank/gcn/ptankgcn_nc_pps_ppr.c:
+	.text       start:0x803120D0 end:0x80312514
+
+rwsdk/plugin/ptank/gcn/ptankgcn_cc_pps_ppr.c:
+	.text       start:0x80312514 end:0x80312974
+
+rwsdk/plugin/skin2/bsplit.c:
+	.text       start:0x80312974 end:0x80312D88
+
+rwsdk/plugin/skin2/rpskin.c:
+	.text       start:0x80312D88 end:0x80313E6C
+	.bss        start:0x804860F0 end:0x80486118
+	.sdata      start:0x804B0778 end:0x804B0780
+
+rwsdk/plugin/skin2/gcn/skingcn.c:
+	.text       start:0x80313E6C end:0x80315878
+	.rodata     start:0x8037F570 end:0x8037F588
+	.data       start:0x803C3688 end:0x803C36C8
+	.sdata2     start:0x804B4C78 end:0x804B4CA8
+
+rwsdk/plugin/skin2/gcn/skinstream.c:
+	.text       start:0x80315878 end:0x80315F54
+
+rwsdk/plugin/skin2/gcn/instance/instanceskin.c:
+	.text       start:0x80315F54 end:0x80317E14
+	.bss        start:0x80486118 end:0x80486138
+
+rwsdk/plugin/skin2/gcn/skinmatrixblend.c:
+	.text       start:0x80317E14 end:0x80318010
+
+rwsdk/plugin/skin2/gcn/skingcnasm.c:
+	.text       start:0x80318010 end:0x80318B14
+
+skinmatfxgcn.c:
+	.text       start:0x80318B14 end:0x80318E08
+
+rwsdk/plugin/skin2/gcn/skingcnm.c:
+	.text       start:0x80318E08 end:0x80318FF0
+
+rwsdk/plugin/userdata/rpusrdat.c:
+	.text       start:0x80318FF0 end:0x8031A240
+	.sbss       start:0x804B21F8 end:0x804B2238
+
+rwsdk/world/babinwor.c:
+	.text       start:0x8031A240 end:0x8031B4A8
+	.sbss       start:0x804B2238 end:0x804B2250
+	.sdata2     start:0x804B4CA8 end:0x804B4CB0
+
+rwsdk/world/baclump.c:
+	.text       start:0x8031B4A8 end:0x8031ED38
+	.data       start:0x803C36C8 end:0x803C36F8
+	.bss        start:0x80486138 end:0x80486180
+	.sdata      start:0x804B0780 end:0x804B0790
+	.sbss       start:0x804B2250 end:0x804B2268
+	.sdata2     start:0x804B4CB0 end:0x804B4CB8
+
+rwsdk/world/bageomet.c:
+	.text       start:0x8031ED38 end:0x80320F5C
+	.data       start:0x803C36F8 end:0x803C3710
+	.sbss       start:0x804B2268 end:0x804B2270
+	.sdata2     start:0x804B4CB8 end:0x804B4CC8
+
+rwsdk/world/balight.c:
+	.text       start:0x80320F5C end:0x80321880
+	.data       start:0x803C3710 end:0x803C3728
+	.bss        start:0x80486180 end:0x804861A8
+	.sdata      start:0x804B0790 end:0x804B0798
+	.sbss       start:0x804B2270 end:0x804B2278
+	.sdata2     start:0x804B4CC8 end:0x804B4D18
+
+rwsdk/world/bamateri.c:
+	.text       start:0x80321880 end:0x80322480
+	.data       start:0x803C3728 end:0x803C3750
+	.bss        start:0x804861A8 end:0x804861D0
+	.sdata      start:0x804B0798 end:0x804B07A0
+	.sbss       start:0x804B2278 end:0x804B2288
+
+rwsdk/world/bamatlst.c:
+	.text       start:0x80322480 end:0x80322FBC
+
+rwsdk/world/bamesh.c:
+	.text       start:0x80322FBC end:0x80323AC4
+	.sdata      start:0x804B07A0 end:0x804B07A8
+	.sbss       start:0x804B2288 end:0x804B2290
+
+rwsdk/world/bameshop.c:
+	.text       start:0x80323AC4 end:0x803263A4
+	.data       start:0x803C3750 end:0x803C3768
+	.sdata2     start:0x804B4D18 end:0x804B4D20
+
+rwsdk/world/basector.c:
+	.text       start:0x803263A4 end:0x80326478
+	.data       start:0x803C3768 end:0x803C3780
+	.sbss       start:0x804B2290 end:0x804B2298
+
+rwsdk/world/baworld.c:
+	.text       start:0x80326478 end:0x803279F4
+	.data       start:0x803C3780 end:0x803C3798
+	.bss        start:0x804861D0 end:0x804861F8
+	.sbss       start:0x804B2298 end:0x804B22A0
+	.sdata2     start:0x804B4D20 end:0x804B4D28
+
+rwsdk/world/baworobj.c:
+	.text       start:0x803279F4 end:0x803294A0
+	.bss        start:0x804861F8 end:0x80486240
+	.sdata      start:0x804B07A8 end:0x804B07B8
+	.sbss       start:0x804B22A0 end:0x804B22B8
+
+rwsdk/world/pipe/p2/bapipew.c:
+	.text       start:0x803294A0 end:0x80329634
+
+rwsdk/world/pipe/p2/gcn/gcpipe.c:
+	.text       start:0x80329634 end:0x803299D8
+	.sdata      start:0x804B07B8 end:0x804B07C0
+	.sdata2     start:0x804B4D28 end:0x804B4D38
+
+rwsdk/world/pipe/p2/gcn/vtxfmt.c:
+	.text       start:0x803299D8 end:0x80329F34
+	.bss        start:0x80486240 end:0x80486258
+	.sbss       start:0x804B22B8 end:0x804B22C8
+
+rwsdk/world/pipe/p2/gcn/wrldpipe.c:
+	.text       start:0x80329F34 end:0x8032A104
+
+rwsdk/world/pipe/p2/gcn/nodeGameCubeAtomicAllInOne.c:
+	.text       start:0x8032A104 end:0x8032AAD0
+	.data       start:0x803C3798 end:0x803C37F8
+	.sdata2     start:0x804B4D38 end:0x804B4D48
+
+rwsdk/world/pipe/p2/gcn/nodeGameCubeWorldSectorAllInOne.c:
+	.text       start:0x8032AAD0 end:0x8032AF74
+	.data       start:0x803C37F8 end:0x803C3860
+	.sdata2     start:0x804B4D48 end:0x804B4D50
+
+rwsdk/world/pipe/p2/gcn/gclights.c:
+	.text       start:0x8032AF74 end:0x8032B5BC
+	.bss        start:0x80486258 end:0x80486458
+	.sbss       start:0x804B22C8 end:0x804B22D0
+	.sdata2     start:0x804B4D50 end:0x804B4D68
+
+rwsdk/world/pipe/p2/gcn/gcmorph.c:
+	.text       start:0x8032B5BC end:0x8032B83C
+	.sdata      start:0x804B07C0 end:0x804B07D0
+	.sdata2     start:0x804B4D68 end:0x804B4D80
+
+rwsdk/world/pipe/p2/gcn/native.c:
+	.text       start:0x8032B83C end:0x8032C034
+
+rwsdk/world/pipe/p2/gcn/setup.c:
+	.text       start:0x8032C034 end:0x8032CA84
+	.sdata2     start:0x804B4D80 end:0x804B4D98
+
+rwsdk/world/pipe/p2/gcn/instance/geomcond.c:
+	.text       start:0x8032CA84 end:0x8032D6E4
+	.data       start:0x803C3860 end:0x803C39C0
+
+rwsdk/world/pipe/p2/gcn/instance/geominst.c:
+	.text       start:0x8032D6E4 end:0x80331A64
+	.data       start:0x803C39C0 end:0x803C39E0
+	.sdata2     start:0x804B4D98 end:0x804B4DB8
+
+rwsdk/world/pipe/p2/gcn/instance/ibuffer.c:
+	.text       start:0x80331A64 end:0x80331EB8
+	.data       start:0x803C39E0 end:0x803C3A38
+
+rwsdk/world/pipe/p2/gcn/instance/instancegeom.c:
+	.text       start:0x80331EB8 end:0x80333278
+	.bss        start:0x80486458 end:0x80486478
+
+rwsdk/world/pipe/p2/gcn/instance/instanceworld.c:
+	.text       start:0x80333278 end:0x80334670
+	.bss        start:0x80486478 end:0x80486498
+
+rwsdk/world/pipe/p2/gcn/instance/itools.c:
+	.text       start:0x80334670 end:0x80335C34
+	.data       start:0x803C3A38 end:0x803C3A90
+	.sdata2     start:0x804B4DB8 end:0x804B4DC0
+
+rwsdk/world/pipe/p2/gcn/instance/vbuffer.c:
+	.text       start:0x80335C34 end:0x80336474
+	.data       start:0x803C3A90 end:0x803C3AF0
+
+rwsdk/world/pipe/p2/gcn/instance/vtools.c:
+	.text       start:0x80336474 end:0x803369C4
+	.data       start:0x803C3AF0 end:0x803C3B20
+	.sdata2     start:0x804B4DC0 end:0x804B4DC8
+
+rwsdk/world/pipe/p2/gcn/instance/vtxdesc.c:
+	.text       start:0x803369C4 end:0x8033721C
+	.data       start:0x803C3B20 end:0x803C3BD0
+
+rwsdk/tool/anim/rtanim.c:
+	.text       start:0x8033721C end:0x8033741C
+	.bss        start:0x80486498 end:0x80486798
+	.sbss       start:0x804B22D0 end:0x804B22D8
+	.sdata2     start:0x804B4DC8 end:0x804B4DD0
+
+rtfsmgr.c:
+	.text       start:0x8033741C end:0x80337ADC
+	.bss        start:0x80486798 end:0x804867B0
+	.sdata      start:0x804B07D0 end:0x804B07E8
+	.sbss       start:0x804B22D8 end:0x804B22E0
+
+rwsdk/tool/intsec/rtintsec.c:
+	.text       start:0x80337ADC end:0x803390B4
+	.sdata2     start:0x804B4DD0 end:0x804B4DD8
+
+skinsplit.c:
+	.text       start:0x803390B4 end:0x8033A8B4
+	.data       start:0x803C3BD0 end:0x803C3BE0
+	.bss        start:0x804867B0 end:0x80486BB0
+	.sdata2     start:0x804B4DD8 end:0x804B4DE0
+
+rtskinsp.c:
+	.text       start:0x8033A8B4 end:0x8033B170
+
+rwsdk/tool/slerp/rtslerp.c:
+	.text       start:0x8033B170 end:0x8033B568
+	.sdata2     start:0x804B4DE0 end:0x804B4E50
+
+rwsdk/src/plcore/babinary.c:
+	.text       start:0x8033B568 end:0x8033C380
+	.data       start:0x803C3BE0 end:0x803C3C50
+
+rwsdk/src/plcore/bacolor.c:
+	.text       start:0x8033C380 end:0x8033C3A8
+	.sbss       start:0x804B22E0 end:0x804B22E8
+
+rwsdk/src/plcore/baerr.c:
+	.text       start:0x8033C3A8 end:0x8033C500
+	.sbss       start:0x804B22E8 end:0x804B22F0
+
+rwsdk/src/plcore/bamatrix.c:
+	.text       start:0x8033C500 end:0x8033DD58
+	.rodata     start:0x8037F588 end:0x8037F598
+	.data       start:0x803C3C50 end:0x803C3C70
+	.bss        start:0x80486BB0 end:0x80486BD8
+	.sdata      start:0x804B07E8 end:0x804B07F0
+	.sbss       start:0x804B22F0 end:0x804B22F8
+	.sdata2     start:0x804B4E50 end:0x804B4E60
+
+rwsdk/src/plcore/bamemory.c:
+	.text       start:0x8033DD58 end:0x8033E860
+	.bss        start:0x80486BD8 end:0x80486C00
+	.sdata      start:0x804B07F0 end:0x804B07F8
+	.sbss       start:0x804B22F8 end:0x804B2308
+
+rwsdk/src/plcore/baresour.c:
+	.text       start:0x8033E860 end:0x8033F0D8
+	.sbss       start:0x804B2308 end:0x804B2310
+
+rwsdk/src/plcore/bastream.c:
+	.text       start:0x8033F0D8 end:0x8033FA5C
+	.bss        start:0x80486C00 end:0x80486C28
+	.sdata      start:0x804B07F8 end:0x804B0810
+	.sbss       start:0x804B2310 end:0x804B2318
+
+rwsdk/src/plcore/batkbin.c:
+	.text       start:0x8033FA5C end:0x80340004
+
+rwsdk/src/plcore/batkreg.c:
+	.text       start:0x80340004 end:0x80340698
+	.bss        start:0x80486C28 end:0x80486C50
+	.sdata      start:0x804B0810 end:0x804B0818
+	.sbss       start:0x804B2318 end:0x804B2328
+
+rwsdk/src/plcore/bavector.c:
+	.text       start:0x80340698 end:0x80340DE0
+	.sbss       start:0x804B2328 end:0x804B2330
+	.sdata2     start:0x804B4E60 end:0x804B4E80
+
+rwsdk/src/plcore/resmem.c:
+	.text       start:0x80340DE0 end:0x80341020
+
+rwgrp.c:
+	.text       start:0x80341020 end:0x80341100
+	.bss        start:0x80486C50 end:0x80486C78
+	.sdata      start:0x804B0818 end:0x804B0820
+	.sbss       start:0x804B2330 end:0x804B2338
+
+rwsdk/src/plcore/rwstring.c:
+	.text       start:0x80341100 end:0x803418A0
+	.sdata2     start:0x804B4E80 end:0x804B4E88
+
+rwsdk/os/gcn/osintf.c:
+	.text       start:0x803418A0 end:0x803418F8
+
+rwsdk/src/babbox.c:
+	.text       start:0x803418F8 end:0x803419B0
+
+rwsdk/src/babincam.c:
+	.text       start:0x803419B0 end:0x80341CAC
+
+rwsdk/src/babinfrm.c:
+	.text       start:0x80341CAC end:0x803427B8
+	.sdata      start:0x804B0820 end:0x804B0828
+	.sdata2     start:0x804B4E88 end:0x804B4E90
+
+rwsdk/src/babintex.c:
+	.text       start:0x803427B8 end:0x80342F84
+
+rwsdk/src/bacamera.c:
+	.text       start:0x80342F84 end:0x803448B4
+	.data       start:0x803C3C70 end:0x803C3CB0
+	.bss        start:0x80486C78 end:0x80486CA0
+	.sdata      start:0x804B0828 end:0x804B0830
+	.sbss       start:0x804B2338 end:0x804B2340
+	.sdata2     start:0x804B4E90 end:0x804B4EB8
+
+rwsdk/src/badevice.c:
+	.text       start:0x803448B4 end:0x80345570
+	.data       start:0x803C3CB0 end:0x803C3CE8
+	.bss        start:0x80486CA0 end:0x80486DD0
+	.sbss       start:0x804B2340 end:0x804B2348
+
+rwsdk/src/baframe.c:
+	.text       start:0x80345570 end:0x803464E8
+	.data       start:0x803C3CE8 end:0x803C3D00
+	.bss        start:0x80486DD0 end:0x80486DF8
+	.sdata      start:0x804B0830 end:0x804B0838
+	.sbss       start:0x804B2348 end:0x804B2350
+	.sdata2     start:0x804B4EB8 end:0x804B4EC0
+
+rwsdk/src/baimage.c:
+	.text       start:0x803464E8 end:0x8034848C
+	.data       start:0x803C3D00 end:0x803C3D18
+	.bss        start:0x80486DF8 end:0x80486E40
+	.sdata      start:0x804B0838 end:0x804B0848
+	.sbss       start:0x804B2350 end:0x804B2358
+	.sdata2     start:0x804B4EC0 end:0x804B4ED8
+
+rwsdk/src/baimras.c:
+	.text       start:0x8034848C end:0x80348610
+
+rwsdk/src/baraster.c:
+	.text       start:0x80348610 end:0x80348D70
+	.data       start:0x803C3D18 end:0x803C3D30
+	.bss        start:0x80486E40 end:0x80486E68
+	.sdata      start:0x804B0848 end:0x804B0850
+	.sbss       start:0x804B2358 end:0x804B2360
+
+rwsdk/src/baresamp.c:
+	.text       start:0x80348D70 end:0x803499D8
+	.sdata2     start:0x804B4ED8 end:0x804B4F08
+
+rwsdk/src/basync.c:
+	.text       start:0x803499D8 end:0x8034A2A4
+
+rwsdk/src/batextur.c:
+	.text       start:0x8034A2A4 end:0x8034C364
+	.rodata     start:0x8037F598 end:0x8037F5B0
+	.data       start:0x803C3D30 end:0x803C3D60
+	.bss        start:0x80486E68 end:0x80486EB0
+	.sdata      start:0x804B0850 end:0x804B0870
+	.sbss       start:0x804B2360 end:0x804B2370
+	.sdata2     start:0x804B4F08 end:0x804B4F10
+
+rwsdk/src/batypehf.c:
+	.text       start:0x8034C364 end:0x8034C400
+
+rwsdk/driver/common/palquant.c:
+	.text       start:0x8034C400 end:0x8034EFE0
+	.bss        start:0x80486EB0 end:0x804872B0
+	.sdata      start:0x804B0870 end:0x804B0878
+	.sdata2     start:0x804B4F10 end:0x804B4F30
+	.sbss2      start:0x804B51A0 end:0x804B51A4
+
+rwsdk/driver/gcn/dl2drend.c:
+	.text       start:0x8034EFE0 end:0x80350658
+	.data       start:0x803C3D60 end:0x803C3DC8
+	.bss        start:0x804872B0 end:0x804872D0
+	.sdata2     start:0x804B4F30 end:0x804B4F58
+
+rwsdk/driver/gcn/dlconvrt.c:
+	.text       start:0x80350658 end:0x80352580
+	.data       start:0x803C3DC8 end:0x803C4048
+	.sdata2     start:0x804B4F58 end:0x804B4F60
+
+rwsdk/driver/gcn/dldevice.c:
+	.text       start:0x80352580 end:0x80353F9C
+	.rodata     start:0x8037F5B0 end:0x8037F688
+	.data       start:0x803C4048 end:0x803C41F8
+	.bss        start:0x804872D0 end:0x80487368
+	.sdata      start:0x804B0878 end:0x804B0890
+	.sbss       start:0x804B2370 end:0x804B23E8
+	.sdata2     start:0x804B4F60 end:0x804B4F80
+
+rwsdk/driver/gcn/dlraster.c:
+	.text       start:0x80353F9C end:0x80355D44
+	.data       start:0x803C41F8 end:0x803C4658
+	.sbss       start:0x804B23E8 end:0x804B23F0
+
+rwsdk/driver/gcn/dlrendst.c:
+	.text       start:0x80355D44 end:0x80356B60
+	.data       start:0x803C4658 end:0x803C4790
+	.bss        start:0x80487368 end:0x804873B8
+	.sbss       start:0x804B23F0 end:0x804B23F8
+	.sdata2     start:0x804B4F80 end:0x804B4F90
+
+rwsdk/driver/gcn/dlsprite.c:
+	.text       start:0x80356B60 end:0x803580D8
+	.data       start:0x803C4790 end:0x803C48D0
+	.sbss       start:0x804B23F8 end:0x804B2400
+	.sdata2     start:0x804B4F90 end:0x804B4FC8
+
+rwsdk/driver/gcn/dltexdic.c:
+	.text       start:0x803580D8 end:0x803586D0
+	.sdata2     start:0x804B4FC8 end:0x804B4FD0
+
+rwsdk/driver/gcn/dltextur.c:
+	.text       start:0x803586D0 end:0x80359290
+	.data       start:0x803C48D0 end:0x803C4940
+	.sbss       start:0x804B2400 end:0x804B2408
+	.sdata2     start:0x804B4FD0 end:0x804B4FE0
+
+rwsdk/driver/gcn/dltoken.c:
+	.text       start:0x80359290 end:0x80359330
+	.sdata      start:0x804B0890 end:0x804B0898
+	.sbss       start:0x804B2408 end:0x804B2410
+
+rwsdk/src/pipe/p2/baim3d.c:
+	.text       start:0x80359330 end:0x80359BD0
+	.sbss       start:0x804B2410 end:0x804B2420
+
+rwsdk/src/pipe/p2/bapipe.c:
+	.text       start:0x80359BD0 end:0x80359C50
+	.sbss       start:0x804B2420 end:0x804B2428
+
+rwsdk/src/pipe/p2/p2altmdl.c:
+	.text       start:0x80359C50 end:0x80359CFC
+	.bss        start:0x804873B8 end:0x804873D0
+
+rwsdk/src/pipe/p2/p2core.c:
+	.text       start:0x80359CFC end:0x8035A3C0
+	.bss        start:0x804873D0 end:0x804873F4
+	.sdata      start:0x804B0898 end:0x804B08A8
+	.sbss       start:0x804B2428 end:0x804B2430
+
+rwsdk/src/pipe/p2/p2define.c:
+	.text       start:0x8035A3C0 end:0x8035BF0C
+	.sdata      start:0x804B08A8 end:0x804B08B0
+
+rwsdk/src/pipe/p2/p2dep.c:
+	.text       start:0x8035BF0C end:0x8035D530
+
+rwsdk/src/pipe/p2/p2heap.c:
+	.text       start:0x8035D530 end:0x8035DDA8
+
+rwsdk/src/pipe/p2/p2renderstate.c:
+	.text       start:0x8035DDA8 end:0x8035E13C
+	.sdata2     start:0x804B4FE0 end:0x804B4FE4
+
+rwsdk/src/pipe/p2/p2resort.c:
+	.text       start:0x8035E13C end:0x8035E5F0
+
+rwsdk/src/pipe/p2/gcn/im3dpipe.c:
+	.text       start:0x8035E5F0 end:0x8035E840
+
+rwsdk/src/pipe/p2/gcn/nodeDolphinSubmitNoLight.c:
+	.text       start:0x8035E840 end:0x8035F4B0
+	.data       start:0x803C4940 end:0x803C4A00
+	.sbss       start:0x804B2430 end:0x804B2434
+>>>>>>> Stashed changes

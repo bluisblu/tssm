@@ -4,8 +4,8 @@ object: sys/main.dol
 hash: f772db7f38b9b55e27169822ed17184fa2dc2574
 symbols: config/GGVE78/symbols.txt
 splits: config/GGVE78/splits.txt
+symbols_known: true
 # Change this to match the linker verison.
 # See config.example.yml for a list.
-# mw_comment_version: 10
-
+fill_gaps: false
 ldscript_template: config/GGVE78/ldscript.tpl
