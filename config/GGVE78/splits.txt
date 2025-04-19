@@ -1,24 +1,17 @@
 Sections:
-	.init       type:code align:4
+	.init       type:code align:32
 	extab       type:rodata align:32
-	extabindex  type:rodata align:8
-	.text       type:code align:4
+	extabindex  type:rodata align:32
+	.text       type:code align:32
 	.ctors      type:rodata align:32
 	.dtors      type:rodata align:32
 	.rodata     type:rodata align:64
 	.data       type:data align:32
-<<<<<<< Updated upstream
-	.bss        type:bss align:4
-	.sdata      type:data align:16
-	.sbss       type:bss align:32
-	.sdata2     type:rodata align:16
-	.sbss2      type:bss align:32
-=======
 	.bss        type:bss align:32
-	.sdata      type:data align:8
-	.sbss       type:bss align:8
-	.sdata2     type:rodata align:8
-	.sbss2      type:bss align:8
+	.sdata      type:data align:32
+	.sbss       type:bss align:32
+	.sdata2     type:rodata align:32
+	.sbss2      type:bss align:32
 
 SB/Game/zWadNME.cpp:
 	.text       start:0x800057E0 end:0x8000585C
@@ -2495,4 +2488,3 @@ rwsdk/src/pipe/p2/gcn/nodeDolphinSubmitNoLight.c:
 	.text       start:0x8035E840 end:0x8035F4B0
 	.data       start:0x803C4940 end:0x803C4A00
 	.sbss       start:0x804B2430 end:0x804B2434
->>>>>>> Stashed changes
