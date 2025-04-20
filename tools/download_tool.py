@@ -82,6 +82,11 @@ def wibo_url(tag: str) -> str:
     return f"{repo}/releases/download/{tag}/wibo"
 
 
+def ok_url(tag: str) -> str:
+    repo = "https://github.com/bfbbdecomp/OK"
+    return f"{repo}/releases/download/{tag}/OK-linux-x86_64"
+
+
 TOOLS: Dict[str, Callable[[str], str]] = {
     "binutils": binutils_url,
     "compilers": compilers_url,
@@ -89,7 +94,9 @@ TOOLS: Dict[str, Callable[[str], str]] = {
     "objdiff-cli": objdiff_cli_url,
     "sjiswrap": sjiswrap_url,
     "wibo": wibo_url,
+    "ok": ok_url,
 }
+
 
 def download(url, response, output) -> None:
     if url.endswith(".zip"):
@@ -106,6 +113,7 @@ def download(url, response, output) -> None:
             shutil.copyfileobj(response, f)
         st = os.stat(output)
         os.chmod(output, st.st_mode | stat.S_IEXEC)
+
 
 def main() -> None:
     parser = argparse.ArgumentParser()
@@ -129,11 +137,16 @@ def main() -> None:
             import certifi
             import ssl
         except:
-            print("\"certifi\" module not found. Please install it using \"python -m pip install certifi\".")
+            print(
+                '"certifi" module not found. Please install it using "python -m pip install certifi".'
+            )
             return
-            
-        with urllib.request.urlopen(req, context=ssl.create_default_context(cafile=certifi.where())) as response:
+
+        with urllib.request.urlopen(
+            req, context=ssl.create_default_context(cafile=certifi.where())
+        ) as response:
             download(url, response, output)
+
 
 if __name__ == "__main__":
     main()
