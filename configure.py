@@ -308,7 +308,7 @@ config.libs = [
             Object(NonMatching, "SB/Core/x/xWad1.cpp"),
             Object(NonMatching, "SB/Core/x/xWad5.cpp"),
             Object(NonMatching, "SB/Core/x/xFXHighDynamicRange.cpp"),
-            Object(NonMatching, "SB/Core/x/xFXCameraTexture"),
+            Object(NonMatching, "SB/Core/x/xFXCameraTexture.cpp"),
             Object(NonMatching, "SB/Core/x/xModelBlur.cpp"),
             Object(NonMatching, "SB/Core/x/xCamera.cpp"),
             Object(NonMatching, "SB/Game/zWadNME.cpp"),
@@ -344,6 +344,8 @@ config.libs = [
             Object(NonMatching, "SB/Core/gc/iARAMTmp.cpp"),
         
         ],
+    },
+ {
 
         "lib": "Runtime.PPCEABI.H",
         "mw_version": config.linker_version,
