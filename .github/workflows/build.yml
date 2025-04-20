@@ -8,7 +8,7 @@ jobs:
   build:
     # This is a *private* build container.
     # See docs/github_actions.md for more information.
-    container: ghcr.io/bfbbdecomp/bfbb-build:main
+    container: ghcr.io/bfbbdecomp/tssm-build:main
 
     runs-on: ubuntu-latest
     strategy:
@@ -72,7 +72,7 @@ jobs:
   build-non-matching:
     # This is a *private* build container.
     # See docs/github_actions.md for more information.
-    container: ghcr.io/bfbbdecomp/bfbb-build:main
+    container: ghcr.io/bfbbdecomp/tssm-build:main
 
     runs-on: ubuntu-latest
     strategy:
@@ -118,7 +118,7 @@ jobs:
   build-previous:
     # This is a *private* build container.
     # See docs/github_actions.md for more information.
-    container: ghcr.io/bfbbdecomp/bfbb-build:main
+    container: ghcr.io/bfbbdecomp/tssm-build:main
 
     runs-on: ubuntu-latest
     strategy:
