@@ -94,7 +94,7 @@ TOOLS: Dict[str, Callable[[str], str]] = {
     "objdiff-cli": objdiff_cli_url,
     "sjiswrap": sjiswrap_url,
     "wibo": wibo_url,
-    "OK": ok_url,
+    "OK": ok_url
 }
 
 
