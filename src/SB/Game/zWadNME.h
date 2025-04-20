@@ -42,4 +42,13 @@ struct zNMEGoalCommon
     // erroring cus of en_trantype
 };
 
+struct zNMEGoalDentDamage : zNMEGoalCommon
+{
+    //S32 GoalHandleMail(NMEMsg* mail);
+    //S32 ChkExistence(zNMEDenToo* npc, float32 dt, int32& nextgoal, en_trantype& trantype);
+    //S32 Process(en_trantype* trantype, float32 dt, void* ctxt);
+    S32 Exit(float, void*);
+    S32 Enter();
+};
+
 #endif
