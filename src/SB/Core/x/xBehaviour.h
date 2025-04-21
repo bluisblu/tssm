@@ -1,0 +1,268 @@
+#ifndef XBEHAVIOUR_H
+#define XBEHAVIOUR_H
+
+#include "xEnt.h"
+
+enum PSY_BRAIN_STATUS
+{
+    PSY_STAT_BLANK,
+    PSY_STAT_GROW,
+    PSY_STAT_EXTEND,
+    PSY_STAT_THINK,
+    PSY_STAT_NOMORE,
+    PSY_STAT_FORCE = 0x7fffffff
+};
+
+enum en_pendtype
+{
+    PEND_TRAN_NONE,
+    PEND_TRAN_SET,
+    PEND_TRAN_PUSH,
+    PEND_TRAN_POP,
+    PEND_TRAN_POPTO,
+    PEND_TRAN_POPALL,
+    PEND_TRAN_SWAP,
+    PEND_TRAN_INPROG,
+    PEND_TRAN_NOMORE
+};
+
+enum en_trantype
+{
+    GOAL_TRAN_NONE,
+    GOAL_TRAN_SET,
+    GOAL_TRAN_PUSH,
+    GOAL_TRAN_POP,
+    GOAL_TRAN_POPTO,
+    GOAL_TRAN_POPALL,
+    GOAL_TRAN_POPBASE,
+    GOAL_TRAN_POPSAFE,
+    GOAL_TRAN_SWAP,
+    GOAL_TRAN_NOMORE,
+    GOAL_TRAN_FORCE = 0x7fffffff
+};
+
+enum en_GOALSTATE
+{
+    GOAL_STAT_UNKNOWN,
+    GOAL_STAT_PROCESS,
+    GOAL_STAT_ENTER,
+    GOAL_STAT_EXIT,
+    GOAL_STAT_SUSPEND,
+    GOAL_STAT_RESUME,
+    GOAL_STAT_PAUSED,
+    GOAL_STAT_DONE,
+    GOAL_STAT_NOMORE,
+    GOAL_STAT_FORCE = 0x7fffffff
+};
+
+enum en_npcgol
+{
+    NME_GOAL_UNKNOWN,
+    NME_GOAL_CRIT_IDLE = 0x4e474300,
+    NME_GOAL_CRIT_PATROL,
+    NME_GOAL_CRIT_DYING,
+    NME_GOAL_CRIT_DEAD,
+    NME_GOAL_CRIT_BATTACK,
+    NME_GOAL_CRIT_JATTACK,
+    NME_GOAL_CRIT_JDYING,
+    NME_GOAL_TURR_IDLE = 0x4e474700,
+    NME_GOAL_TURR_RELOAD,
+    NME_GOAL_TURR_HURT,
+    NME_GOAL_TURR_DEAD,
+    NME_GOAL_TURR_TREADY,
+    NME_GOAL_TURR_TTURN,
+    NME_GOAL_TURR_TSHOOT,
+    NME_GOAL_TURR_PDORMANT,
+    NME_GOAL_TURR_PALERT,
+    NME_GOAL_TURR_PPATALPHA,
+    NME_GOAL_TURR_BIDLE,
+    NME_GOAL_TURR_BTURN,
+    NME_GOAL_TURR_BSHOOT,
+    NME_GOAL_TURR_BHURT,
+    NME_GOAL_TURR_SPIRAL,
+    NME_GOAL_IDLE = 0x4e474e00,
+    NME_GOAL_PATROL,
+    NME_GOAL_WANDER,
+    NME_GOAL_FIDGET,
+    NME_GOAL_WAITING,
+    NME_GOAL_DEAD,
+    NME_GOAL_NOMANLAND,
+    NME_GOAL_LIMBO,
+    NME_GOAL_DEV_ANIMVIEW = 0x4e474400,
+    NME_GOAL_DEV_HEROMODE,
+    NME_GOAL_TIKI_IDLE = 0x4e475400,
+    NME_GOAL_TIKI_PATROL,
+    NME_GOAL_TIKI_HIDE,
+    NME_GOAL_TIKI_COUNT,
+    NME_GOAL_TIKI_DYING,
+    NME_GOAL_TIKI_DEAD,
+    NME_GOAL_AFTERLIFE = 0x4e475300,
+    NME_GOAL_SPAWN,
+    NME_GOAL_WOUND,
+    NME_GOAL_SPOOKED,
+    NME_GOAL_NOTICE,
+    NME_GOAL_SCAREWAIT,
+    NME_GOAL_SCARE,
+    NME_GOAL_TAUNT,
+    NME_GOAL_EVILPAT = 0x4e475000,
+    NME_GOAL_STUNNED,
+    NME_GOAL_PATCARRY,
+    NME_GOAL_PATTWIRL,
+    NME_GOAL_PATTHROW,
+    NME_GOAL_TRIGGER_NORMAL = 0x4e475800,
+    NME_GOAL_TRIGGER_SCARY,
+    NME_GOAL_TRIGGER_DETECT,
+    NME_GOAL_TRIGGER_ALERT,
+    NME_GOAL_TRIGGER_BATTLE,
+    NME_GOAL_TRIGGER_WOUND,
+    NME_GOAL_TRIGGER_ATTACK,
+    NME_GOAL_TRIGGER_VINIVICIVIDI,
+    NME_GOAL_FOGGER_AWARE = 0x4e474500,
+    NME_GOAL_FOGGER_BATTLE,
+    NME_GOAL_FOGGER_ATTACK,
+    NME_GOAL_SLAMMER_AWARE,
+    NME_GOAL_SLAMMER_BATTLE,
+    NME_GOAL_SLAMMER_ATTACK,
+    NME_GOAL_SPINNER_AWARE,
+    NME_GOAL_SPINNER_BATTLE,
+    NME_GOAL_FLINGER_NORMAL,
+    NME_GOAL_FLINGER_AWARE,
+    NME_GOAL_FLINGER_BATTLE,
+    NME_GOAL_FLINGER_ATTACK,
+    NME_GOAL_FLINGER_BOING,
+    NME_GOAL_FLINGER_FLEE,
+    NME_GOAL_FLINGER_PANIC,
+    NME_GOAL_FLINGER_MOVE,
+    NME_GOAL_POPPER_NORMAL,
+    NME_GOAL_POPPER_AWARE,
+    NME_GOAL_POPPER_WOUND,
+    NME_GOAL_POPPER_EVADE,
+    NME_GOAL_POPPER_BATTLE,
+    NME_GOAL_POPPER_ATTACK,
+    NME_GOAL_ZAP_NORMAL,
+    NME_GOAL_ZAP_AWARE,
+    NME_GOAL_ZAP_BATTLE,
+    NME_GOAL_ZAP_WOUND,
+    NME_GOAL_ZAP_ZAP,
+    NME_GOAL_ZAP_MOVE,
+    NME_GOAL_MERV_NORMAL,
+    NME_GOAL_MERV_AWARE,
+    NME_GOAL_MERV_BATTLE,
+    NME_GOAL_MERV_ZAP,
+    NME_GOAL_MERV_BOMB,
+    NME_GOAL_MERV_BOWL,
+    NME_GOAL_MERV_WOUND,
+    NME_GOAL_MERV_MOVE,
+    NME_GOAL_BUCK_RUNNING,
+    NME_GOAL_BUCK_BIRTHING,
+    NME_GOAL_BUCK_DYING,
+    NME_GOAL_BUCK_DEAD,
+    NME_GOAL_DENNIS_NORMAL,
+    NME_GOAL_DENNIS_EVADE,
+    NME_GOAL_DENNIS_BATTLE,
+    NME_GOAL_DENNIS_ATTACK,
+    NME_GOAL_DENNIS_TAUNT,
+    NME_GOAL_DENNIS_DAMAGE,
+    NME_GOAL_DENNIS_DEAD,
+    NME_GOAL_DENTOO_NORMAL,
+    NME_GOAL_DENTOO_EVADE,
+    NME_GOAL_DENTOO_BATTLE,
+    NME_GOAL_DENTOO_ATTACK,
+    NME_GOAL_DENTOO_TAUNT,
+    NME_GOAL_DENTOO_DAMAGE,
+    NME_GOAL_DENTOO_DEAD,
+    NME_GOAL_SBBAT_IDLE,
+    NME_GOAL_SBBAT_DEAD,
+    NME_GOAL_NOMORE,
+    NME_GOAL_FORCE = 0x7fffffff
+};
+
+enum en_npcgspot
+{
+    NME_GSPOT_START = 0x20,
+    NME_GSPOT_RESUME,
+    NME_GSPOT_LOOP,
+    NME_GSPOT_FINISH,
+    NME_GSPOT_STARTALT,
+    NME_GSPOT_ALTA,
+    NME_GSPOT_ALTB,
+    NME_GSPOT_PATROLPAUSE,
+    NME_GSPOT_NEXT,
+    NME_GSPOT_NOMORE,
+    NME_GSPOT_FORCEINT = 0x7fffffff
+};
+
+struct xPSYNote
+{
+};
+
+struct xGoal;
+
+struct xPsyche : RyzMemData
+{
+    xBase* clt_owner;
+    xPSYNote* cb_notice;
+    S32 flg_psyche;
+    xGoal* goallist;
+    xGoal* goalstak[5];
+    F32 tmr_stack[1][5];
+    S32 staktop;
+    xGoal* pendgoal;
+    en_pendtype pendtype;
+    S32 gid_safegoal;
+    void (*fun_remap)(S32*, en_trantype*);
+    void* userContext;
+    S32 cnt_transLastTimestep;
+    PSY_BRAIN_STATUS psystat;
+    xBase fakebase;
+};
+
+struct xListItem_1
+{
+    S32 flg_travFilter;
+    xGoal* next;
+    xGoal* prev;
+};
+
+struct xGoal : xListItem_1, xFactoryInst
+{
+    xPsyche* psyche;
+    en_GOALSTATE stat;
+    S32 flg_able;
+    S32 (*fun_process)(xGoal*, void*, en_trantype*, F32, void*);
+    void* cbdata;
+
+    S32 Exit();
+    S32 Suspend();
+    S32 SysEvent();
+    S32 Enter();
+    S32 Resume();
+    S32 Process(en_trantype* trantype, F32 dt, void* updCtxt);
+};
+
+struct zNMEGoalCommon : xGoal
+{
+    U32 anid_played;
+    struct
+    {
+        S32 flg_npcgauto : 8;
+        S32 flg_npcgable : 16;
+        S32 bul_entered : 1;
+        S32 bul_resumed : 1;
+        S32 bul_unused : 6;
+    };
+    struct
+    {
+        S32 flg_info : 16;
+        S32 flg_user : 16;
+    };
+
+    S32 CollReview();
+    S32 GoalHandleMail();
+    void Clear();
+    S32 Enter();
+    S32 Resume();
+    S32 Process(en_trantype* trantyp, F32 dt, void* ctxt);
+};
+
+#endif
