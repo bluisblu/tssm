@@ -226,9 +226,9 @@ struct xListItem_1
 
 struct xGoal : xListItem_1, xFactoryInst
 {
-    xPsyche* psyche;
+    xPsyche* psyche; //0x18
     en_GOALSTATE stat;
-    S32 flg_able;
+    S32 flg_able; //0x20
     S32 (*fun_process)(xGoal*, void*, en_trantype*, F32, void*);
     void* cbdata;
 
@@ -250,7 +250,7 @@ struct zNMEGoalCommon : xGoal
         S32 bul_entered : 1;
         S32 bul_resumed : 1;
         S32 bul_unused : 6;
-    };
+    } flags;
     struct
     {
         S32 flg_info : 16;
