@@ -302,7 +302,6 @@ struct zNMEDenToo : zNMEBoss
     S32 WannaPoolShadow();
 };
 
-//zNMEGoalDenDamage : zNMEGoalCommon
 struct zNMEGoalDenDamage : zNMEGoalCommon
 {
     S32 GoalHandleMail(NMEMsg* mail);

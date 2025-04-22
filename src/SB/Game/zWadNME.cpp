@@ -7,9 +7,12 @@ S32 zNMEGoalDentDamage::Exit(float, void*)
 
 S32 zNMEGoalDenDamage::Exit(float dt, void* ctxt) //POSSIBLY RIGHT, NEEDS DOUBLE CHECKED
 {
-    //something = -1.0f
-    dt = -1.0f; // NOT CORRECT, FOR TESTING
+    zNMEDennis* npc;
+    npc->spd_throttle = -1.0f;
     return 0;
 }
 
-//TEST
+S32 zNMEDennis::DfltVulnFlags()
+{
+    return 0xc07b0007; // HACKED TOGETHER FOR TESTING PURPOSES
+}
