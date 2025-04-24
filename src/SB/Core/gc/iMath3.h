@@ -9,7 +9,7 @@
 
 union xiMat4x3Union
 {
-    xMat4x3 xm;
+    //xMat4x3 xm;       CURRENTLY BROKEN. DONT KNOW WHY
     RwMatrix im;
 };
 

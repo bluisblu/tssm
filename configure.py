@@ -339,7 +339,7 @@ config.libs = [
             Object(NonMatching, "SB/Game/zParticleCustom.cpp"),
             Object(NonMatching, "SB/Core/gc/iWad.cpp"),
             Object(NonMatching, "SB/Core/gc/iTRC.cpp"),
-            Object(NonMatching, "SB/Core/gc/iException.cpp"),
+            Object(Matching, "SB/Core/gc/iException.cpp"),
             Object(NonMatching, "SB/Core/gc/iScrFX.cpp"),
             Object(NonMatching, "SB/Core/gc/iARAMTmp.cpp"),
         

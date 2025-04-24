@@ -5,6 +5,9 @@
 //#include "zNPCTypeCommon.h"
 
 #include "xScene.h"
+#include "zNMECommon.h"
+
+// DIRECTLY PORTED FROM BFBB
 
 struct ztalkbox : xBase
 {
@@ -77,7 +80,7 @@ struct ztalkbox : xBase
         const char* noquit;
         const char* yesno;
     } prompt;
-    //zNPCCommon* npc;
+    zNPCCommon* npc;
 
     static void init();
     static void load(xBase& data, xDynAsset& asset, size_t);
@@ -87,7 +90,7 @@ struct ztalkbox : xBase
     static void permit(U32 add_flags, U32 remove_flags);
 
     static ztalkbox* get_active();
-    //void start_talk(U32 textID, callback*, zNPCCommon*); // FIXME: params not verified
+    void start_talk(U32 textID, callback*, zNPCCommon*); // FIXME: params not verified
     void stop_talk();
 
     void set_text(U32 textID);

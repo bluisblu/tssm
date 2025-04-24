@@ -1,6 +1,13 @@
 #include "zTaskBox.h"
-#include "zTalkBox.h"
+
+#include "xEvent.h"
+#include "xstransvc.h"
+
 #include "zBase.h"
+#include "zScene.h"
+#include "zTalkBox.h"
+
+#include <types.h>
 
 // CODE PORTED DIRECTLY FROM BFBB
 
@@ -52,31 +59,31 @@ void ztaskbox::write(xSerial& s)
 }
 
 // WIP.
-// void ztaskbox::start_talk(zNMECommon* npc)
-// {
-//     ztaskbox* curr = this->current;
-//     if (curr != NULL)
-//     {
-//         if (curr == this)
-//         {
-//             if (this->flag.enabled && this->state != STATE_INVALID)
-//             {
-//                 //TODO!!!
-//             }
-//         }
-//         else
-//         {
-//             curr->set_callback(this->cb);
-//             this->current->start_talk(NULL);
-//         }
-//     }
-// }
+void ztaskbox::start_talk(zNPCCommon* npc)
+{
+    ztaskbox* curr = this->current;
+    if (curr != NULL)
+    {
+        if (curr == this)
+        {
+            if (this->flag.enabled && this->state != STATE_INVALID)
+            {
+                //TODO!!!
+            }
+        }
+        else
+        {
+            curr->set_callback(this->cb);
+            this->current->start_talk(NULL);
+        }
+    }
+}
 
-// void ztaskbox::talk_callback::reset(ztaskbox& task)
-// {
-//     this->task = &task;
-//     this->answer = ztalkbox::ANSWER_CONTINUE;
-// }
+void ztaskbox::talk_callback::reset(ztaskbox& task)
+{
+    this->task = &task;
+    this->answer = ztalkbox::ANSWER_CONTINUE;
+}
 
 void ztaskbox::stop_talk()
 {
@@ -103,13 +110,13 @@ void ztaskbox::stop_talk()
         return;
     }
 
-    //ztalkbox* other = (ztalkbox*)zSceneFindObject(this->asset->talk_box);
+    ztalkbox* other = (ztalkbox*)zSceneFindObject(this->asset->talk_box);
 
-    // if (other)
-    // {
-    //     other->stop_talk();
-    //     shared = NULL;
-    // }
+    if (other)
+    {
+        other->stop_talk();
+        shared = NULL;
+    }
 }
 
 void ztaskbox::enable()
@@ -170,8 +177,8 @@ void ztaskbox::complete()
     {
         this->state = STATE_INVALID;
         this->flag.enabled = false;
-        //zEntEvent(this, this, eEventTaskBox_OnComplete);
-        //this->current = (ztaskbox*)zSceneFindObject(this->asset->next_task);
+        zEntEvent(this, this, eEventTaskBox_OnComplete);
+        this->current = (ztaskbox*)zSceneFindObject(this->asset->next_task);
 
         // Bruh
         if (this->current != NULL)
@@ -205,7 +212,7 @@ void ztaskbox::load(xBase& data, xDynAsset& asset, size_t num)
 bool ztaskbox::exists(state_enum stage)
 {
     U32 state = this->asset->stages[stage];
-    //return state != STATE_BEGIN && xSTFindAsset(state, NULL);
+    return state != STATE_BEGIN && xSTFindAsset(state, NULL);
 }
 
 void ztaskbox::on_talk_start()

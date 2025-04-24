@@ -4,10 +4,12 @@
 #include "xBase.h"
 #include "xDynAsset.h"
 
-//#include "zNPCTypeCommon.h"
+#include "zNMECommon.h"
 #include "zTalkBox.h"
 
 #include <types.h>
+
+// DIRECTLY PORTED FROM BFBB
 
 struct ztaskbox : xBase
 {
@@ -69,7 +71,7 @@ struct ztaskbox : xBase
     void set_state(state_enum state);
     void set_callback(callback* cb);
     void stop_talk();
-    //void start_talk(zNPCCommon* npc);
+    void start_talk(zNPCCommon* npc);
     void write(xSerial& s);
     void read(xSerial& s);
     void load(const asset_type& a);

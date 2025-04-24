@@ -2,6 +2,8 @@
 
 #include <types.h>
 
+// DIRECTLY PORTED FROM BFBB
+
 namespace
 {
     struct SharedTalkboxState
