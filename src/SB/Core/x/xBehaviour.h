@@ -156,11 +156,6 @@ struct xGoal : xListItem<xGoal>, xFactoryInst
     xGoalPreCalcCallback fun_precalc;
     xGoalChkRuleCallback fun_chkRule;
 
-    xPsyche* psyche; //0x18
-    en_GOALSTATE stat;
-    S32 flg_able; //0x20
-    S32 (*fun_process)(xGoal*, void*, en_trantype*, F32, void*);
-
     void* cbdata;
 
     xGoal(S32 goalID)
