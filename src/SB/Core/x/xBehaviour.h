@@ -219,15 +219,6 @@ struct xGoal : xListItem<xGoal>, xFactoryInst
 
     virtual S32 SysEvent(xBase* from, xBase* to, U32 toEvent, const F32* toParam,
                          xBase* toParamWidget, S32* handled)
-
-        S32 flg_npcgauto : 8;
-        S32 flg_npcgable : 16;
-        S32 bul_entered : 1;
-        S32 bul_resumed : 1;
-        S32 bul_unused : 6;
-    } flags;
-    struct
-
     {
         return 1;
     }
