@@ -1,37 +1,9 @@
 #ifndef XENV_H
 #define XENV_H
 
-#include "xModel.h"
-#include "xJSP.h"
-
-struct iEnvMatOrder
-{
-    U16 jspIndex;
-    U16 nodeIndex;
-    S32 matGroup;
-    RpAtomic* atomic;
-    xJSPNodeInfo* nodeInfo;
-};
-
-struct iEnv
-{
-    RpWorld* world;
-    RpWorld* collision;
-    RpWorld* fx;
-    RpWorld* camera;
-    S32 jsp_count;
-    U32* jsp_aid;
-    xJSPHeader** jsp_list;
-    xBox* jsp_bound;
-    S32* jsp_visibilityCount;
-    S32 jspMatOrderCount;
-    iEnvMatOrder* jspMatOrderList;
-    RpLight* light[2];
-    RwFrame* light_frame[2];
-    S32 memlvl;
-    U16 numOpaque;
-    U16 numTransparent;
-};
+#include "iEnv.h"
+#include "xLightKit.h"
+#include "xBase.h"
 
 struct xEnv
 {
@@ -39,5 +11,29 @@ struct xEnv
     iEnv ienv;
     xLightKit* lightKit;
 };
+
+struct xEnvAsset : xBaseAsset
+{
+    U32 bspAssetID;
+    U32 startCameraAssetID;
+    U32 climateFlags;
+    F32 climateStrengthMin;
+    F32 climateStrengthMax;
+    U32 bspLightKit;
+    U32 objectLightKit;
+    F32 padF1;
+    U32 bspCollisionAssetID;
+    U32 bspFXAssetID;
+    U32 bspCameraAssetID;
+    U32 bspMapperID;
+    U32 bspMapperCollisionID;
+    U32 bspMapperFXID;
+    F32 loldHeight;
+};
+
+void xEnvLoadBsp(xEnv* env, const void* data, U32 datasize, S32 dataType);
+void xEnvFree(xEnv* env);
+void xEnvSetup(xEnv* env);
+void xEnvRender(xEnv* env);
 
 #endif

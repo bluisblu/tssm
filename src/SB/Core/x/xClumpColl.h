@@ -2,7 +2,7 @@
 #define XCLUMPCOLL_H
 
 #include <types.h>
-#include <rpworld.h>
+
 #include <rwcore.h>
 #include <rpworld.h>
 
@@ -20,30 +20,46 @@ struct xClumpCollBSPVertInfo
     U16 meshVertIndex;
 };
 
-struct _class_26
+struct xClumpCollBSPTriangle
 {
     union
     {
         xClumpCollBSPVertInfo i;
-        U32 rawIdx;
         RwV3d* p;
-    };
-};
-
-struct xClumpCollBSPTriangle
-{
-    _class_26 v;
+    } v;
     U8 flags;
-    U8 detailed_info_cache_index;
+    U8 platData;
     U16 matIndex;
 };
 
 struct xClumpCollBSPTree
 {
-    S32 numBranchNodes;
+    U32 numBranchNodes;
     xClumpCollBSPBranchNode* branchNodes;
-    S32 numTriangles;
+    U32 numTriangles;
     xClumpCollBSPTriangle* triangles;
 };
+
+struct nodeInfo
+{
+    U32 type;
+    U32 index;
+};
+struct RwMeshCache
+{
+    U32 lengthOfMeshesArray;
+    RwResEntry* meshes[1];
+};
+
+struct TempAtomicList
+{
+    RpAtomic* atomic;
+    RpGeometry* geom;
+    RpMeshHeader* meshHeader;
+    RwMeshCache* meshCache;
+};
+
+void xClumpColl_InstancePointers(xClumpCollBSPTree* tree, RpClump* clump);
+xClumpCollBSPTree* xClumpColl_StaticBufferInit(void* data, U32 param_2);
 
 #endif
