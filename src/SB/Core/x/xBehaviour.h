@@ -147,6 +147,7 @@ struct xPsyche : RyzMemData
 
 struct xGoal : xListItem<xGoal>, xFactoryInst
 {
+
     xPsyche* psyche; // 0x18
     S32 goalID;
     en_GOALSTATE stat;
@@ -154,6 +155,7 @@ struct xGoal : xListItem<xGoal>, xFactoryInst
     xGoalProcessCallback fun_process;
     xGoalPreCalcCallback fun_precalc;
     xGoalChkRuleCallback fun_chkRule;
+
     void* cbdata;
 
     xGoal(S32 goalID)
@@ -192,6 +194,7 @@ struct xGoal : xListItem<xGoal>, xFactoryInst
 
     virtual S32 Enter(F32 dt, void* updCtxt)
     {
+
         return 0;
     }
 
