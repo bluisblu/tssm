@@ -1,39 +1,44 @@
 #ifndef XSHADOW_H
 #define XSHADOW_H
 
-#include "xMath.h"
+#include "xEnt.h"
 
-struct xEnt;
+#include <rwcore.h>
+#include <rpworld.h>
 
-struct xShadowSimplePoly
+struct xShadowPoly
 {
     xVec3 vert[3];
     xVec3 norm;
 };
 
-struct xShadowSimpleCache
+struct xShadowCache
 {
-    U16 flags;
-    U8 alpha;
-    U8 pad;
-    U32 collPriority;
     xVec3 pos;
-    xVec3 at;
-    F32 tol_movement;
-    F32 radiusOptional;
-    xEnt* castOnEnt;
-    xShadowSimplePoly poly;
-    F32 envHeight;
-    F32 shadowHeight;
-    union
-    {
-        U32 raster;
-        RwRaster* ptr_raster;
-    };
-    F32 dydx;
-    F32 dydz;
-    xVec3 corner[4];
-    void* collSkipsItem;
+    F32 radius;
+    U32 entCount;
+    U32 polyCount;
+    F32 polyRayDepth[5];
+    U16 castOnEnt;
+    U16 castOnPoly;
+    xEnt* ent[16];
+    xShadowPoly poly[256];
 };
+
+struct xShadowMgr
+{
+    xEnt* ent;
+    xShadowCache* cache;
+    int priority;
+    int cacheReady;
+};
+
+void xShadow_ListAdd(xEnt* ent);
+void xShadowSetWorld(RpWorld* world);
+void xShadowSetLight(xVec3* param1, xVec3* param2, F32 param3);
+void xShadowManager_Init(S32 numEnts);
+void xShadowManager_Reset();
+void xShadowManager_Render();
+void xShadowRender(xEnt* ent, F32 max_dist);
 
 #endif

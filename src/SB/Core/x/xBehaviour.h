@@ -1,29 +1,23 @@
 #ifndef XBEHAVIOUR_H
 #define XBEHAVIOUR_H
 
-#include "xEnt.h"
+#include "xBase.h"
+#include "xListItem.h"
+#include "xFactory.h"
+#include "xScene.h"
 
-enum PSY_BRAIN_STATUS
+enum en_GOALSTATE
 {
-    PSY_STAT_BLANK,
-    PSY_STAT_GROW,
-    PSY_STAT_EXTEND,
-    PSY_STAT_THINK,
-    PSY_STAT_NOMORE,
-    PSY_STAT_FORCE = 0x7fffffff
-};
-
-enum en_pendtype
-{
-    PEND_TRAN_NONE,
-    PEND_TRAN_SET,
-    PEND_TRAN_PUSH,
-    PEND_TRAN_POP,
-    PEND_TRAN_POPTO,
-    PEND_TRAN_POPALL,
-    PEND_TRAN_SWAP,
-    PEND_TRAN_INPROG,
-    PEND_TRAN_NOMORE
+    GOAL_STAT_UNKNOWN,
+    GOAL_STAT_PROCESS,
+    GOAL_STAT_ENTER,
+    GOAL_STAT_EXIT,
+    GOAL_STAT_SUSPEND,
+    GOAL_STAT_RESUME,
+    GOAL_STAT_PAUSED,
+    GOAL_STAT_DONE,
+    GOAL_STAT_NOMORE,
+    GOAL_STAT_FORCE = 0x7fffffff
 };
 
 enum en_trantype
@@ -41,162 +35,50 @@ enum en_trantype
     GOAL_TRAN_FORCE = 0x7fffffff
 };
 
-enum en_GOALSTATE
+enum en_pendtype
 {
-    GOAL_STAT_UNKNOWN,
-    GOAL_STAT_PROCESS,
-    GOAL_STAT_ENTER,
-    GOAL_STAT_EXIT,
-    GOAL_STAT_SUSPEND,
-    GOAL_STAT_RESUME,
-    GOAL_STAT_PAUSED,
-    GOAL_STAT_DONE,
-    GOAL_STAT_NOMORE,
-    GOAL_STAT_FORCE = 0x7fffffff
+    PEND_TRAN_NONE,
+    PEND_TRAN_SET,
+    PEND_TRAN_PUSH,
+    PEND_TRAN_POP,
+    PEND_TRAN_POPTO,
+    PEND_TRAN_POPALL,
+    PEND_TRAN_SWAP,
+    PEND_TRAN_INPROG,
+    PEND_TRAN_NOMORE
 };
 
-enum en_npcgol
+enum PSY_BRAIN_STATUS
 {
-    NME_GOAL_UNKNOWN,
-    NME_GOAL_CRIT_IDLE = 0x4e474300,
-    NME_GOAL_CRIT_PATROL,
-    NME_GOAL_CRIT_DYING,
-    NME_GOAL_CRIT_DEAD,
-    NME_GOAL_CRIT_BATTACK,
-    NME_GOAL_CRIT_JATTACK,
-    NME_GOAL_CRIT_JDYING,
-    NME_GOAL_TURR_IDLE = 0x4e474700,
-    NME_GOAL_TURR_RELOAD,
-    NME_GOAL_TURR_HURT,
-    NME_GOAL_TURR_DEAD,
-    NME_GOAL_TURR_TREADY,
-    NME_GOAL_TURR_TTURN,
-    NME_GOAL_TURR_TSHOOT,
-    NME_GOAL_TURR_PDORMANT,
-    NME_GOAL_TURR_PALERT,
-    NME_GOAL_TURR_PPATALPHA,
-    NME_GOAL_TURR_BIDLE,
-    NME_GOAL_TURR_BTURN,
-    NME_GOAL_TURR_BSHOOT,
-    NME_GOAL_TURR_BHURT,
-    NME_GOAL_TURR_SPIRAL,
-    NME_GOAL_IDLE = 0x4e474e00,
-    NME_GOAL_PATROL,
-    NME_GOAL_WANDER,
-    NME_GOAL_FIDGET,
-    NME_GOAL_WAITING,
-    NME_GOAL_DEAD,
-    NME_GOAL_NOMANLAND,
-    NME_GOAL_LIMBO,
-    NME_GOAL_DEV_ANIMVIEW = 0x4e474400,
-    NME_GOAL_DEV_HEROMODE,
-    NME_GOAL_TIKI_IDLE = 0x4e475400,
-    NME_GOAL_TIKI_PATROL,
-    NME_GOAL_TIKI_HIDE,
-    NME_GOAL_TIKI_COUNT,
-    NME_GOAL_TIKI_DYING,
-    NME_GOAL_TIKI_DEAD,
-    NME_GOAL_AFTERLIFE = 0x4e475300,
-    NME_GOAL_SPAWN,
-    NME_GOAL_WOUND,
-    NME_GOAL_SPOOKED,
-    NME_GOAL_NOTICE,
-    NME_GOAL_SCAREWAIT,
-    NME_GOAL_SCARE,
-    NME_GOAL_TAUNT,
-    NME_GOAL_EVILPAT = 0x4e475000,
-    NME_GOAL_STUNNED,
-    NME_GOAL_PATCARRY,
-    NME_GOAL_PATTWIRL,
-    NME_GOAL_PATTHROW,
-    NME_GOAL_TRIGGER_NORMAL = 0x4e475800,
-    NME_GOAL_TRIGGER_SCARY,
-    NME_GOAL_TRIGGER_DETECT,
-    NME_GOAL_TRIGGER_ALERT,
-    NME_GOAL_TRIGGER_BATTLE,
-    NME_GOAL_TRIGGER_WOUND,
-    NME_GOAL_TRIGGER_ATTACK,
-    NME_GOAL_TRIGGER_VINIVICIVIDI,
-    NME_GOAL_FOGGER_AWARE = 0x4e474500,
-    NME_GOAL_FOGGER_BATTLE,
-    NME_GOAL_FOGGER_ATTACK,
-    NME_GOAL_SLAMMER_AWARE,
-    NME_GOAL_SLAMMER_BATTLE,
-    NME_GOAL_SLAMMER_ATTACK,
-    NME_GOAL_SPINNER_AWARE,
-    NME_GOAL_SPINNER_BATTLE,
-    NME_GOAL_FLINGER_NORMAL,
-    NME_GOAL_FLINGER_AWARE,
-    NME_GOAL_FLINGER_BATTLE,
-    NME_GOAL_FLINGER_ATTACK,
-    NME_GOAL_FLINGER_BOING,
-    NME_GOAL_FLINGER_FLEE,
-    NME_GOAL_FLINGER_PANIC,
-    NME_GOAL_FLINGER_MOVE,
-    NME_GOAL_POPPER_NORMAL,
-    NME_GOAL_POPPER_AWARE,
-    NME_GOAL_POPPER_WOUND,
-    NME_GOAL_POPPER_EVADE,
-    NME_GOAL_POPPER_BATTLE,
-    NME_GOAL_POPPER_ATTACK,
-    NME_GOAL_ZAP_NORMAL,
-    NME_GOAL_ZAP_AWARE,
-    NME_GOAL_ZAP_BATTLE,
-    NME_GOAL_ZAP_WOUND,
-    NME_GOAL_ZAP_ZAP,
-    NME_GOAL_ZAP_MOVE,
-    NME_GOAL_MERV_NORMAL,
-    NME_GOAL_MERV_AWARE,
-    NME_GOAL_MERV_BATTLE,
-    NME_GOAL_MERV_ZAP,
-    NME_GOAL_MERV_BOMB,
-    NME_GOAL_MERV_BOWL,
-    NME_GOAL_MERV_WOUND,
-    NME_GOAL_MERV_MOVE,
-    NME_GOAL_BUCK_RUNNING,
-    NME_GOAL_BUCK_BIRTHING,
-    NME_GOAL_BUCK_DYING,
-    NME_GOAL_BUCK_DEAD,
-    NME_GOAL_DENNIS_NORMAL,
-    NME_GOAL_DENNIS_EVADE,
-    NME_GOAL_DENNIS_BATTLE,
-    NME_GOAL_DENNIS_ATTACK,
-    NME_GOAL_DENNIS_TAUNT,
-    NME_GOAL_DENNIS_DAMAGE,
-    NME_GOAL_DENNIS_DEAD,
-    NME_GOAL_DENTOO_NORMAL,
-    NME_GOAL_DENTOO_EVADE,
-    NME_GOAL_DENTOO_BATTLE,
-    NME_GOAL_DENTOO_ATTACK,
-    NME_GOAL_DENTOO_TAUNT,
-    NME_GOAL_DENTOO_DAMAGE,
-    NME_GOAL_DENTOO_DEAD,
-    NME_GOAL_SBBAT_IDLE,
-    NME_GOAL_SBBAT_DEAD,
-    NME_GOAL_NOMORE,
-    NME_GOAL_FORCE = 0x7fffffff
+    PSY_STAT_BLANK,
+    PSY_STAT_GROW,
+    PSY_STAT_EXTEND,
+    PSY_STAT_THINK,
+    PSY_STAT_NOMORE,
+    PSY_STAT_FORCE = 0x7fffffff
 };
 
-enum en_npcgspot
+enum en_psynote
 {
-    NME_GSPOT_START = 0x20,
-    NME_GSPOT_RESUME,
-    NME_GSPOT_LOOP,
-    NME_GSPOT_FINISH,
-    NME_GSPOT_STARTALT,
-    NME_GSPOT_ALTA,
-    NME_GSPOT_ALTB,
-    NME_GSPOT_PATROLPAUSE,
-    NME_GSPOT_NEXT,
-    NME_GSPOT_NOMORE,
-    NME_GSPOT_FORCEINT = 0x7fffffff
-};
-
-struct xPSYNote
-{
+    PSY_NOTE_HASRESUMED,
+    PSY_NOTE_HASENTERED,
+    PSY_NOTE_ANIMCHANGED,
+    PSY_NOTE_NOMORE,
+    PSY_NOTE_FORCE = 0x7fffffff
 };
 
 struct xGoal;
+
+struct xPSYNote
+{
+    virtual void Notice(en_psynote note, xGoal* goal, void*)
+    {
+    }
+};
+
+typedef S32 (*xGoalProcessCallback)(xGoal*, void*, en_trantype*, F32, void*);
+typedef S32 (*xGoalChkRuleCallback)(xGoal*, void*, en_trantype*, F32, void*);
+typedef S32 (*xGoalPreCalcCallback)(xGoal*, void*, F32, void*);
 
 struct xPsyche : RyzMemData
 {
@@ -215,54 +97,134 @@ struct xPsyche : RyzMemData
     S32 cnt_transLastTimestep;
     PSY_BRAIN_STATUS psystat;
     xBase fakebase;
+
+    xGoal* GIDInStack(S32 gid) const;
+    void ImmTranOn();
+    void ImmTranOff();
+    S32 ImmTranIsOn();
+    S32 HasGoal(S32 goal);
+    xGoal* GetCurGoal() const;
+    S32 GIDOfActive() const;
+    S32 GIDOfPending() const;
+    S32 GIDOfSafety() const
+    {
+        return gid_safegoal;
+    }
+    S32 Timestep(F32 dt, void* updCtxt);
+    xGoal* FindGoal(S32 gid);
+    S32 GoalSet(S32 gid, S32 r5);
+    S32 GoalPop(S32 gid_popto, S32 r5);
+    S32 GoalNone(S32 denyExplicit);
+    S32 GoalSwap(S32 gid, S32 r5);
+    S32 GoalPopRecover(S32 overpend);
+    S32 GoalPopToBase(S32 overpend);
+    S32 GoalPush(S32 gid, S32 r5);
+    S32 GoalSet(S32 gid);
+
+    void BrainBegin();
+    void BrainExtend();
+    void BrainEnd();
+    xGoal* AddGoal(S32 gid, void* createData);
+    void FreshWipe();
+    void SetOwner(xBase*, void*);
+    void KillBrain(xFactory*);
+    void Lobotomy(xFactory*);
+    void SetSafety(S32 goalID)
+    {
+        gid_safegoal = goalID;
+    }
+    void Amnesia(S32);
+    void SetNotify(xPSYNote* notice)
+    {
+        cb_notice = notice;
+    }
+
+    xBase* GetClient()
+    {
+        return this->clt_owner;
+    }
 };
 
-struct xListItem_1
+struct xGoal : xListItem<xGoal>, xFactoryInst
 {
-    S32 flg_travFilter;
-    xGoal* next;
-    xGoal* prev;
-};
 
-struct xGoal : xListItem_1, xFactoryInst
-{
-    xPsyche* psyche; //0x18
+    xPsyche* psyche; // 0x18
+    S32 goalID;
     en_GOALSTATE stat;
-    S32 flg_able; //0x20
-    S32 (*fun_process)(xGoal*, void*, en_trantype*, F32, void*);
+    S32 flg_able; // 0x24
+    xGoalProcessCallback fun_process;
+    xGoalPreCalcCallback fun_precalc;
+    xGoalChkRuleCallback fun_chkRule;
+
     void* cbdata;
 
-    S32 Exit();
-    S32 Suspend();
-    S32 SysEvent();
-    S32 Enter();
-    S32 Resume();
-    S32 Process(en_trantype* trantype, F32 dt, void* updCtxt);
-};
-
-struct zNMEGoalCommon : xGoal
-{
-    U32 anid_played;
-    struct
+    xGoal(S32 goalID)
     {
-        S32 flg_npcgauto : 8;
-        S32 flg_npcgable : 16;
-        S32 bul_entered : 1;
-        S32 bul_resumed : 1;
-        S32 bul_unused : 6;
-    } flags;
-    struct
-    {
-        S32 flg_info : 16;
-        S32 flg_user : 16;
-    };
+        this->goalID = goalID;
+        this->flg_able = 0;
+        this->stat = GOAL_STAT_UNKNOWN;
+    }
 
-    S32 CollReview();
-    S32 GoalHandleMail();
-    void Clear();
-    S32 Enter();
-    S32 Resume();
-    S32 Process(en_trantype* trantyp, F32 dt, void* ctxt);
+    S32 GetID() const
+    {
+        return this->goalID;
+    }
+
+    void SetFlags(S32 flags)
+    {
+        flg_able = flags;
+    }
+    void AddFlags(S32 flags);
+    xPsyche* GetPsyche() const;
+    void SetCallbacks(xGoalProcessCallback process, xGoalChkRuleCallback chkRule,
+                      xGoalPreCalcCallback precalc, void* cbdata);
+    S32 GetFlags() const
+    {
+        return flg_able;
+    }
+
+    void SetPsyche(xPsyche* psyche);
+    const char* Name();
+    void SetState(en_GOALSTATE state);
+    en_GOALSTATE GetState() const;
+    xBase* GetOwner() const;
+
+    // vtable
+    virtual void Clear() = 0;
+
+    virtual S32 Enter(F32 dt, void* updCtxt)
+    {
+
+        return 0;
+    }
+
+    virtual S32 Exit(F32 dt, void* updCtxt)
+    {
+        return 0;
+    }
+
+    virtual S32 Suspend(F32 dt, void* updCtxt)
+    {
+        return 0;
+    }
+
+    virtual S32 Resume(F32 dt, void* updCtxt)
+    {
+        return 0;
+    }
+
+    virtual S32 PreCalc(F32 dt, void* updCtxt);
+    virtual S32 EvalRules(en_trantype* trantype, F32 dt, void* updCtxt);
+    virtual S32 Process(en_trantype* trantype, float dt, void* ctxt, xScene* scene);
+
+    virtual S32 SysEvent(xBase* from, xBase* to, U32 toEvent, const F32* toParam,
+                         xBase* toParamWidget, S32* handled)
+    {
+        return 1;
+    }
+
+protected:
+    ~xGoal(); // prevents implicit destructors from being generated in subclasses of xGoal
 };
 
 #endif
