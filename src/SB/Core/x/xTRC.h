@@ -21,7 +21,7 @@ enum _tagTRCState
     TRC_Total
 };
 
-struct _tagTRCPadInfo : _tagiTRCPadInfo
+struct _tagTRCPadInfo
 {
     S32 id;
     _tagTRCState state;
