@@ -38,9 +38,10 @@ F32 iTimeGetGame()
     return sGameTime;
 }
 
-F32 iTimeDiffSec(iTime t0, iTime t1)
+F32 iTimeDiffSec(iTime time, iTime t1)
 {
-    return iTimeDiffSec(t1 - t0);
+    time = t1 - time;
+    return (F32)time / (GET_BUS_FREQUENCY() / 4);
 }
 
 F32 iTimeDiffSec(iTime time)
@@ -128,14 +129,14 @@ void* malloc(U32 __size)
         return NULL;
     }
 
-    void* result = OSAllocFromHeap(the_heap, __size);
+    iMemInit();
 
-    if (result == NULL)
+    if (__size == NULL)
     {
-        null_func();
+        OSAllocFromHeap(the_heap, __size);
     }
 
-    return result;
+    return 0;
 }
 
 void free(void* __ptr)
@@ -197,6 +198,10 @@ void iSndSuspendCD(U32)
 }
 
 void iSndSetExternalCallback(void* func_ptr)
+{
+}
+
+void iSndExit()
 {
 }
 
@@ -610,6 +615,7 @@ static S32 iSG_mcqa_fwrite(st_ISG_MEMCARD_DATA* mcdata, char* buf, S32 len)
     S32 x = 1000;
     CARDStat* fstat = &mcdata->fstat;
     s32 result;
+    iTRCDisk::TRCCheck();
     do
     {
         result = CARDGetResultCode(mcdata->chan);
@@ -633,16 +639,17 @@ static S32 iSG_mcqa_fwrite(st_ISG_MEMCARD_DATA* mcdata, char* buf, S32 len)
     }
 
     result = CARD_RESULT_BUSY;
+    iTRCDisk::TRCCheck();
     do
     {
         if (x++ > 500)
         {
             result = CARDGetResultCode(mcdata->chan);
-            xSndUpdate();
+            xSndMgrUpdate();
             CARDGetXferredBytes(mcdata->chan);
             x = 0;
         }
-        iTRCDisk::CheckDVDAndResetState();
+        iTRCDisk::TRCCheck();
     } while (result == CARD_RESULT_BUSY);
 
     if (asynresult == CARD_RESULT_READY)
@@ -692,12 +699,12 @@ static S32 iSG_mcqa_fread(st_ISG_MEMCARD_DATA* mcdata, char* buf, S32 len, S32 o
     {
         if (x++ > 500)
         {
-            xSndUpdate();
+            xSndMgrUpdate();
             CARDGetXferredBytes(mcdata->chan);
             result = CARDGetResultCode(mcdata->chan);
             x = 0;
         }
-        iTRCDisk::CheckDVDAndResetState();
+        iTRCDisk::TRCCheck();
     } while (result == CARD_RESULT_BUSY);
     return result != 0 ? 0 : 1;
 }
@@ -855,7 +862,7 @@ static S32 iSG_load_icondata()
     g_rawicon = (st_ISG_TPL_TEXPALETTE*)iFileLoad("/SBGCIcon.tpl", NULL, &g_iconsize);
     g_rawbanr = (st_ISG_TPL_TEXPALETTE*)iFileLoad("/SBGCBanner.tpl", NULL, &g_banrsize);
     iSG_tpl_unpack(g_rawicon);
-    iSG_bnr_unpack(g_rawbanr);
+    iSG_tpl_unpack(g_rawbanr);
 
     return g_rawicon && (S32)g_iconsize && g_rawbanr && (S32)g_banrsize ? 1 : 0;
 }
@@ -1131,7 +1138,7 @@ S32 iSGReadLeader(st_ISGSESSION* isgdata, const char* fname, char* databuf, S32 
         return 0;
     }
 
-    iTRCDisk::CheckDVDAndResetState();
+    iTRCDisk::TRCCheck();
     iconsize = iSG_cubeicon_size(data->chan, data->sectorSize);
     S32 sectorsize200 = ALIGN_THING(data->sectorSize, 0x200);
     if ((S32)databuf % 32 != 0 || numbytes - (numbytes / sectorsize200) * sectorsize200 != 0)
@@ -1149,7 +1156,7 @@ S32 iSGReadLeader(st_ISGSESSION* isgdata, const char* fname, char* databuf, S32 
         bufsize = numbytes;
     }
 
-    iTRCDisk::CheckDVDAndResetState();
+    iTRCDisk::TRCCheck();
 
     if (iSG_mc_fopen(data, fname, -1, ISG_IOMODE_READ, &operr) != 0)
     {
@@ -1238,7 +1245,7 @@ S32 iSGSaveFile(st_ISGSESSION* isgdata, const char* fname, char* data, S32 n, S3
         return 0;
     }
 
-    iTRCDisk::CheckDVDAndResetState();
+    iTRCDisk::TRCCheck();
     iconsize = iSG_cubeicon_size(isgdata->slot, mcdata->sectorSize);
     S32 sectorsize200 = ALIGN_THING(mcdata->sectorSize, 0x200);
     iconsize += ALIGN_THING(sectorsize200, n);
@@ -1249,7 +1256,7 @@ S32 iSGSaveFile(st_ISGSESSION* isgdata, const char* fname, char* data, S32 n, S3
     icondata = (char*)((U32)alloc + 0x1f & 0xFFFFFFE0);
 
     memcpy(iSG_bfr_icondata(icondata, &statA, arg5, mcdata->sectorSize), data, n);
-    iTRCDisk::CheckDVDAndResetState();
+    iTRCDisk::TRCCheck();
 
     if (iSG_mc_fopen(mcdata, fname, iconsize, ISG_IOMODE_WRITE, &operr) != 0)
     {
@@ -1298,7 +1305,7 @@ S32 iSGSaveFile(st_ISGSESSION* isgdata, const char* fname, char* data, S32 n, S3
     }
 
     ResetButton::EnableReset();
-    iTRCDisk::CheckDVDAndResetState();
+    iTRCDisk::TRCCheck();
 
     isgdata->unk_268 = ISG_OPERR_NONE;
     if (writeret != 0)
@@ -1539,7 +1546,7 @@ S32 iSGFileSize(st_ISGSESSION* isgdata, const char* fname)
         return -1;
     }
     st_ISG_MEMCARD_DATA* data = &isgdata->mcdata[isgdata->slot];
-    iTRCDisk::CheckDVDAndResetState();
+    iTRCDisk::TRCCheck();
     ret = iSG_get_fsize(data, fname);
     if (ret >= 0)
     {
@@ -1574,7 +1581,7 @@ S32 iSGTgtHaveRoomStartup(st_ISGSESSION* isgdata, S32 tidx, S32 fsize, const cha
     {
         for (i = 0; i < ISG_NUM_FILES; ++i)
         {
-            iTRCDisk::CheckDVDAndResetState();
+            iTRCDisk::TRCCheck();
             fname = iSGMakeName(ISG_NGTYP_GAMEFILE, NULL, i);
             if (iSG_get_finfo(data, fname) != 0)
             {
@@ -1648,7 +1655,7 @@ S32 iSGTgtHaveRoom(st_ISGSESSION* isgdata, S32 tidx, S32 fsize, const char* dpat
     {
         for (i = 0; i < ISG_NUM_FILES; ++i)
         {
-            iTRCDisk::CheckDVDAndResetState();
+            iTRCDisk::TRCCheck();
             fname = iSGMakeName(ISG_NGTYP_GAMEFILE, NULL, i);
             if (iSG_get_finfo(data, fname) != 0)
             {
@@ -1730,7 +1737,7 @@ U32 iSGTgtState(st_ISGSESSION* isgdata, S32 tgtidx, const char* dpath)
     S32 slot = 0;
     S32 x = 0;
     S32 y = 0;
-    iTRCDisk::CheckDVDAndResetState();
+    iTRCDisk::TRCCheck();
 
     iSG_mcidx2slot(tgtidx, &slot, NULL);
     if (slot != isgdata->slot)
@@ -1812,7 +1819,7 @@ S32 iSGTgtFormat(st_ISGSESSION* isgdata, S32 tgtidx, S32 async, S32* canRecover)
 {
     S32 slot = 0;
     S32 rc = 0;
-    iTRCDisk::CheckDVDAndResetState();
+    iTRCDisk::TRCCheck();
     if (iSG_mc_exists(isgdata->slot) == 0)
     {
         return 0;
@@ -1867,7 +1874,7 @@ S32 iSGTgtCount(st_ISGSESSION* isgdata, S32* max)
 
     for (S32 i = 0; i < ISG_NUM_SLOTS; ++i)
     {
-        iTRCDisk::CheckDVDAndResetState();
+        iTRCDisk::TRCCheck();
         s32 result;
         do
         {
@@ -1906,12 +1913,15 @@ static S32 iSG_mc_unmount(S32 slot)
 
 void iSGSessionEnd(st_ISGSESSION* isgdata)
 {
-    iTRCDisk::CheckDVDAndResetState();
+    iTRCDisk::TRCCheck();
     for (S32 i = 0; i < ISG_NUM_SLOTS; i++)
     {
         if (isgdata->mcdata[i].unk_0)
         {
-            iSG_mc_unmount(i);
+            if (isgdata->mcdata[i].unk_0)
+            {
+                CARDUnmount(i);
+            }
             isgdata->mcdata[i].unk_0 = 0;
         }
     }
@@ -1926,14 +1936,13 @@ static S32 iSG_chk_icondata()
 
 st_ISGSESSION* iSGSessionBegin(void* cltdata, void (*chgfunc)(void*, en_CHGCODE), S32 monitor)
 {
-    iTRCDisk::CheckDVDAndResetState();
+    iTRCDisk::TRCCheck();
     memset(&g_isgdata_MAIN, 0, sizeof(st_ISGSESSION));
 
     g_isgdata_MAIN.slot = -1;
     g_isgdata_MAIN.chgfunc = chgfunc;
     g_isgdata_MAIN.cltdata = cltdata;
 
-    iSG_chk_icondata();
     return &g_isgdata_MAIN;
 }
 
@@ -1972,7 +1981,7 @@ char* iSGMakeName(en_NAMEGEN_TYPE type, const char* base, S32 idx)
     return use_buf;
 }
 
-static void iSG_discard_icondata()
+S32 iSGShutdown()
 {
     OSFreeToHeap(__OSCurrHeap, g_rawicon);
     OSFreeToHeap(__OSCurrHeap, g_rawbanr);
@@ -1980,30 +1989,21 @@ static void iSG_discard_icondata()
     g_iconsize = 0;
     g_rawbanr = NULL;
     g_banrsize = 0;
-}
-
-S32 iSGShutdown()
-{
-    iSG_discard_icondata();
     return 1;
 }
 
-static S32 iSG_start_your_engines()
-{
-    CARDInit();
-    return 1;
-}
-
-S32 iSGStartup()
+S32 iSGStartup() // TO-DO - 92%
 {
     if (g_isginit++ != 0)
     {
         return g_isginit;
     }
-
-    iSG_start_your_engines();
-    iSG_load_icondata();
-    return g_isginit;
+    else
+    {
+        CARDInit();
+        iSG_load_icondata();
+        return g_isginit;
+    }
 }
 
 //                                                                          iPar
@@ -2543,6 +2543,7 @@ void iLightDestroy(iLight* light)
 
     if (frame)
     {
+        _rwFrameSyncDirty();
         RwFrameDestroy(frame);
     }
 
@@ -2845,7 +2846,7 @@ static void PlayFMV(char* fname, u32 buttons, F32 time)
                 BinkGetError();
             }
         }
-        if (iTRCDisk::CheckDVDAndResetState() != 0)
+        if (iTRCDisk::TRCCheck() != 0)
         {
             break;
         }
@@ -2853,7 +2854,7 @@ static void PlayFMV(char* fname, u32 buttons, F32 time)
         {
             iFileOpen(fname, 0, &file);
             DVDSeekAsyncPrio(pfinfo, 0, NULL, 2);
-            if (iTRCDisk::CheckDVDAndResetState())
+            if (iTRCDisk::TRCCheck())
             {
                 DVDCancel(&pfinfo->cb);
                 break;
@@ -2889,7 +2890,7 @@ static void PlayFMV(char* fname, u32 buttons, F32 time)
 
             do
             {
-                if (iTRCDisk::CheckDVDAndResetState())
+                if (iTRCDisk::TRCCheck())
                 {
                     goto superbreak;
                 }
@@ -2943,6 +2944,11 @@ U32 iFMVPlay(char* filename, U32 buttons, F32 time, bool skippable, bool lockCon
         PlayFMV(filename, buttons, time);
     }
     return 0;
+}
+
+S32 iFMVSystemInit()
+{
+    return 1;
 }
 
 void _MovieFree(void* mem)
@@ -3165,7 +3171,7 @@ U32 iFileRead(tag_xFile* file, void* buf, U32 size)
 
     while (iFileSyncAsyncReadActive)
     {
-        iTRCDisk::CheckDVDAndResetState();
+        iTRCDisk::TRCCheck();
     }
 
     return size;
@@ -3307,7 +3313,7 @@ void iEnvEndRenderFX(iEnv*)
 {
     iEnv* env = lastEnv;
 
-    if (env->fx && globalCamera && sBeginDrawFX)
+    if (lastEnv && env->fx && globalCamera && sBeginDrawFX)
     {
         RpWorldRemoveCamera(env->fx, globalCamera);
         RpWorldAddCamera(env->world, globalCamera);
@@ -3363,18 +3369,10 @@ void iEnvFree(iEnv* env)
 
 static RpAtomic* SetPipelineCB(RpAtomic* atomic, void* data)
 {
-    if (RwCameraBeginUpdate(sPipeCamera))
-    {
-        RpAtomicInstance(atomic);
-        RwCameraEndUpdate(sPipeCamera);
-    }
-
     if (data)
     {
         RpAtomicSetPipeline(atomic, (RxPipeline*)data);
     }
-
-    return atomic;
 }
 
 //                                                                                 iXF / iDraw
@@ -3572,7 +3570,7 @@ S32 iCSLoadStep(xCutscene* csn)
 
 void iCSFileClose(xCutscene* csn)
 {
-    iFileReadStop();
+    DVDCancelAllAsync(false); // TO-DO Im not sure this is right, but it matches
 
     csn->Opened = 0;
 }

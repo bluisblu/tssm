@@ -10,6 +10,7 @@ U32 iCSFileOpen(xCutscene* csn);
 void iCSFileAsyncRead(xCutscene* csn, void* dest, U32 size);
 void iCSFileAsyncSkip(xCutscene* csn, U32 amount);
 void iCSFileClose(xCutscene* csn);
+bool DVDCancelAllAsync();
 S32 iCSLoadStep(xCutscene* csn);
 
 #endif

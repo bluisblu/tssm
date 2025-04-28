@@ -105,6 +105,7 @@ extern xSndGlobals gSnd;
 void xSndSceneInit();
 void xSndResume();
 void xSndUpdate();
+void xSndMgrUpdate();
 void xSndSetEnvironmentalEffect(sound_effect effectType);
 void xSndSuspend();
 void xSndSetVol(U32 snd, F32 vol);

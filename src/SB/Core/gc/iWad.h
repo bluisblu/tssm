@@ -5,6 +5,7 @@
 
 #include "iAnim.h"
 #include "iAnimSKB.h"
+#include "iARAMTmp.h"
 #include "iCollide.h"
 #include "iCollideFast.h"
 #include "iColor.h"
@@ -39,6 +40,7 @@
 #include <limits.h>
 #include <rwcore.h>
 #include <rtslerp.h>
+#include <dolphin/os.h>
 
 void iFuncProfileFuncs(int, int, float);
 
