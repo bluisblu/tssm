@@ -24,7 +24,7 @@ void iEnvLoad(iEnv* env, const void* data, U32 datasize, S32 dataType);
 void iEnvFree(iEnv* env);
 void iEnvDefaultLighting(iEnv*);
 void iEnvLightingBasics(iEnv*, xEnvAsset*);
-void iEnvRender(iEnv* env);
+void iEnvRender(iEnv* env, bool);
 void iEnvEndRenderFX(iEnv*);
 
 #endif

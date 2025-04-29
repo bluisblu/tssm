@@ -1,110 +1,55 @@
+#ifndef XWAD2_H
+#define XWAD2_H
+
+#include "zGlobals.h"
 #include <types.h>
 #include <rpworld.h>
-#include "xWad5.h"
+#include "stdlib.h"
+#include "xString.h"
+#include "string.h"
+#include <cstring>
+#include "xIni.h"
+#include "xHudText.h"
+#include "xTextAsset.h"
+#include "xstransvc.h"
+#include "zScene.h"
+#include "zTextBox.h"
+#include "new.h"
+#include "xHudModel.h"
+#include "iMath.h"
+#include "xEvent.h"
+#include "xhipio.h"
+#include "xGroup.h"
+#include "xGrid.h"
+#include "zGrid.h"
+#include "zFX.h"
+#include "rpworld.h"
+#include "zSurface.h"
+#include "rpmatfx.h"
+#include "xFont.h"
+#include "xfog.h"
+#include "xFFX.h"
+#include "xFactory.h"
+#include "xEntMotion.h"
+#include "xEntBoulder.h"
+#include "iCollide.h"
+#include "zEntDestructObj.h"
 
-struct xLinkAsset
-{
-    U16 srcEvent;
-    U16 dstEvent;
-    U32 dstAssetID;
-    F32 param[4];
-    U32 paramWidgetAssetID;
-    U32 chkAssetID;
-};
+static st_HIPLOADDATA* HIPLCreate(const char* filename, char* dblbuf, S32 bufsize);
+static void HIPLDestroy(st_HIPLOADDATA* lddata);
+static U32 HIPLBaseSector(st_HIPLOADDATA* lddata);
+static S32 HIPLSetBypass(st_HIPLOADDATA* lddata, S32 enable, S32 use_async);
+static void HIPLSetSpot(st_HIPLOADDATA* lddata, S32 spot);
+static U32 HIPLBlockEnter(st_HIPLOADDATA* lddata);
+static void HIPLBlockExit(st_HIPLOADDATA* lddata);
+static S32 HIPLBlockRead(st_HIPLOADDATA* lddata, void* data, S32 cnt, S32 size);
+static S32 HIPLBypassRead(st_HIPLOADDATA* lddata, void* data, S32 cnt, S32 size);
+static S32 HIPLReadAsync(st_HIPLOADDATA* lddata, S32 pos, char* data, S32 cnt, S32 size);
+static en_READ_ASYNC_STATUS HIPLPollRead(st_HIPLOADDATA* lddata);
+static S32 HIPLReadBytes(st_HIPLOADDATA* lddata, char* data, S32 cnt);
+static S32 HIPLReadShorts(st_HIPLOADDATA* lddata, S16* data, S32 cnt);
+static S32 HIPLReadLongs(st_HIPLOADDATA* lddata, S32* data, S32 cnt);
+static S32 HIPLReadFloats(st_HIPLOADDATA* lddata, F32* data, S32 cnt);
+static S32 HIPLReadString(st_HIPLOADDATA* lddata, char* buf);
 
-struct xBase
-{
-    U32 id;
-    U8 baseType;
-    U8 linkCount;
-    U16 baseFlags;
-    xLinkAsset* link;
-    void (*eventFunc)(xBase*, xBase*, U32, F32*, xBase*, U32);
-};
-
-struct xBaseAsset
-{
-    U32 id;
-    U8 baseType;
-    U8 linkCount;
-    U16 baseFlags;
-};
-
-struct xEntAsset : xBaseAsset
-{
-    U8 flags;
-    U8 subtype;
-    U8 pflags;
-    U8 moreFlags;
-    U32 surfaceID;
-    xVec3 ang;
-    xVec3 pos;
-    xVec3 scale;
-    F32 redMult;
-    F32 greenMult;
-    F32 blueMult;
-    F32 seeThru;
-    F32 seeThruSpeed;
-    U32 modelInfoID;
-    U32 animListID;
-};
-
-struct xEntShadow
-{
-    xVec3 pos;
-    xVec3 vec;
-    RpAtomic* shadowModel;
-    F32 dst_cast;
-    F32 radius[2];
-    struct
-    {
-        S32 flg_castOnOneDFF : 1;
-        S32 flg_castOnAllDFF : 1;
-        S32 flg_disableEnvCast : 1;
-        S32 flg_shadowUnused : 29;
-    };
-};
-
-struct xEnt : xBase
-{
-    xEntAsset* asset;
-    U16 idx;
-    U8 flags;
-    U8 miscflags;
-    U8 subType;
-    U8 pflags;
-    U16 moreFlags;
-    struct
-    {
-        U8 _isCulled : 2;
-        U8 collisionEventReceived : 2;
-    };
-    U8 driving_count;
-    U8 num_ffx;
-    U8 collType;
-    U8 collLev;
-    U8 chkby;
-    U8 penby;
-    void (*visUpdate)(xEnt*);
-    xModelInstance* model;
-    xModelInstance* collModel;
-    xModelInstance* camcollModel;
-    void (*update)(xEnt*, xScene*, F32);
-    void (*endUpdate)(xEnt*, xScene*, F32);
-    void (*bupdate)(xEnt*, xVec3*);
-    void (*move)(xEnt*, xScene*, F32, xEntFrame*);
-    void (*render)(xEnt*);
-    xEntFrame* frame;
-    xEntCollis* collis;
-    xGridBound gridb;
-    xBound bound;
-    void (*transl)(xEnt*, xVec3*, xMat4x3*);
-    xFFX* ffx;
-    xEnt* driver;
-    xEnt* driven;
-    S32 driveMode;
-    xShadowSimpleCache* simpShadow;
-    xEntShadow* entShadow;
-    anim_coll_data* anim_coll;
-    void* user_data;
-};
+#endif

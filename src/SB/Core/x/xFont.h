@@ -25,8 +25,7 @@ struct xfont
 
     basic_rect<F32> bounds(char c) const;
     basic_rect<F32> bounds(const char* text) const;
-    basic_rect<F32> bounds(const char* text, size_t text_size, F32 max_width,
-                               size_t& size) const;
+    basic_rect<F32> bounds(const char* text, size_t text_size, F32 max_width, size_t& size) const;
     void start_render() const;
     void stop_render() const;
     void irender(const char* text, F32 x, F32 y) const;
@@ -168,8 +167,7 @@ struct xtextbox
     static tag_type* find_format_tag(const substr& s, S32& index);
     static xtextbox create();
     static xtextbox create(const xfont& font, const basic_rect<F32>& bounds, U32 flags,
-                           F32 line_space, F32 tab_stop, F32 left_indent,
-                           F32 right_indent);
+                           F32 line_space, F32 tab_stop, F32 left_indent, F32 right_indent);
 
     void set_text(const char* text);
     void set_text(const char* text, size_t text_size);
@@ -179,8 +177,7 @@ struct xtextbox
     void render(bool cache) const;
     void render(layout& l, S32 begin_jot, S32 end_jot) const;
     F32 yextent(F32 max, S32& size, bool cache) const;
-    F32 yextent(F32 max, S32& size, const layout& l, S32 begin_jot,
-                    S32 end_jot) const;
+    F32 yextent(F32 max, S32& size, const layout& l, S32 begin_jot, S32 end_jot) const;
 };
 
 struct xtextbox::layout
@@ -203,6 +200,7 @@ struct xtextbox::layout
     void merge_line(jot_line& line);
     void bound_line(jot_line& line);
     bool fit_line();
+    bool fit_line(bool);
     void next_line();
     void calc(const xtextbox& ctb, size_t start_text);
     void render(const xtextbox& ctb, S32 begin_jot, S32 end_jot);

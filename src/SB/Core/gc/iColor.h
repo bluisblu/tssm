@@ -2,6 +2,7 @@
 #define ICOLOR_H
 
 #include <types.h>
+#include "rwplcore.h"
 
 struct iColor_tag
 {
@@ -18,6 +19,15 @@ struct iColor_tag
         this->a = rhs.a;
         return *this;
     };
+};
+
+struct xColor_tag
+{
+    U8 r;
+    U8 g;
+    U8 b;
+    U8 a;
+    RwRGBA rgba;
 };
 
 #endif

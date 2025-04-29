@@ -11,6 +11,8 @@ typedef struct widget;
 
 namespace xhud
 {
+    static bool inited;
+
     struct block_allocator
     {
         U32 _block_size;
@@ -81,13 +83,25 @@ namespace xhud
             MAX_ACT
         } activity;
 
-        virtual void destroy() {}
+        virtual void destroy()
+        {
+        }
         virtual U32 type() const;
         virtual bool is(U32 id) const;
-        virtual void init() {}
-        virtual void setup() { presetup(); }
-        virtual void update(F32 dt) { updater(dt); }
-        virtual void render() {}
+        virtual void init()
+        {
+        }
+        virtual void setup()
+        {
+            presetup();
+        }
+        virtual void update(F32 dt)
+        {
+            updater(dt);
+        }
+        virtual void render()
+        {
+        }
         virtual void dispatch(xBase* b1, U32 event, const F32* toParam, xBase* b2);
 
         motive_node* _motive_top;
@@ -106,8 +120,7 @@ namespace xhud
         void destruct();
         void presetup();
         void updater(F32 dt);
-        void dispatcher(xBase*, U32, const F32*, xBase*);
-
+        void dispatcher(xBase*, U32, const F32*, xBase*, U32);
 
         void disable()
         {
@@ -116,7 +129,6 @@ namespace xhud
 
         void add_tweaks()
         {
-
         }
 
         void enable()
@@ -155,7 +167,8 @@ namespace xhud
         void* context;
         U8 inverse;
 
-        motive(F32* value, F32 delta, F32 max_offset, F32 accel, bool (*fp_update)(xhud::widget&, motive&, F32), void* context)
+        motive(F32* value, F32 delta, F32 max_offset, F32 accel,
+               bool (*fp_update)(xhud::widget&, motive&, F32), void* context)
         {
             this->value = value;
             this->delta = delta;

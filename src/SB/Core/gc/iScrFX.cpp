@@ -1,4 +1,5 @@
 #include "iScrFX.h"
+#include "rwcore.h"
 
 extern RwRaster* g_rast_gctapdance;
 extern S32 g_alreadyTriedAlloc;
