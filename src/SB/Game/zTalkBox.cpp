@@ -17,6 +17,7 @@ namespace
 
 void* ztalkbox::permit(U32 r3, U32 r4)
 {
+    return 0;
 }
 
 ztalkbox* ztalkbox::get_active()

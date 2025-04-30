@@ -1,5 +1,13 @@
 #include "zWadUI.h"
 
+// I believe this is correct?
+// Aren't these initialized to 0 if no initialization is given?
+
+zUIController* UIControl = 0;
+zUIControllerAsset* UIControlAsset = 0;
+zUIUserString* zUIString = 0;
+zUIUserStringAsset* zUIStringAsset = 0;
+
 unsigned char zUICustomConditionallyDisabled::PreRender()
 {
     return m_bCondition; // struct sees to be missing some data
@@ -84,8 +92,8 @@ void zUIController_Init(zUIController*, zUIControllerAsset*)
 
 void zUIController_Init(xBase&, xDynAsset&, unsigned long)
 {
-    zUIController* UIControl;
-    zUIControllerAsset* UIControlAsset;
+    zUIController* UIControl = 0;
+    zUIControllerAsset* UIControlAsset = 0;
     zUIController_Init(UIControl, UIControlAsset);
 }
 
@@ -99,8 +107,8 @@ void zUIUserString_Init(zUIUserString*, zUIUserStringAsset*)
 
 void zUIUserString_Init(xBase&, xDynAsset&, unsigned long)
 {
-    zUIUserString* zUIString;
-    zUIUserStringAsset* zUIStringAsset;
+    zUIUserString* zUIString = 0;
+    zUIUserStringAsset* zUIStringAsset = 0;
     zUIUserString_Init(zUIString, zUIStringAsset);
 }
 

@@ -3373,6 +3373,7 @@ static RpAtomic* SetPipelineCB(RpAtomic* atomic, void* data)
     {
         return RpAtomicSetPipeline(atomic, (RxPipeline*)data);
     }
+    return 0;
 }
 
 //                                                                                 iXF / iDraw
