@@ -2931,7 +2931,7 @@ static void PlayFMV(char* fname, u32 buttons, F32 time)
     xPadUpdate(globals.currentActivePad, 0.0f);
 }
 
-U32 iFMVPlay(char* filename, U32 buttons, F32 time, bool skippable, bool lockController)
+U32 iFMVPlay(char* filename, U32 buttons, F32 time, U32 unk0, bool skippable, bool lockController)
 {
     if (filename == NULL)
     {
@@ -3371,8 +3371,9 @@ static RpAtomic* SetPipelineCB(RpAtomic* atomic, void* data)
 {
     if (data)
     {
-        RpAtomicSetPipeline(atomic, (RxPipeline*)data);
+        return RpAtomicSetPipeline(atomic, (RxPipeline*)data);
     }
+    return 0;
 }
 
 //                                                                                 iXF / iDraw

@@ -33,20 +33,23 @@ struct ztaskbox : xBase
 
     struct callback
     {
-        virtual void on_talk_start();
-        virtual void on_talk_stop();
     };
 
-    struct talk_callback : ztalkbox::callback
+    struct talk_callback : callback
     {
+        enum answer_enum
+        {
+            ANSWER_CONTINUE,
+            ANSWER_YES,
+            ANSWER_NO
+        };
         ztaskbox* task;
-        ztalkbox::answer_enum answer;
+        answer_enum answer;
 
-        talk_callback();
-        void reset(ztaskbox& task);
         void on_start();
         void on_stop();
-        void on_answer(ztalkbox::answer_enum answer);
+        void on_answer(answer_enum answer);
+        void reset(ztaskbox& task);
     };
 
     struct asset_type : xDynAsset
@@ -67,7 +70,7 @@ struct ztaskbox : xBase
     ztaskbox* current;
 
     void on_talk_start();
-    void on_talk_stop(ztalkbox::answer_enum answer);
+    void on_talk_stop(talk_callback::answer_enum answer);
     void set_state(state_enum state);
     void set_callback(callback* cb);
     void stop_talk();

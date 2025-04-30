@@ -82,7 +82,7 @@ void ztaskbox::start_talk(zNPCCommon* npc)
 void ztaskbox::talk_callback::reset(ztaskbox& task)
 {
     this->task = &task;
-    this->answer = ztalkbox::ANSWER_CONTINUE;
+    this->answer = ANSWER_CONTINUE;
 }
 
 void ztaskbox::stop_talk()
@@ -200,10 +200,6 @@ void ztaskbox::init()
     // STUFF.
 }
 
-ztaskbox::talk_callback::talk_callback()
-{
-}
-
 void ztaskbox::load(xBase& data, xDynAsset& asset, size_t num)
 {
     ((ztaskbox&)data).load((asset_type&)asset);
@@ -215,14 +211,6 @@ bool ztaskbox::exists(state_enum stage)
     return state != STATE_BEGIN && xSTFindAsset(state, NULL);
 }
 
-void ztaskbox::on_talk_start()
-{
-    if (this->cb != NULL)
-    {
-        cb->on_talk_start();
-    }
-}
-
 void ztaskbox::talk_callback::on_start()
 {
     this->task->on_talk_start();
@@ -231,9 +219,4 @@ void ztaskbox::talk_callback::on_start()
 void ztaskbox::talk_callback::on_stop()
 {
     this->task->on_talk_stop(answer);
-}
-
-void ztaskbox::talk_callback::on_answer(ztalkbox::answer_enum answer)
-{
-    this->answer = answer;
 }

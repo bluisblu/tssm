@@ -132,44 +132,4 @@ inline xGridBound* xGridIterNextCell(xGridIterator& it)
     return NULL;
 }
 
-inline void xGridIterClose(xGridIterator& it)
-{
-    if (it.listhead)
-    {
-        gGridIterActive--;
-
-        if (it.delfound && !gGridIterActive)
-        {
-            xGridBound* cell = *it.listhead;
-            xGridBound** head = it.listhead;
-
-            while (cell)
-            {
-                if (cell->deleted)
-                {
-                    *head = cell->next;
-
-                    cell->next = NULL;
-                    cell->head = NULL;
-                    cell->ingrid = 0;
-                    cell->deleted = 0;
-                    cell->gx = 0xFFFF;
-                    cell->gz = 0xFFFF;
-
-                    cell = *head;
-                }
-                else
-                {
-                    head = &cell->next;
-                    cell = cell->next;
-                }
-            }
-        }
-
-        it.listhead = NULL;
-        it.curcell = NULL;
-        it.delfound = 0;
-    }
-}
-
 #endif

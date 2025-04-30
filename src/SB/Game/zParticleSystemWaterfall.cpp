@@ -1,16 +1,18 @@
 
 #include "zParticleSystemWaterfall.h"
 
+zParticleGenerator* pGen = 0;
+
 void zParticleGeneratorWaterfallSplash::deactivate()
 {
-    zParticleGenerator* pGen;
+    zParticleGenerator* pGen = 0;
     pGen->deactivate();
     locator.deactivate();
 }
 
 void zParticleGeneratorWaterfallSplash::activate()
 {
-    zParticleGenerator* pGen;
+    zParticleGenerator* pGen = 0;
     pGen->activate();
     locator.activate(*asset, attach_to); // Make const
 }
@@ -39,14 +41,14 @@ void zParticleSystemWaterfallSplash::scene_enter()
 
 void zParticleGeneratorWaterfallMist::deactivate()
 {
-    zParticleGenerator* pGen;
+    zParticleGenerator* pGen = 0;
     pGen->deactivate();
     locator.deactivate();
 }
 
 void zParticleGeneratorWaterfallMist::activate()
 {
-    zParticleGenerator* pGen;
+    zParticleGenerator* pGen = 0;
     pGen->activate();
     locator.activate(*asset, attach_to); // Make const
 }
@@ -75,14 +77,14 @@ void zParticleSystemWaterfallMist::scene_enter()
 
 void zParticleGeneratorWaterfall::deactivate()
 {
-    zParticleGenerator* pGen;
+    zParticleGenerator* pGen = 0;
     pGen->deactivate();
     locator.deactivate();
 }
 
 void zParticleGeneratorWaterfall::activate()
 {
-    zParticleGenerator* pGen;
+    zParticleGenerator* pGen = 0;
     pGen->activate();
     locator.activate(*asset, attach_to); // Make const
 }

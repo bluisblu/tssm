@@ -1,99 +1,151 @@
 #ifndef ZTALKBOX_H
 #define ZTALKBOX_H
 
+#include "zEntPlayerOOBState.h"
 #include "zTextBox.h"
-//#include "zNPCTypeCommon.h"
 
 #include "xScene.h"
 #include "zNMECommon.h"
+#include "xBase.h"
+
+enum state_enum
+{
+
+    BEGIN_STATE,
+    STATE_START,
+    STATE_NEXT,
+    STATE_WAIT,
+    STATE_STOP,
+    END_STATE,
+    MAX_STATE = 0x5,
+    STATE_INVALID = 0xffffffff,
+};
 
 // DIRECTLY PORTED FROM BFBB
 
+struct xEntNPCAssetIN : xEntNPCAsset
+{
+    U32 navigation_mesh_id;
+    U32 settings;
+};
+
+// Lives here temporarily
+struct base : xEnt, xFactoryInst
+{
+    S16 bound_bone;
+    U16 sound_id_offset;
+    U16 global_parameters_size;
+    U16 local_parameters_size;
+    U32 type;
+    xModelAssetParam* global_parameters;
+    xModelAssetParam* local_parameters;
+    union
+    {
+        xMovePoint* movepoint;
+        U32 movepoint_asset_id;
+    };
+    xEntNPCAssetIN* npc_asset;
+    xModelAssetInfo* model_asset;
+    F32 shadow_strength;
+    F32 shadow_cache_fudge_factor;
+    xVec3 bound_offset;
+};
+
 struct ztalkbox : xBase
 {
-    struct asset_type : xDynAsset
+    enum answer_enum
     {
-        U32 dialog_box;
-        U32 prompt_box;
-        U32 quit_box;
-        bool trap : 8;
-        bool pause : 8;
-        bool allow_quit : 8;
-        bool trigger_pads : 8;
-        bool page : 8;
-        bool show : 8;
-        bool hide : 8;
-        bool audio_effect : 8;
-        U32 teleport;
-        struct
+        ANSWER_CONTINUE,
+        ANSWER_YES,
+        ANSWER_NO
+    };
+
+    struct _class_8
+    {
+        U8 visible : 1;
+    };
+
+    struct asset_type_1 : xDynAsset
+    {
+        struct _class_3
         {
-            struct
+            struct _class_4
             {
-                bool time : 8;
-                bool prompt : 8;
-                bool sound : 8;
-                bool event : 8;
-            } type;
+                U8 time : 8;
+                U8 prompt : 8;
+                U8 sound : 8;
+                U8 event : 8;
+            };
+            _class_4 type;
             F32 delay;
             S32 which_event;
-        } auto_wait;
-        struct
+        };
+
+        struct _class_11
         {
             U32 skip;
             U32 noskip;
             U32 quit;
             U32 noquit;
             U32 yesno;
-        } prompt;
+        };
+
+        U32 dialog_box;
+        U32 prompt_box;
+        U32 quit_box;
+        U8 trap : 8;
+        U8 pause : 8;
+        U8 allow_quit : 8;
+        U8 trigger_pads : 8;
+        U8 page : 8;
+        U8 show : 8;
+        U8 hide : 8;
+        U8 audio_effect : 8;
+        U32 teleport;
+        _class_3 auto_wait;
+        _class_11 prompt;
     };
 
-    enum answer_enum
+    struct _class_16
     {
-        ANSWER_CONTINUE,
-        ANSWER_YES,
-        ANSWER_NO,
-        ANSWER_3,
+        char* skip; // originally int8*
+        char* noskip;
+        char* quit;
+        char* noquit;
+        char* yesno;
     };
 
     struct callback
     {
-        callback();
-        virtual void on_signal(U32);
-        virtual void on_start();
-        virtual void on_stop();
-        virtual void on_answer(answer_enum);
     };
 
-    struct
-    {
-        bool visible : 1;
-    } flag;
-    asset_type* asset;
+    _class_8 flag;
+    asset_type_1* asset;
     ztextbox* dialog_box;
     ztextbox* prompt_box;
     ztextbox* quit_box;
-    struct
-    {
-        const char* skip;
-        const char* noskip;
-        const char* quit;
-        const char* noquit;
-        const char* yesno;
-    } prompt;
-    zNPCCommon* npc;
+    _class_16 prompt;
+    U32 triggerPads;
+    base* npc;
 
-    static void init();
-    static void load(xBase& data, xDynAsset& asset, size_t);
-    static void update_all(xScene& s, F32 dt);
-    static void render_all();
-    static void reset_all();
-    static void permit(U32 add_flags, U32 remove_flags);
-
-    static ztalkbox* get_active();
-    void start_talk(U32 textID, callback*, zNPCCommon*); // FIXME: params not verified
+    void* permit(unsigned int, unsigned int);
+    ztalkbox* get_active();
+    void MasterLoveSlave(xBase* slave, S32 starting);
+    void hide();
+    void show();
     void stop_talk();
+    void start_talk(U32 text_id, callback* cb, base* npc);
+    void start_talk(char* s, callback* cb, base* npc);
+    void set_text(U32 id);
+    void set_text(char* s);
+    void load(asset_type_1& a);
+};
 
-    void set_text(U32 textID);
+struct state_type
+{
+    state_enum type;
+
+    void start();
 };
 
 #endif

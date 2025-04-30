@@ -29,7 +29,8 @@ struct xCollis
     U32 oid;
     void* optr;
     xModelInstance* mptr;
-    F32 dist; // 0x10
+    F32 dist;
+    F32 test_dist;
     xVec3 norm;
     xVec3 tohit;
     xVec3 depen;

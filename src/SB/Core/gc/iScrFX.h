@@ -3,21 +3,30 @@
 #define ISCRFX_H
 
 #include <rwcore.h>
+#include <rwplcore.h>
 #include <types.h>
+#include "xMath3.h"
 
-// PORTED DIRECTLY FROM BFBB
+struct iScrFxLensFlare
+{
+    xVec3 pos;
+    F32 dist2;
+    xVec3 at;
+    void* source;
+    F32 intensity;
+    F32 attenuatedIntensity;
+    U32 flags;
+    U32 padding;
+};
 
 struct _iMotionBlurData
 {
     S32 motionBlurAlpha;
     RwRaster* motionBlurFrontBuffer;
-    // RwSky2DVertex vertex[4]; This doesn't seem right... Due to how the data is
-    // used, it only makes sense for this to be 96 only.
-    U8 vertex[96];
+    RwSky2DVertex vertex[4];
     U16 index[6];
     U32 w;
     U32 h;
-    U8 unk[10]; // There is something here to make this structure 0x88.
 };
 
 void iScrFxInit();

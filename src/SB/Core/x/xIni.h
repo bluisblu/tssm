@@ -29,9 +29,9 @@ struct xIniFile
 
 xIniFile* xIniParse(char* buf, S32 len);
 void xIniDestroy(xIniFile* ini);
-S32 xIniGetIndex(xIniFile* ini, char* tok);
+S32 xIniGetIndex(xIniFile* ini, const char* tok);
 S32 xIniGetInt(xIniFile* ini, char* tok, S32 def);
 F32 xIniGetFloat(xIniFile* ini, char* tok, F32 def);
-char* xIniGetString(xIniFile* ini, char* tok, char* def);
+const char* xIniGetString(xIniFile* ini, const char* tok, const char* def);
 
 #endif
