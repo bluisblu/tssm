@@ -568,6 +568,7 @@ static st_STRAN_SCENE* XST_nth_locked(S32 index)
 
 char* xST_xAssetID_HIPFullPath(U32 aid)
 {
+    return 0;
 }
 
 // Equivalent: scheduling is off with the copy of tocinfo to ainfo
