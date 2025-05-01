@@ -1788,10 +1788,9 @@ S32 PKR_PkgHasAsset(st_PACKER_READ_DATA* pr, U32 aid)
     return rc;
 }
 
-S32 PKR_GetAssetInfoByType(st_PACKER_READ_DATA* pr, U32 type, S32 idx,
-                           st_PKR_ASSET_TOCINFO* tocainfo)
+S32 PKR_GetAssetInfoByType(st_PACKER_READ_DATA* pr, U32 type, S32 idx, PKRAssetTOCInfo* tocainfo)
 {
-    memset(tocainfo, 0, sizeof(st_PKR_ASSET_TOCINFO));
+    memset(tocainfo, 0, sizeof(PKRAssetTOCInfo));
     if (idx < 0)
     {
         idx = 0;
@@ -1820,9 +1819,9 @@ S32 PKR_GetAssetInfoByType(st_PACKER_READ_DATA* pr, U32 type, S32 idx,
     return 1;
 }
 
-S32 PKR_GetAssetInfo(st_PACKER_READ_DATA* pr, U32 aid, st_PKR_ASSET_TOCINFO* tocainfo)
+S32 PKR_GetAssetInfo(st_PACKER_READ_DATA* pr, U32 aid, PKRAssetTOCInfo* tocainfo)
 {
-    memset(tocainfo, 0, sizeof(st_PKR_ASSET_TOCINFO));
+    memset(tocainfo, 0, sizeof(PKRAssetTOCInfo));
     S32 idx = XOrdLookup(&pr->asstoc, (void*)aid, OrdTest_R_AssetID);
     if (idx >= 0)
     {
@@ -2003,7 +2002,7 @@ void PKR_xform_asset(st_PACKER_ATOC_NODE* assnode, S32 dumpable_layer)
         }
     }
 
-    st_PACKER_ASSETTYPE* atype = assnode->typeref;
+    PKRAssetType* atype = assnode->typeref;
     if (atype == NULL)
     {
         assnode->Name();
@@ -2401,7 +2400,7 @@ void PKR_ReadDone(st_PACKER_READ_DATA* pr)
 }
 
 st_PACKER_READ_DATA* PKR_ReadInit(void* userdata, const char* pkgfile, U32 opts, S32* cltver,
-                                  st_PACKER_ASSETTYPE* typelist, int)
+                                  PKRAssetType* typelist, int)
 {
     // I'm pretty sure this is just a pointer to an array on the heap
     // But it needs to be an array of pointers to generate correct code ???

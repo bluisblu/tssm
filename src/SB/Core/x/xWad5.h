@@ -1,33 +1,23 @@
+#ifndef XWAD5_H
+#define XWAD5_H
+
 #include <types.h>
-#include "xWad3.h"
+#include "zGlobals.h"
+#include "xVec3.h"
+#include "stdlib.h"
+#include <types.h>
+#include "fastmath.h"
+#include "xVolume.h"
+#include "xutil.h"
+#include "xUpdateCull.h"
+#include "xTRC.h"
+#include "zGameState.h"
+#include "xTimer.h"
+#include "xSurface.h"
+#include "xstransvc.h"
+#include "xpkrsvc.h"
+#include "xSkyDome.h"
+#include "iModel.h"
+#include "xserializer.h"
 
-struct xShadowSimplePoly
-{
-    xVec3 vert[3];
-    xVec3 norm;
-};
-
-struct xShadowSimpleCache
-{
-    U16 flags;
-    U8 alpha;
-    U8 pad;
-    U32 collPriority;
-    xVec3 pos;
-    xVec3 at;
-    F32 tol_movement;
-    F32 radiusOptional;
-    xEnt* castOnEnt;
-    xShadowSimplePoly poly;
-    F32 envHeight;
-    F32 shadowHeight;
-    union
-    {
-        U32 raster;
-        RwRaster* ptr_raster;
-    };
-    F32 dydx;
-    F32 dydz;
-    F32 corner[4];
-    void* collSkipsItem;
-};
+#endif
