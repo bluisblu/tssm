@@ -31,6 +31,43 @@ struct xMemBlkInfo_tag
     U32 total;
 };
 
+struct xMemFreeLink
+{
+    xMemFreeLink* next;
+    void (*func)(void*);
+    void* param;
+};
+
+struct xHeapState
+{
+    U32 curr;
+    U16 blk_ct;
+    U16 pad;
+    U32 used;
+    U32 wasted;
+    xMemFreeLink* free_funcs;
+};
+
+struct xMemBlock
+{
+    U32 addr;
+    U32 size;
+    S32 align;
+};
+
+struct xMemHeap
+{
+    U32 flags;
+    U32 hard_base;
+    U32 size;
+    S16 opp_heap[2];
+    xHeapState state[12];
+    U16 state_idx;
+    U16 max_blks;
+    xMemBlock* blk;
+    xMemBlock* lastblk;
+};
+
 struct xMemHeap_tag
 {
     U32 flags;
@@ -102,8 +139,8 @@ S32 xMemGetBase(U32 heapID);
 void xMemRegisterBaseNotifyFunc(void (*func)());
 S32 xMemGetBase();
 void xMemPoolAddElements(xMemPool* pool, void* buffer, U32 count);
-void xMemPoolSetup(xMemPool* pool, void* buffer, U32 nextOffset, U32 flags,
-                   xMemPoolInitCB initCB, U32 size, U32 count, U32 numRealloc);
+void xMemPoolSetup(xMemPool* pool, void* buffer, U32 nextOffset, U32 flags, xMemPoolInitCB initCB,
+                   U32 size, U32 count, U32 numRealloc);
 void* xMemPoolAlloc(xMemPool* pool);
 void xMemPoolFree(xMemPool* pool, void* data);
 

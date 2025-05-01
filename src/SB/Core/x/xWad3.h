@@ -1,55 +1,22 @@
+#ifndef XWAD3_H
+#define XWAD3_H
+
+#include "stdlib.h"
 #include <types.h>
 #include <rpworld.h>
 #include "rwcore.h"
+#include "xModel.h"
+#include "iModel.h"
+#include "xordarray.h"
+#include "xMovePoint.h"
+#include "xScene.h"
+#include "xMorph.h"
+#include "xModelBucket.h"
+#include "xMemMgr.h"
+#include "iSystem.h"
+#include "xCamera.h"
+#include "xMathInlines.h"
 
-struct xVec3
-{
-    union
-    {
-        RwV3d m_RwV3d;
-        F32 x;
-    };
-    F32 y;
-    F32 z;
-    F32 a[3];
-};
+F32 xVec3Hdng(xVec3* a, const xVec3* b, const xVec3* c);
 
-struct xModelInstance
-{
-    xModelInstance* Next;
-    xModelInstance* Parent;
-    xModelPool* Pool;
-    xAnimPlay* Anim;
-    RpAtomic* Data;
-    xModelPipe Pipe;
-    U8 InFrustum;
-    U8 TrueClip;
-    S8 sortBias;
-    U8 modelpad;
-    F32 RedMultiplier;
-    F32 GreenMultiplier;
-    F32 BlueMultiplier;
-    F32 Alpha;
-    F32 FadeStart;
-    F32 FadeEnd;
-    xSurface* Surf;
-    xModelBucket** Bucket;
-    xModelInstance* BucketNext;
-    xLightKit* LightKit;
-    void* Object;
-    U16 Flags;
-    U8 BoneCount;
-    U8 BoneIndex;
-    U8* BoneRemap;
-    RwMatrixTag* Mat;
-    xVec3 Scale;
-    xBox animBound;
-    xBox combinedAnimBound;
-    U32 modelID;
-    U32 shadowID;
-    RpAtomic* shadowmapAtomic;
-    struct
-    {
-        xVec3* verts;
-    } anim_coll;
-};
+#endif
