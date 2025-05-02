@@ -2,6 +2,7 @@
 #define ZUIFONT_H
 
 #include "zWadUI.h"
+#include "zUI.h"
 
 struct zUIFontAsset : zUIAsset
 {
