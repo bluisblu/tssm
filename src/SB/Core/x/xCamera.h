@@ -7,6 +7,7 @@
 #include "xMath3.h"
 #include "xBound.h"
 #include "xMath2.h"
+#include "xMathInlines.h"
 
 #include <rwcore.h>
 
@@ -223,14 +224,14 @@ void xCameraEnd(xCamera* cam, F32 seconds, S32 update_scrn_fx);
 void xCameraShowRaster(xCamera* cam);
 F32 xCameraGetFOV(const xCamera* cam);
 void xCameraSetFOV(xCamera* cam, F32 fov);
-void xCameraMove(xCamera* cam, U32 flags, F32 dgoal, F32 hgoal, F32 pgoal,
-                 F32 tm, F32 tm_acc, F32 tm_dec);
+void xCameraMove(xCamera* cam, U32 flags, F32 dgoal, F32 hgoal, F32 pgoal, F32 tm, F32 tm_acc,
+                 F32 tm_dec);
 void xCameraMove(xCamera* cam, const xVec3& loc);
 void xCameraRotate(xCamera* cam, const xMat3x3& m, F32 time, F32 accel, F32 decl);
 F32 xCameraGetFOV(const xCamera* cam);
 void xCameraDoCollisions(S32 do_collis, S32 owner);
 void xCameraSetTargetMatrix(xCamera* cam, xMat4x3* mat);
-void xCameraFXShake(F32 maxTime, F32 magnitude, F32 cycleMax, F32 rotate_magnitude,
-                    F32 radius, xVec3* epicenter, xVec3* player);
+void xCameraFXShake(F32 maxTime, F32 magnitude, F32 cycleMax, F32 rotate_magnitude, F32 radius,
+                    xVec3* epicenter, xVec3* player);
 
 #endif

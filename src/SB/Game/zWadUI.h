@@ -10,6 +10,8 @@
 #include "xCM.h"
 #include "xGroup.h"
 #include "zTextbox.h"
+#include "zVar.h"
+#include "zConditional.h"
 
 struct zUIAsset : xDynAsset
 {
@@ -83,24 +85,6 @@ struct zUICustom
     void Init();
     U8 IsSystem();
     U8 IsSignalAllowed();
-};
-
-struct zCondAsset : xBaseAsset
-{
-    U32 constNum;
-    U32 expr1;
-    U32 op;
-    U32 value_asset;
-};
-
-struct zVarEntry
-{
-};
-
-struct _zConditional : xBase
-{
-    zCondAsset* asset;
-    zVarEntry* varEntry;
 };
 
 struct zUICustomConditionallyDisabled : zUICustom

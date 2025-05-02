@@ -31,6 +31,17 @@ struct zScene : xScene
     _zEnv* zen;
 };
 
+struct zSceneObjectInstanceDesc
+{
+    const char* name;
+    S32 baseType;
+    U32 assetType;
+    U32 sizeRuntime;
+    U32 (*func)(zScene* s, zSceneObjectInstanceDesc* desc, U32 base_idx);
+    void (*objectInitFunc)(void* ent, void* asset);
+    U32 (*querySubObjects)(void*);
+};
+
 extern _tagClimate gClimate;
 extern _zEnv* gCurEnv;
 extern U32 gTransitionSceneID;
