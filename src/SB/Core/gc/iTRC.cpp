@@ -10,6 +10,7 @@
 #include <dolphin/mtx.h>
 #include <dolphin/vi/vifuncs.h>
 #include <string.h>
+#include <PowerPC_EABI_Support/MSL_C/MSL_Common/strtoul.h>
 #include <types.h>
 
 #define FONT_MATRIX_ID 0x1E

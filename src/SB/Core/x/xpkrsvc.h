@@ -2,7 +2,7 @@
 #define XPKRSVC_H
 
 #include <types.h>
-#include <time.h>
+#include "PowerPC_EABI_Support\MSL_C\MSL_Common\time.h"
 
 #include "xhipio.h"
 #include "xordarray.h"

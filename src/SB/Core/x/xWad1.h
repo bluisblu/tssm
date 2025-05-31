@@ -1,6 +1,11 @@
 #ifndef XWAD1_H
 #define XWAD1_H
 
+#include <PowerPC_EABI_Support\MSL_C\MSL_Common\stdlib.h>
+#include <stdio.h>
+#include <PowerPC_EABI_Support\MSL_C\MSL_Common\cmath>
+#include <PowerPC_EABI_Support\MSL_C\MSL_Common\cstring>
+
 #include "zGlobals.h"
 #include "xCutscene.h"
 #include "iCutscene.h"
@@ -21,7 +26,6 @@
 #include "xAnim.h"
 #include "iAnim.h"
 #include "iModel.h"
-#include "stdlib.h"
 #include "xMorph.h"
 #include "iCamera.h"
 #include "iScrFX.h"

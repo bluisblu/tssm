@@ -18,7 +18,11 @@
     "*.inc": "c",
     ".clangd": "yaml",
     "cstring": "cpp",
-    "cmath": "cpp"
+    "cmath": "cpp",
+    "__gx.h": "c",
+    "gxenum.h": "c",
+    "gxmanage.h": "c",
+    "__ax.h": "c"
   },
   // Disable C/C++ IntelliSense, use clangd instead
   "C_Cpp.intelliSenseEngine": "default",

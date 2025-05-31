@@ -9,8 +9,8 @@
 
 #include "iMath.h"
 
-#include <cmath>
-#include <cstring>
+#include <PowerPC_EABI_Support\MSL_C\MSL_Common\cmath>
+#include <PowerPC_EABI_Support\MSL_C\MSL_Common\cstring>
 
 struct cameraFXShake
 {

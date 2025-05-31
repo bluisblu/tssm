@@ -1,6 +1,8 @@
 #ifndef ZWAD3_H
 #define ZWAD3_H
 
+#include <PowerPC_EABI_Support\MSL_C\MSL_Common/printf.h>
+
 #include "zGlobals.h"
 #include "xString.h"
 #include "string.h"
