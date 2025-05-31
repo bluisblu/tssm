@@ -1,13 +1,14 @@
 #include "xWad1.h"
 #include "dolphin/types.h"
 #include "types.h"
+#include <PowerPC_EABI_Support\include\math.h>
 
 //                                           xCutscene
 
 extern xCutscene sActiveCutscene;
 extern xCutsceneInfo* sCutTocInfo;
 extern U32 sCutTocCount;
-extern void* RwEngineInstance;
+//extern void* RwEngineInstance;
 extern xModelInstance sCutsceneFakeModel[8];
 
 extern F32 _672; // 1.0
@@ -2023,7 +2024,7 @@ void xAnimFileEval(xAnimFile* data, F32 time, F32* bilinear, U32 flags, xVec3* t
         for (i = 0; i < 2; ++i)
         {
             F32 f30 = CLAMP(bilinear[i], 0.0f, data->NumAnims[i] - 1);
-            f32 t = std::floorf(f30);
+            F32 t = std::floorf(f30);
             bilerp[i] = f30 - t;
             biindex[i] = t;
             biplus[i] = MIN(biindex[i] + 1, data->NumAnims[i]);

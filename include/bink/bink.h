@@ -1,7 +1,7 @@
 #ifndef __BINK_H__
 #define __BINK_H__
 
-#include <size_t.h>
+#include <PowerPC_EABI_Support\MSL_C\MSL_Common\size_t.h>
 
 #define BINKSURFACE8P 0
 #define BINKSURFACE24 1
@@ -38,7 +38,18 @@ struct BINK
 
 typedef struct BINK* HBINK;
 
-struct RAD3DIMAGE;
+struct RAD3DIMAGE
+{
+    int a;
+    int b;
+    unsigned int c;
+    int d;
+    int e;
+    void* f;
+    int g;
+    int h;
+};
+
 typedef struct RAD3DIMAGE* HRAD3DIMAGE;
 
 #ifdef __cplusplus

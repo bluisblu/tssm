@@ -9,6 +9,7 @@
 typedef long RwFixed;
 typedef int RwInt32;
 typedef unsigned int RwUInt32;
+
 typedef short RwInt16;
 typedef unsigned short RwUInt16;
 typedef unsigned char RwUInt8;
@@ -1212,7 +1213,7 @@ struct RwChunkHeaderInfo
 {
     RwUInt32 type; /**< chunk ID - see \ref RwStreamFindChunk */
     RwUInt32 length; /**< length of the chunk data in bytes */
-    RwUInt32 version; /**< version of the chunk data. 
+    RwUInt32 version; /**< version of the chunk data.
                          *   See \ref RwEngineGetVersion. */
     RwUInt32 buildNum; /**< build number of the RenderWare libraries
                          *   previously used to stream out the data */
@@ -1250,7 +1251,7 @@ struct RwSky2DVertex
 extern "C" {
 #endif
 
-extern void* RwEngineInstance;
+extern RwGlobals* RwEngineInstance;
 
 extern RwStream* _rwStreamWriteVersionedChunkHeader(RwStream* stream, RwInt32 type, RwInt32 size,
                                                     RwUInt32 version, RwUInt32 buildNum);

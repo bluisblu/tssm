@@ -2,6 +2,8 @@
 #define IWAD_H
 
 #include "../src/sb/game/zGlobals.h"
+#include <PowerPC_EABI_Support\MSL_C\MSL_Common/printf.h>
+#include <PowerPC_EABI_Support\MSL_C\MSL_Common\cmath>
 
 #include "iAnim.h"
 #include "iAnimSKB.h"
