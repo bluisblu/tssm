@@ -20,7 +20,7 @@ struct xModelPool
     xModelInstance* List;
 };
 
-struct xModelInstance
+struct xModelInstance // NEEDS UPDATED WITH TSSM DWARF
 {
     xModelInstance* Next;
     xModelInstance* Parent;

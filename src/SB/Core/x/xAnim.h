@@ -65,7 +65,7 @@ struct xAnimState
     F32 Speed;
     xAnimFile* Data;
     xAnimEffect* Effects;
-    
+
     // 0x20
     xAnimTransitionList* Default;
     xAnimTransitionList* List;
@@ -177,17 +177,18 @@ struct xAnimPlay
     void (*BeforeAnimMatrices)(xAnimPlay*, xQuat*, xVec3*, S32);
 };
 
-class AnimTableList {  // size: 0xC
+class AnimTableList
+{ // size: 0xC
 public:
-    char * name; // offset 0x0, size 0x4
-    class xAnimTable * (* constructor)(); // offset 0x4, size 0x4
+    char* name; // offset 0x0, size 0x4
+    class xAnimTable* (*constructor)(); // offset 0x4, size 0x4
     unsigned int id; // offset 0x8, size 0x4
 };
 
 void xAnimInit();
 void xAnimTempTransitionInit(U32 count);
 xAnimFile* xAnimFileNew(void* rawData, const char* name, U32 flags, xAnimFile** linkedList);
-xAnimTable* xAnimTableNew(const char* name, xAnimTable** linkedList, U32 userFlags);
+xAnimTable* xAnimTableNew(const char* name, U32 userFlags);
 xAnimState* xAnimTableNewState(xAnimTable* table, const char* name, U32 flags, U32 userFlags,
                                F32 speed, F32* boneBlend, F32* timeSnap, F32 fadeRecip,
                                U16* fadeOffset, void* callbackData,
@@ -224,6 +225,5 @@ inline F32 xAnimFileRawTime(xAnimFile* data, float time)
     }
     return data->TimeOffset + time;
 }
-
 
 #endif
