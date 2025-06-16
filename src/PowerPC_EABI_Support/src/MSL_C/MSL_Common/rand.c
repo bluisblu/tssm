@@ -8,7 +8,7 @@ int rand()
     return ((next >> 16) & 0x7fff);
 }
 
-void srand(u32 seed)
+inline void srand(u32 seed)
 {
     next = seed;
 }

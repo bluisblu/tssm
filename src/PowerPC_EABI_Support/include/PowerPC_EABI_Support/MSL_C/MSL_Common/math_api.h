@@ -31,12 +31,15 @@ MATH_INLINE float cosf(float __x)
     return cos((double)__x);
 }
 
-MATH_INLINE float atanf(float __x)
+// The 3 inlines below were originally MATH_INLINE
+// Changed to correct issues. Change back if needed
+
+inline float atanf(float __x)
 {
     return atan((double)__x);
 }
 
-MATH_INLINE int __fpclassifyf(f32 x)
+inline int __fpclassifyf(f32 x)
 {
     switch ((*(s32*)&x) & 0x7f800000)
     {
@@ -60,7 +63,7 @@ MATH_INLINE int __fpclassifyf(f32 x)
     return 4;
 }
 
-MATH_INLINE int __fpclassifyd(f64 x)
+inline int __fpclassifyd(f64 x)
 {
     switch (__HI(x) & 0x7ff00000)
     {

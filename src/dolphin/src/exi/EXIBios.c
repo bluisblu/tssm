@@ -2,7 +2,7 @@
 #include "dolphin/hw_regs.h"
 
 static const char* __EXIVersion =
-    "<< Dolphin SDK - EXI\trelease build: Apr 17 2003 12:33:17 (0x2301) >>";
+    "<< Dolphin SDK - EXI\trelease build: Mar 11 2003 11:19:00 (0x2301) >>";
 
 #define MAX_DEV 3
 #define MAX_CHAN 3

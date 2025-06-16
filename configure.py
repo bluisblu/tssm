@@ -475,33 +475,33 @@ config.libs = [
             Object(NonMatching, "dolphin/src/axfx/reverb_hi.c"),
             Object(NonMatching, "dolphin/src/axfx/reverb_std.c"),
             Object(NonMatching, "dolphin/src/axfx/chorus.c"),
-            Object(NonMatching, "dolphin/src/axfx/delay.c"),
-            Object(NonMatching, "dolphin/src/axfx/axfx.c"),
+            Object(Matching, "dolphin/src/axfx/delay.c"),
+            Object(Matching, "dolphin/src/axfx/axfx.c"),
             Object(NonMatching, "dolphin/src/axfx/reverb_hi_4ch.c"),
         ]
     ),
     DolphinLib(
         "base",
         [
-            Object(NonMatching, "dolphin/src/base/PPCArch.c")
+            Object(Matching, "dolphin/src/base/PPCArch.c")
         ]        
     ),
     DolphinLib(
         "card",
         [
-            Object(NonMatching, "dolphin/src/card/CARDBios.c"),
+            Object(Matching, "dolphin/src/card/CARDBios.c"),
             Object(NonMatching, "dolphin/src/card/CARDUnlock.c"),
-            Object(NonMatching, "dolphin/src/card/CARDRdwr.c"),
-            Object(NonMatching, "dolphin/src/card/CARDBlock.c"),
-            Object(NonMatching, "dolphin/src/card/CARDDir.c"),
-            Object(NonMatching, "dolphin/src/card/CARDCheck.c"),
-            Object(NonMatching, "dolphin/src/card/CARDMount.c"),
-            Object(NonMatching, "dolphin/src/card/CARDFormat.c"),
+            Object(Matching, "dolphin/src/card/CARDRdwr.c"),
+            Object(Matching, "dolphin/src/card/CARDBlock.c"),
+            Object(Matching, "dolphin/src/card/CARDDir.c"),
+            Object(Matching, "dolphin/src/card/CARDCheck.c"),
+            Object(Matching, "dolphin/src/card/CARDMount.c"),
+            Object(Matching, "dolphin/src/card/CARDFormat.c"),
             Object(NonMatching, "dolphin/src/card/CARDOpen.c"),
-            Object(NonMatching, "dolphin/src/card/CARDCreate.c"),
+            Object(Matching, "dolphin/src/card/CARDCreate.c"),
             Object(NonMatching, "dolphin/src/card/CARDRead.c"),
-            Object(NonMatching, "dolphin/src/card/CARDWrite.c"),
-            Object(NonMatching, "dolphin/src/card/CARDDelete.c"),
+            Object(Matching, "dolphin/src/card/CARDWrite.c"),
+            Object(Matching, "dolphin/src/card/CARDDelete.c"),
             Object(NonMatching, "dolphin/src/card/CARDStat.c"),
             Object(NonMatching,"dolphin/src/card/CARDStatEx.c"),
             Object(NonMatching, "dolphin/src/card/CARDNet.c"),
@@ -510,14 +510,14 @@ config.libs = [
     DolphinLib(
         "db",
         [
-            Object(NonMatching, "dolphin/src/db/db.c"),
+            Object(Matching, "dolphin/src/db/db.c"),
         ]
     ),
     DolphinLib(
         "dsp",
         [
             Object(NonMatching, "dolphin/src/dsp/dsp.c"),
-            Object(NonMatching, "dolphin/src/dsp/dsp_debug.c"),
+            Object(Matching, "dolphin/src/dsp/dsp_debug.c"),
             Object(NonMatching, "dolphin/src/dsp/dsp_task.c")
         ]        
     ),
@@ -527,18 +527,18 @@ config.libs = [
             Object(NonMatching, "dolphin/src/dvd/dvdlow.c"),
             Object(NonMatching, "dolphin/src/dvd/dvdfs.c"),
             Object(NonMatching, "dolphin/src/dvd/dvd.c"),
-            Object(NonMatching, "dolphin/src/dvd/dvdqueue.c"),
-            Object(NonMatching, "dolphin/src/dvd/dvderror.c"),
-            Object(NonMatching, "dolphin/src/dvd/dvdidutils.c"),
-            Object(NonMatching, "dolphin/src/dvd/dvdFatal.c"),
-            Object(NonMatching, "dolphin/src/dvd/emu_level2/fstload.c"),
+            Object(Matching, "dolphin/src/dvd/dvdqueue.c"),
+            Object(Matching, "dolphin/src/dvd/dvderror.c"),
+            Object(Matching, "dolphin/src/dvd/dvdidutils.c"),
+            Object(Matching, "dolphin/src/dvd/dvdFatal.c"),
+            Object(Matching, "dolphin/src/dvd/emu_level2/fstload.c"),
         ],
     ),
     DolphinLib(
         "exi",
         [
-            Object(NonMatching, "dolphin/src/exi/EXIBios.c"),
-            Object(NonMatching, "dolphin/src/exi/EXIUart.c")
+            Object(Matching, "dolphin/src/exi/EXIBios.c"),
+            Object(Matching, "dolphin/src/exi/EXIUart.c")
         ]
     ),
     DolphinLib(
@@ -669,11 +669,11 @@ config.libs = [
             Object(Matching, "MSL_C/MSL_Common/errno.c"),
             Object(NonMatching, "MSL_C/MSL_Common/file_io.c"),
             Object(NonMatching, "MSL_C/MSL_Common/FILE_POS.C"),
-            Object(NonMatching, "MSL_C/MSL_Common/locale.c"),
+            Object(Matching, "MSL_C/MSL_Common/locale.c"),
             Object(NonMatching, "MSL_C/MSL_Common/mbstring.c"),
             Object(NonMatching, "MSL_C/MSL_Common/mem.c"),
             Object(NonMatching, "MSL_C/MSL_Common/mem_funcs.c"),
-            Object(NonMatching, "MSL_C/MSL_Common/misc_io.c"),
+            Object(Matching, "MSL_C/MSL_Common/misc_io.c"),
             Object(NonMatching, "MSL_C/MSL_Common/printf.c"),
             Object(NonMatching, "MSL_C/MSL_Common/qsort.c"),
             Object(NonMatching, "MSL_C/MSL_Common/rand.c"),
@@ -682,7 +682,7 @@ config.libs = [
             Object(NonMatching, "MSL_C/MSL_Common/string.c"),
             Object(NonMatching, "MSL_C/MSL_Common/strtold.c"),
             Object(NonMatching, "MSL_C/MSL_Common/strtoul.c"),
-            Object(NonMatching, "MSL_C/MSL_Common/float.c"),
+            Object(Matching, "MSL_C/MSL_Common/float.c"),
             Object(NonMatching, "MSL_C/MSL_Common/char_io.c"),  
             Object(NonMatching, "MSL_C/MSL_Common/wchar_io.c"),  
             Object(NonMatching, "MSL_C/MSL_Common_Embedded/uart_console_io_gcn.c")
@@ -692,8 +692,8 @@ config.libs = [
         "fdlibm.PPCEABI.H",
         [],          
         [
-            Object(NonMatching, "MSL_C/MSL_Common_Embedded/Math/Double_precision/e_acos.c"),
-            Object(NonMatching, "MSL_C/MSL_Common_Embedded/Math/Double_precision/e_asin.c"),
+            Object(Matching, "MSL_C/MSL_Common_Embedded/Math/Double_precision/e_acos.c"),
+            Object(Matching, "MSL_C/MSL_Common_Embedded/Math/Double_precision/e_asin.c"),
             Object(Matching, "MSL_C/MSL_Common_Embedded/Math/Double_precision/e_atan2.c"),
             Object(Matching, "MSL_C/MSL_Common_Embedded/Math/Double_precision/e_exp.c"),
             Object(Matching, "MSL_C/MSL_Common_Embedded/Math/Double_precision/e_fmod.c"),
@@ -721,7 +721,7 @@ config.libs = [
             Object(Matching, "MSL_C/MSL_Common_Embedded/Math/Double_precision/w_fmod.c"),
             Object(Matching, "MSL_C/MSL_Common_Embedded/Math/Double_precision/w_log.c"),
             Object(Matching, "MSL_C/MSL_Common_Embedded/Math/Double_precision/w_pow.c"),
-            Object(NonMatching, "MSL_C/PPC_EABI/math_ppc.c"),
+            Object(Matching, "MSL_C/PPC_EABI/math_ppc.c"),
         ]
     ),
    trkLib(

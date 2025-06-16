@@ -71,15 +71,15 @@ s32 CARDDeleteAsync(s32 chan, const char* fileName, CARDCallback callback)
     return result;
 }
 
-s32 CARDDelete(s32 chan, const char* fileName)
-{
-    s32 result;
+// s32 CARDDelete(s32 chan, const char* fileName)
+// {
+//     s32 result;
 
-    result = CARDDeleteAsync(chan, fileName, __CARDSyncCallback);
+//     result = CARDDeleteAsync(chan, fileName, __CARDSyncCallback);
 
-    if (result < 0)
-    {
-        return result;
-    }
-    return __CARDSync(chan);
-}
+//     if (result < 0)
+//     {
+//         return result;
+//     }
+//     return __CARDSync(chan);
+// }

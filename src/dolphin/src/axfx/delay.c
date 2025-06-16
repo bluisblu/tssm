@@ -4,7 +4,7 @@
 
 #include <axfx/__axfx.h>
 
-void AXFXDelayCallback(AXFX_BUFFERUPDATE* bufferUpdate, AXFX_DELAY* delay)
+inline void AXFXDelayCallback(AXFX_BUFFERUPDATE* bufferUpdate, AXFX_DELAY* delay)
 {
     s32 l;
     s32 r;
@@ -42,7 +42,7 @@ void AXFXDelayCallback(AXFX_BUFFERUPDATE* bufferUpdate, AXFX_DELAY* delay)
     delay->currentPos[2] = (s32)((delay->currentPos[2] + 1) % delay->currentSize[2]);
 }
 
-int AXFXDelaySettings(AXFX_DELAY* delay)
+inline int AXFXDelaySettings(AXFX_DELAY* delay)
 {
     u32 i;
     s32* l;
@@ -116,7 +116,7 @@ int AXFXDelaySettings(AXFX_DELAY* delay)
     return 1;
 }
 
-int AXFXDelayInit(AXFX_DELAY* delay)
+inline int AXFXDelayInit(AXFX_DELAY* delay)
 {
     BOOL old;
 
@@ -147,10 +147,6 @@ int AXFXDelayShutdown(AXFX_DELAY* delay)
     {
         __AXFXFree(delay->sur);
     }
-
-    delay->left = NULL;
-    delay->right = NULL;
-    delay->sur = NULL;
 
     OSRestoreInterrupts(old);
     return 1;

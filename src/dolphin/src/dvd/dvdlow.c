@@ -504,16 +504,16 @@ void __DVDLowSetWAType(u32 type, u32 location)
     OSRestoreInterrupts(enabled);
 }
 
-// BOOL __DVDLowTestAlarm(OSAlarm* alarm)
-// {
-//     if (alarm == &AlarmForBreak)
-//     {
-//         return TRUE;
-//     }
-//     if (alarm == &AlarmForTimeout)
-//     {
-//         return TRUE;
-//     }
+BOOL __DVDLowTestAlarm(OSAlarm* alarm)
+{
+    if (alarm == &AlarmForBreak)
+    {
+        return TRUE;
+    }
+    if (alarm == &AlarmForTimeout)
+    {
+        return TRUE;
+    }
 
-//     return FALSE;
-// }
+    return FALSE;
+}
