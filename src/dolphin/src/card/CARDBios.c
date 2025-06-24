@@ -1,7 +1,7 @@
 #include <dolphin/CARDPriv.h>
 
 const char* __CARDVersion =
-    "<< Dolphin SDK - CARD\trelease build: Apr 17 2003 12:34:19 (0x2301) >>";
+    "<< Dolphin SDK - CARD\trelease build: Sep  5 2002 05:35:20 (0x2301) >>";
 
 CARDControl __CARDBlock[2];
 DVDDiskID __CARDDiskNone;

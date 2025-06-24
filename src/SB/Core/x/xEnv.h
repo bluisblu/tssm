@@ -27,7 +27,7 @@ struct xEnvAsset : xBaseAsset
     U32 bspCameraAssetID;
     U32 bspMapperID;
     U32 bspMapperCollisionID;
-    U32 bspMapperFXID;
+    U32 bspMapperFXID; // 0x3C
     F32 loldHeight;
 };
 
@@ -50,5 +50,6 @@ void xEnvLoadBsp(xEnv* env, const void* data, U32 datasize, S32 dataType);
 void xEnvFree(xEnv* env);
 void xEnvSetup(xEnv* env);
 void xEnvRender(xEnv* env);
+void xEnvRender(xEnv* env, bool);
 
 #endif

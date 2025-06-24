@@ -45,6 +45,14 @@ enum isound_effect
     iSND_EFFECT_CAVE
 };
 
+enum iSndHandle
+{
+};
+
+enum iSndGroupHandle
+{
+};
+
 void arq_callback(long);
 void iSndExit();
 

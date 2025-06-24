@@ -3,20 +3,15 @@
 
 #include "xBase.h"
 #include "xEnv.h"
+#include "iEnv.h"
 
-struct _zEnv : xBase
-{
-    xEnvAsset* easset;
-};
-
-void zEnvInit(void* env, void* easset);
-void zEnvInit(_zEnv* env, xEnvAsset* easset);
-void zEnvSetup(_zEnv* env);
-void zEnvStartingCamera(_zEnv* env);
-void zEnvRender(xEnv* env);
-void zEnvSave(_zEnv* ent, xSerial* s);
+void zEnvEventCB(xBase* to, U32 toEvent, F32* toParam, xBase* toParamWidget);
 void zEnvLoad(_zEnv* ent, xSerial* s);
-void zEnvReset(_zEnv* env);
-S32 zEnvEventCB(xBase*, xBase* to, U32 toEvent, const F32* toParam, xBase*);
+void zEnvSave(_zEnv* ent, xSerial* s);
+void zEnvRender(xEnv* env);
+void zEnvStartingCamera();
+void zEnvSetup(_zEnv* env);
+void zEnvInit(_zEnv* env, xEnvAsset* easset);
+void zEnvInit(void* env, void* easset);
 
 #endif

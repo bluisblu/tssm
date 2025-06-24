@@ -16,7 +16,7 @@ static void __AXFXFreeFunction(void* p)
 void* (*__AXFXAlloc)(u32) = __AXFXAllocFunction;
 void (*__AXFXFree)(void*) = __AXFXFreeFunction;
 
-void AXFXSetHooks(void* (*alloc)(u32), void (*free)(void*))
+inline void AXFXSetHooks(void* (*alloc)(u32), void (*free)(void*))
 {
     ASSERTLINE(46, alloc && free);
 
