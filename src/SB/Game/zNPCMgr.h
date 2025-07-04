@@ -15,7 +15,7 @@ struct zNPCMgr : RyzMemData
     xBase selfbase;
 
     zNPCMgr();
-    enum en_NPCTYPES NPCTypeForModel(U32 brainID, U32 mdl_hash);
+    enum en_npctyp NPCTypeForModel(U32 brainID, U32 mdl_hash);
     void BackdoorUpdateAllNPCsOnce(xScene*, F32);
     void PrepTypeTable();
     void Startup();
@@ -57,6 +57,6 @@ void zNPCMgr_scenePostParticleRender();
 void zNPCMsg_SceneFinish();
 xEnt* zNPCMgr_createNPCInst(S32, xEntAsset* assdat);
 
-S32 zNPCMgr_OrdComp_npcid(void* vkey, void* vitem);
+//S32 zNPCMgr_OrdComp_npcid(void* vkey, void* vitem);
 
 #endif

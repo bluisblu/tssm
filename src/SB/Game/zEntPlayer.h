@@ -230,7 +230,7 @@ enum _zPlayerType
     ePlayer_MAXTYPES
 };
 
-enum _CurrentPlayer
+enum eSNDCurrentPlayer
 {
     eCurrentPlayerSpongeBob,
     eCurrentPlayerPatrick,
@@ -364,7 +364,7 @@ struct zPlayerLassoInfo
 
 #define SHINY_MAX 99999
 
-extern _CurrentPlayer gCurrentPlayer;
+extern eSNDCurrentPlayer gCurrentPlayer;
 extern S32 gWaitingToAutoSave;
 
 void zEntPlayer_Load(xEnt*, xSerial*);

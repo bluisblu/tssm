@@ -7,19 +7,7 @@
 #include "xScene.h"
 #include "zNMECommon.h"
 #include "xBase.h"
-
-enum state_enum
-{
-
-    BEGIN_STATE,
-    STATE_START,
-    STATE_NEXT,
-    STATE_WAIT,
-    STATE_STOP,
-    END_STATE,
-    MAX_STATE = 0x5,
-    STATE_INVALID = 0xffffffff,
-};
+#include "zFX.h"
 
 // DIRECTLY PORTED FROM BFBB
 

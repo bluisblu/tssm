@@ -88,6 +88,14 @@ struct zLightning
     F32 time_total;
 };
 
+struct zLightningFuncPiece
+{
+    xVec3 coef0;
+    F32 param;
+    xVec3 coef1;
+    U32 pad;
+};
+
 void lightningTweakChangeType(tweak_info& t);
 void lightningTweakStart(tweak_info& t);
 void zLightningInit();

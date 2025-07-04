@@ -1,4 +1,5 @@
 #include "zWadUI.h"
+#include "zUI.h"
 
 // I believe this is correct?
 // Aren't these initialized to 0 if no initialization is given?

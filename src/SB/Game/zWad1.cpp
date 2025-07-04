@@ -1081,6 +1081,8 @@ U32 zCollGeom_EntSetup(xEnt* ent)
 
 //                                                      zCar
 
+// Refrain from doing these functions until the zCar struct is fixed.
+
 #define Car 1
 #define Idle01 2
 #define Drive 3
@@ -1134,5 +1136,9 @@ xAnimTable* CreateAnimTable()
 U32 zCar::JumpEndedCB(xAnimTransition* unk0, xAnimSingle* anim, void* unk3)
 {
     zCar* pCar = zEntPlayerCarGetCar();
-    lastPositionPar[0];
+}
+
+U32 zCar::AnimDefaultCB(xAnimTransition* unk0, xAnimSingle* anim, void*)
+{
+    zCar* pCar = zEntPlayerCarGetCar();
 }
