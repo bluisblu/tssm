@@ -7,6 +7,8 @@
 #include "iCamera.h"
 #include "iTime.h"
 #include "zScene.h"
+#include "xEnt.h"
+#include "zEnt.h"
 
 #include <rwcore.h>
 #include <rpworld.h>
@@ -26,10 +28,19 @@ enum sceDemoEndReason
     SCE_DEMO_ENDREASON_NETCONFIG_COMPLETE
 };
 
-struct zPlayer
+// struct zPlayer
+// {
+//     // Why empty? (iFMV dwarf shows this)
+//     // Non-empty ones exist in the zWads
+// };
+
+struct zPlayer : zEnt
 {
-    // Why empty? (iFMV dwarf shows this)
-    // Non-empty ones exist in the zWads
+    xVec3 trigLastFramePos;
+    S32 zPlayerFlags;
+    U32 lorezModelID;
+    xModelInstance* lorezModel;
+    xModelInstance* hirezModel;
 };
 
 struct PS2DemoGlobals
@@ -59,10 +70,10 @@ struct xGlobals
     xCamGroup* cam;
     xCamScreen* screen;
     xVec4 frustplane[12];
-    _tagxPad* pad0;
+    _tagxPad* pad0; // 0x3e4
     _tagxPad* pad1;
     _tagxPad* pad2;
-    _tagxPad* pad3;
+    _tagxPad* pad3; // 0x3f0
     _tagxPad* pad[4];
     S32 profile;
     char profFunc[128][6];

@@ -569,13 +569,504 @@ S32 zMenuRunning()
     return sInMenu;
 }
 
+//                                              zLOD
+
+zLODTable* zLOD_Get(xEnt* ent)
+{
+    if (!ent->model)
+    {
+        return 0;
+    }
+
+    for (int i = 0; i < sLODTableCount; i++)
+    {
+        if (sLODTableList[i].baseBucket != NULL)
+        {
+            if ((*sLODTableList[i].baseBucket)->OriginalData == ent->model->Data)
+            {
+                return &sLODTableList[i];
+            }
+        }
+    }
+    return 0;
+}
+
+//                                              z::lightweight_manager
+
+// These are in the dwarf, but you have to find them with just "lightweight_manager"
+
+// void z::lightweight_manager::setup()
+// {
+// }
+
+//                                              zLightning
+
+void _zLightningKill(zLightning* l)
+{
+}
+
+void zLightningKill(zLightning* l)
+{
+}
+
+//                                              zLightEffect
+
+void zLightEffectInitCauldron(_zLight* zlight)
+{
+    *zlight->reg = 0.0f;
+    zlight->flags = zlight->flags | 1;
+}
+
+void zLightEffectRandomColFast(_zLight* zlight, F32)
+{
+}
+
+void zLightEffectRandomCol(_zLight* zlight, F32)
+{
+}
+
+void zLightEffectRandomColSlow(_zLight* zlight, F32)
+{
+}
+
+void zLightEffectHalfDimFast(_zLight* zlight, F32)
+{
+}
+
+void zLightEffectHalfDim(_zLight* zlight, F32)
+{
+}
+
+void zLightEffectHalfDimSlow(_zLight* zlight, F32)
+{
+}
+
+void zLightEffectDimFast(_zLight* zlight, F32)
+{
+}
+
+void zLightEffectDim(_zLight* zlight, F32)
+{
+}
+
+void zLightEffectDimSlow(_zLight* zlight, F32)
+{
+}
+
+void zLightEffectStrobeFast(_zLight* zlight, F32)
+{
+}
+
+void zLightEffectStrobe(_zLight* zlight, F32)
+{
+}
+
+void zLightEffectStrobeSlow(_zLight* zlight, F32)
+{
+}
+
+void zLightEffectInitFlicker(_zLight* zlight)
+{
+    *zlight->reg = 0.0f;
+    zlight->flags = zlight->flags | 1;
+}
+
+void zLightEffectInitRandomCol(_zLight*)
+{
+}
+
+void zLightEffectInitHalfDim(_zLight*)
+{
+}
+
+void zLightEffectInitDim(_zLight*)
+{
+}
+
+void zLightEffectInitStrobe(_zLight*)
+{
+}
+
+//                                              zLight
+
+void zLightSetVolume(zVolume* vol)
+{
+    if (!vol)
+    {
+        sPartitionVolume = 0;
+    }
+    else
+    {
+        U32 lp_id = xStrHash("LIGHT_PARTITION" + 9);
+        if (vol->id == lp_id)
+        {
+            sPartitionVolume = vol;
+        }
+    }
+}
+
+void zLightRemoveLocalEnv()
+{
+    int i;
+    const RwLLLink* link;
+
+    for (i = 0; i < gNumTemporaryLights; i++)
+    {
+        link = gLightWorld->directionalLightList.link.prev;
+        link->prev->next = link->next;
+        link->next->prev = link->prev;
+    }
+    gNumTemporaryLights = 0;
+}
+
+void zLightAddLocal(xEnt* ent)
+{
+}
+
+void zLightLoad(_zLight* ent, xSerial* s)
+{
+    xBaseLoad(ent, s);
+}
+
+void zLightSave(_zLight* ent, xSerial* s)
+{
+    xBaseSave(ent, s);
+}
+
+void zLightDestroyAll()
+{
+    S32 total = sLightTotal;
+
+    for (int i = 0; i < total; i++, sLightTotal--)
+    {
+        zLightDestroy(sLight[i]);
+    }
+    sLightTotal = 0;
+}
+
+void zLightResolveLinks()
+{
+    S32 i;
+    _zLight* zl;
+
+    for (i = 0; i < sLightTotal; i++)
+    {
+        zl = sLight[i];
+        if (zl->tasset->attachID)
+        {
+            zl->attached_to = zSceneFindObject(zl->tasset->attachID);
+        }
+        else
+        {
+            zl->attached_to = 0;
+        }
+    }
+}
+
+void zLightInit(void* b, void* tasset)
+{
+    zLightInit((xBase*)b, (zLightAsset*)tasset);
+}
+
+//                                              zPat / zLasso
+
 //                                              zGrid
 
-// void zGridExit(zScene* s)
-// {
-//     //
-//     xGridKill(xGrid * grid);
-//     xGridKill(xGrid*);
-//     xGridKill(xGrid*);
-//     xGridKill(xGrid*);
-// }
+void zGridExit(zScene* s)
+{
+    xGridKill(&colls_grid);
+    xGridKill(&colls_oso_grid);
+    xGridKill(&npcs_grid);
+    xGridKill(&grabbable_grid);
+    zGridInitted = 0;
+}
+
+//                                              zGoo
+
+void zGooExit()
+{
+    zgoo_gps = 0;
+    zgoo_ngps = 0;
+    zgoo_nused = 0;
+}
+
+void zGooInit(S32 nobj)
+{
+    zgoo_gps = (zGooParams*)xMemAlloc(gActiveHeap, nobj * 0xc, 0);
+    zgoo_ngps = nobj;
+}
+
+//                                              zGameState
+
+//xSndMgrPauseSounds
+
+void zGameStatePauseUnpauseSnd(bool pause)
+{
+    xSndMgrPauseSounds(0, pause, TRUE);
+    xSndMgrPauseSounds(1, pause, TRUE);
+    xSndMgrPauseSounds(2, pause, FALSE);
+}
+
+void SB04FMVPauseSoundCB(bool doPause)
+{
+    bool tempBool;
+
+    if (gGameMode == 8)
+    {
+        tempBool = TRUE;
+    }
+    else if (gGameMode == 7)
+    {
+        tempBool = TRUE;
+    }
+    else if (gGameMode == 6)
+    {
+        tempBool = TRUE;
+    }
+    else if (gGameMode == 2)
+    {
+        tempBool = TRUE;
+    }
+    else if (gGameMode == 4)
+    {
+        tempBool = TRUE;
+    }
+    else if (gGameMode == 6)
+    {
+        tempBool = TRUE;
+    }
+    else if (gGameMode == 1)
+    {
+        tempBool = TRUE;
+    }
+    else if (gGameMode == 0)
+    {
+        tempBool = TRUE;
+    }
+    else
+    {
+        tempBool = FALSE;
+    }
+
+    if (tempBool)
+    {
+        xSndMgrPauseSounds(3, doPause, TRUE);
+    }
+    else if (doPause != 0)
+    {
+        xSndMgrPauseSounds(-3, TRUE, TRUE);
+    }
+    else
+    {
+        xSndMgrPauseSounds(-3, FALSE, TRUE);
+    }
+}
+
+void zGameSetOstrich(_GameOstrich o)
+{
+    gGameOstrich = o;
+}
+
+_GameOstrich zGameGetOstrich()
+{
+    return gGameOstrich;
+}
+
+eGameMode zGameModeGet()
+{
+    return gGameMode;
+}
+
+S32 zGameStateGet()
+{
+    return gGameState;
+}
+
+//                                                  zGameExtras / EGG
+
+void zGameExtras_Load(xSerial* xser)
+{
+    S32 keepers[2];
+    keepers[0] = 0;
+    xser->Read(keepers);
+    g_flg_chEnabled |= keepers[0];
+}
+
+void zGameExtras_Save(xSerial* xser)
+{
+    xser->Write(g_flg_chEnabled & 0xFFFF);
+}
+
+S32 zGameExtras_CheatFlags()
+{
+    return g_flg_chEnabled;
+}
+
+S32 EGG_check_ExtrasFlags(EGGItem*)
+{
+    switch (g_currMonth)
+    {
+    case JANUARY:
+        if (g_currDay == 1) // New Year's Day
+            g_gameExtraFlags |= 0b000000001;
+        break;
+
+    case FEBRUARY:
+        if (g_currDay == 2)
+            g_gameExtraFlags |= 0b100000000;
+        break;
+
+    case MARCH:
+        if (g_currDay == 15)
+            g_gameExtraFlags |= 0b000001000;
+        if (g_currDay == 17) // St. Patrick's Day
+            g_gameExtraFlags |= 0b000000100;
+        if (g_currDay == 18)
+            g_gameExtraFlags |= 0b100000000;
+        if (g_currDay == 21)
+            g_gameExtraFlags |= 0b100000000;
+        if (g_currDay == 22)
+            g_gameExtraFlags |= 0b100000000;
+        break;
+
+    case APRIL:
+        if (g_currDay == 1) // April Fools' Day
+            g_gameExtraFlags |= 0b010000000;
+        break;
+
+    case MAY:
+        break;
+
+    case JUNE:
+        if (g_currDay == 6)
+            g_gameExtraFlags |= 0b001000000;
+        break;
+
+    case JULY:
+        if (g_currDay == 4) // Independence Day
+            g_gameExtraFlags |= 0b000000010;
+        break;
+
+    case AUGUST:
+        if (g_currDay == 8)
+            g_gameExtraFlags |= 0b100000000;
+        break;
+
+    case SEPTEMBER:
+        if (g_currDay == 8)
+            g_gameExtraFlags |= 0b000000010;
+        break;
+
+    case OCTOBER:
+        if (g_currDay == 5)
+            g_gameExtraFlags |= 0b100000000;
+        if (g_currDay == 14)
+            g_gameExtraFlags |= 0b100000000;
+        if (g_currDay == 22)
+            g_gameExtraFlags |= 0b100000000;
+        if (g_currDay == 31) // Halloween
+            g_gameExtraFlags |= 0b000100000;
+        break;
+
+    case NOVEMBER:
+        if (g_currDay == 5)
+            g_gameExtraFlags |= 0b100000000;
+        break;
+
+    case DECEMBER:
+        break;
+    }
+
+    return 0;
+}
+
+void zGameExtras_SceneReset()
+{
+    if (!g_enableGameExtras)
+    {
+        return;
+    }
+
+    EGGItem* egg_next = g_eggBasket;
+
+    while (egg_next->fun_check)
+    {
+        EGGItem* egg = egg_next++;
+
+        if (egg->enabled)
+        {
+            if (egg->funcs->fun_reset)
+            {
+                egg->funcs->fun_reset(egg);
+            }
+        }
+    }
+}
+
+void zGameExtras_MoDay(S32* month, S32* day)
+{
+    *month = g_currMonth;
+    *day = g_currDay;
+}
+
+S32 zGameExtras_ExtrasFlags()
+{
+    return g_gameExtraFlags;
+}
+
+//                                          zGame
+
+void DoTheResetinator()
+{
+}
+
+void zGameStall()
+{
+    bool tempGameBool;
+    if (gGameMode == 8)
+    {
+        tempGameBool = TRUE;
+    }
+    else if (gGameMode == 7)
+    {
+        tempGameBool = TRUE;
+    }
+    else if (gGameMode == 6)
+    {
+        tempGameBool = TRUE;
+    }
+    else if (gGameMode == 2)
+    {
+        tempGameBool = TRUE;
+    }
+    else if (gGameMode == 4)
+    {
+        tempGameBool = TRUE;
+    }
+    else if (gGameMode == 6)
+    {
+        tempGameBool = TRUE;
+    }
+    else if (gGameMode == 1)
+    {
+        tempGameBool = TRUE;
+    }
+    else if (gGameMode == 0)
+    {
+        tempGameBool = TRUE;
+    }
+    else
+    {
+        tempGameBool = FALSE;
+    }
+
+    if (!tempGameBool) // chain of if elses
+    {
+        zGameModeSwitch(eGameMode_Stall);
+        xSndMgrPauseSounds(0, TRUE, TRUE);
+        xSndMgrPauseSounds(1, TRUE, TRUE);
+        xSndMgrPauseSounds(2, TRUE, FALSE);
+        iPadStopRumble(globals.pad[1]);
+        zEntEvent("techbutton6_click", 24);
+    }
+}

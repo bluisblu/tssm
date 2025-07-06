@@ -34,6 +34,9 @@
 #include "xTRC.h"
 #include "zGrid.h"
 #include "xGrid.h"
+#include "xShadow.h"
+
+#include "xWad5.h"
 
 // Dwarf data says that most of these are only used here in zWad2.cpp
 

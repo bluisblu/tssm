@@ -37,7 +37,7 @@ struct _zLight : xBase
     iLight light;
     xBase* attached_to;
     S32 true_idx;
-    F32* reg;
+    F32* reg; // 0x5C
 
     // 0x60
     S32 effect_idx;
@@ -59,7 +59,6 @@ void zLightSetVolume(zVolume* vol);
 void zLightDestroyAll();
 void zLightDestroy(_zLight* param_1);
 void zLightUpdate(xBase* to, xScene*, F32 dt);
-S32 zLightEventCB(xBase* param_1, xBase* to, U32 toEvent, const float* param_4,
-                    xBase* param_5);
+S32 zLightEventCB(xBase* param_1, xBase* to, U32 toEvent, const float* param_4, xBase* param_5);
 
 #endif

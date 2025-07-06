@@ -219,7 +219,7 @@ void ztextbox::load(const asset_type& a)
 
     baseType = eBaseTypeTextBox;
     asset = (asset_type*)&a;
-    eventFunc = cb_dispatch;
+    //eventFunc = cb_dispatch;
 
     if (linkCount)
     {

@@ -79,7 +79,7 @@ void zEnvInit(_zEnv* env, xEnvAsset* easset)
     xBaseInit(env, easset);
 
     env->easset = easset;
-    env->eventFunc = zEnvEventCB;
+    //env->eventFunc = zEnvEventCB;
 
     if (env->linkCount)
     {
@@ -639,7 +639,7 @@ void zDispatcher_Init(st_ZDISPATCH_DATA* dspdata, xBaseAsset* bass)
 {
     xBaseInit(dspdata, bass);
     dspdata->rawass = bass;
-    dspdata->eventFunc = ZDSP_elcb_event;
+    //dspdata->eventFunc = ZDSP_elcb_event;
     if (dspdata->linkCount != 0)
     {
         dspdata->link = (xLinkAsset*)(dspdata->rawass + 1);
@@ -921,7 +921,7 @@ void zConditionalInit(void* b, void* asset)
     _zConditional* cond = (_zConditional*)b;
 
     xBaseInit((xBase*)cond, (xBaseAsset*)asset);
-    cond->eventFunc = (xBaseEventCB)zConditionalEventCB;
+    //cond->eventFunc = (xBaseEventCB)zConditionalEventCB;
     //cond->asset = asset;
 
     if (cond->linkCount != 0)

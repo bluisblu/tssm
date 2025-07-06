@@ -33,6 +33,7 @@ namespace xhud
         virtual void update(F32 dt);
         virtual void render();
     };
+
 } // namespace xhud
 
 xAnimTable* XHUD_AnimTable_Idle();

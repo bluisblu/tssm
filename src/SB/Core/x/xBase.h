@@ -21,11 +21,11 @@ typedef S32 (*xBaseEventCB)(xBase*, xBase*, U32, const F32*, xBase*);
 struct xBase
 {
     U32 id;
-    U8 baseType; // see en_ZBASETYPE in zBase.h
+    U8 baseType;
     U8 linkCount;
     U16 baseFlags;
     xLinkAsset* link;
-    xBaseEventCB eventFunc; // 0xC
+    void (*eventFunc)(xBase*, xBase*, U32, F32*, xBase*, U32);
 };
 
 void xBaseInit(xBase* xb, xBaseAsset* asset);

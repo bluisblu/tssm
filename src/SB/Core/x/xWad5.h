@@ -23,4 +23,6 @@
 #include "iModel.h"
 #include "xserializer.h"
 
+void xSndMgrPauseSounds(S16 eSoundCategory, bool bPaused, bool bPauseFutureSoundsOfThisType);
+
 #endif
