@@ -2576,7 +2576,7 @@ void xFogInit(void* b, void* tasset)
 void xFogInit(xBase* ent, xFogAsset* tasset)
 {
     xBaseInit(ent, (xBaseAsset*)tasset);
-    ent->eventFunc = xFogEventCB;
+    //ent->eventFunc = xFogEventCB;
     ((_xFog*)ent)->tasset = tasset;
     if (ent->linkCount != 0)
     {
@@ -4604,7 +4604,7 @@ void xEntDefaultBoundUpdate(xEnt* ent, xVec3* pos)
 
 void xEntEndUpdate(xEnt* ent, xScene* sc, F32 dt)
 {
-    ent->num_updates++;
+    //ent->num_updates++;
 
     if (ent->model)
     {

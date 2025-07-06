@@ -53,6 +53,15 @@ enum iSndGroupHandle
 {
 };
 
+// enum eSNDCurrentPlayer
+// {
+//     eCurrentPlayerSpongeBob,
+//     eCurrentPlayerPatrick,
+//     eCurrentPlayerCar,
+//     eCurrentPlayerSpongePat,
+//     eCurrentPlayerCount
+// };
+
 void arq_callback(long);
 void iSndExit();
 

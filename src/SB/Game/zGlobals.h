@@ -288,7 +288,7 @@ struct zPlayerGlobals
 struct zGlobals : xGlobals
 {
     U32 playerTag;
-    U32 playerLoaded;
+    U32 playerLoaded; //0x884
     U32 playerLoadOrder[8];
     U8 invertJoystick;
     zPlayerGlobals player;
@@ -296,7 +296,7 @@ struct zGlobals : xGlobals
     zCutsceneMgr* cmgr;
     zCutsceneMgr* DisabledCutsceneDoneMgr;
     char startDebugMode[32];
-    U32 noMovies;
+    U32 noMovies; // 0x2200?
     U32 boundUpdateTime;
     U8 draw_player_after_fx;
     zGlobalDemoType demoType;

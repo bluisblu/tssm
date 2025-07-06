@@ -21,6 +21,14 @@ enum zFXGooState
     zFXGooStateForce32Bit = 0xffffffff
 };
 
+enum state_enum
+{
+    STATE_NONE,
+    STATE_OFF,
+    STATE_ON,
+    STATE_CONSTANT
+};
+
 struct zFXGooInstance
 {
     RpAtomic* atomic;
@@ -42,6 +50,31 @@ struct zFXGooInstance
     F32 max;
     xVec3* ref_parentPos;
     xVec3 pos_parentOnFreeze;
+};
+
+struct popper_data
+{
+    state_enum state;
+    xEnt* ent;
+    RpAtomic* atomic[4];
+    U32 atomic_size;
+    F32 time;
+    F32 end_time;
+    union
+    {
+        xVec3 model_scale;
+        U32 pipe_flags;
+    };
+    F32 rate;
+    F32 vel;
+    F32 rloc;
+    F32 rvel;
+    F32 emitted;
+    F32 radius;
+    F32 area;
+    S32 faces;
+    S32 max_faces;
+    F32* weight;
 };
 
 extern U32 gFXSurfaceFlags;

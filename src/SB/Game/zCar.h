@@ -117,6 +117,8 @@ struct driveSurfaceDescriptor
     iSndGroupHandle soundGroupSkid;
 };
 
+// Im thinking that this struct is fucked because of
+// the mismatching offsets
 struct zCar
 {
     xEnt* pEnt;
@@ -162,23 +164,23 @@ struct zCar
     U8 animStartSpinLeft;
     U8 animStartSpinRight;
     U8 animHeavyLanding;
-    U8 animInJumpAnimation; //0x598
+    U8 animInJumpAnimation;
     U8 animSuccessMode;
     U8 animFailedMode;
-    F32 skidFXIntensity; //0x59C
-    xVec3 lastPositionPar[4]; //0x5a0
-    xVec3 lastVelocityPar[4]; //
+    F32 skidFXIntensity;
+    xVec3 lastPositionPar[4];
+    xVec3 lastVelocityPar[4];
     xVec3 lastPositionSeed;
     xVec3 lastPositionKetchup;
     xVec3 lastVelocityKetchup;
     xVec3 lastPositionMustard;
     xVec3 lastVelocityMustard;
-    eDamage damageLevel; //0x63C
-    F32 soundEnginePitch; //0x640
+    eDamage damageLevel;
+    F32 soundEnginePitch;
     iSndHandle soundEngineHandle;
     eDamage soundCurrentEngineType;
     iSndHandle soundBoostLoopHandle;
-    S64 soundReverseActivationTime; // long32
+    S64 soundReverseActivationTime;
     iSndHandle soundReverseBeepHandle;
     driveSurfaceDescriptor* pSoundCurrentSurface;
     iSndHandle soundDriveLoopHandle;
@@ -197,7 +199,7 @@ struct zCar
     xAnimTable* CreateAnimTable();
     U32 JumpEndedCB(xAnimTransition*, xAnimSingle* anim, void*);
     U32 JumpStartedCB();
-    U32 AnimDefaultCB(xAnimSingle* anim);
+    U32 AnimDefaultCB(xAnimTransition*, xAnimSingle* anim, void*);
     U32 DamageSpinCompleteCB(xAnimSingle* anim);
     U32 DeathCheck();
     U32 FailedCheck();

@@ -2,6 +2,20 @@
 #define XVEC3_H
 
 #include <types.h>
+#include "rwplcore.h"
+
+//movies dwarf
+// struct xVec3
+// {
+//     union
+//     {
+//         RwV3d m_RwV3d;
+//         F32 x;
+//     };
+//     F32 y;
+//     F32 z;
+//     F32 a[3];
+// };
 
 struct xVec3
 {

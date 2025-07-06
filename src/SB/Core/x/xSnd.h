@@ -80,6 +80,55 @@ struct _xSndDelayed
     U32 pad0;
 };
 
+struct xSoundFXAsset : xBaseAsset
+{
+    union
+    {
+        U32 soundAssetID;
+        iSndGroupHandle soundAsset;
+    };
+    U32 attachID;
+    xVec3 pos;
+    U32 uFlags;
+};
+
+struct xSoundFX : xBase
+{
+    xSoundFXAsset* asset;
+    iSndHandle sndHandle;
+    F32 cachedOuterDistSquared;
+};
+
+struct xSndGroupHeader : xBaseAsset
+{
+    U32 uPlayedMask;
+    U8 uInfoCount;
+    U8 uSetBits;
+    char nMaxPlays; // was int8
+    U8 uPriority;
+    U8 uFlags;
+    U8 eSoundCategory;
+    U8 ePlayRule;
+    U8 uInfoPad0;
+    F32 fInnerRadius;
+    F32 fOuterRadius;
+    char* pszGroupName;
+};
+
+struct xSndGroupInfo
+{
+    U32 uSoundNameHash;
+    F32 fVolume;
+    F32 fMinPitchMult;
+    F32 fMaxPitchMult;
+};
+
+struct xSndGroup
+{
+    xSndGroupHeader header;
+    xSndGroupInfo aSndGroupInfo[0];
+};
+
 template <S32 N> struct sound_queue
 {
     U32 _playing[N + 1];

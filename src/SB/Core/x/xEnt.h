@@ -125,63 +125,46 @@ struct xEnt : xBase
         xVec3* normals;
     };
 
-    // Offset: 0x10
     xEntAsset* asset;
-    U16 idx; //0x14
-    U16 num_updates;
-
-    // Offset: 0x18
+    U16 idx;
     U8 flags;
     U8 miscflags;
     U8 subType;
-
-    // Offset: 0x1B
-    U8 pflags; // p -> physics flags
-    U8 moreFlags; //0x1c
-    U8 isCulled;
+    U8 pflags;
+    U16 moreFlags;
+    struct
+    {
+        U8 _isCulled : 2;
+        U8 collisionEventReceived : 2;
+    };
     U8 driving_count;
     U8 num_ffx;
-
-    // Offset: 0x20
-    U8 collType; // XENT_COLLTYPE_* (defined below)
+    U8 collType;
     U8 collLev;
-    U8 chkby; // XENT_COLLTYPE_* bitmask
-    U8 penby; // XENT_COLLTYPE_* bitmask
-
-    // Offset: 0x24
+    U8 chkby;
+    U8 penby;
+    void (*visUpdate)(xEnt*);
     xModelInstance* model;
     xModelInstance* collModel;
     xModelInstance* camcollModel;
-    xLightKit* lightKit;
-
-    // Offset: 0x34
-    xEntUpdateCallback update;
-    xEntUpdateCallback endUpdate;
-    xEntBoundUpdateCallback bupdate;
-    xEntMoveCallback move;
-
-    // Offset: 0x44
-    xEntRenderCallback render;
+    void (*update)(xEnt*, xScene*, F32);
+    void (*endUpdate)(xEnt*, xScene*, F32);
+    void (*bupdate)(xEnt*, xVec3*);
+    void (*move)(xEnt*, xScene*, F32, xEntFrame*);
+    void (*render)(xEnt*);
     xEntFrame* frame;
-    xEntCollis* collis; //0x4c
-
-    // Offset: 0x50
+    xEntCollis* collis;
     xGridBound gridb;
-
-    // Offset: 0x64
     xBound bound;
-
-    // Offset: 0xB0
-    xEntTranslateCallback transl; //0xb0
-    xFFX* ffx; //0xb4
+    void (*transl)(xEnt*, xVec3*, xMat4x3*);
+    xFFX* ffx;
     xEnt* driver;
+    xEnt* driven;
     S32 driveMode;
-
-    // Offset: 0xC0
     xShadowSimpleCache* simpShadow;
     xEntShadow* entShadow;
     anim_coll_data* anim_coll;
-    void* user_data; // 0xCC
+    void* user_data;
 };
 
 // collision types

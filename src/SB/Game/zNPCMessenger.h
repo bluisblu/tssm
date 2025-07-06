@@ -9,7 +9,7 @@ void zNPCMsg_ScenePrepare();
 void zNPCMsg_Startup();
 void zNPCMsg_Shutdown();
 void zNPCMsg_AreaNotify(zNPCCommon* sender, en_NPC_MSG_ID msgid, F32 rad, S32 filter,
-                        en_NPCTYPES toNPCType);
+                        en_npctyp toNPCType);
 void zNPCMsg_Timestep(xScene* xscn, F32 dt);
 
 struct NPCPSClt

@@ -79,6 +79,46 @@ struct xFXRibbon
     void debug_update(F32);
 };
 
+struct xFRect
+{
+    F32 x;
+    F32 y;
+    F32 w;
+    F32 h;
+};
+
+struct xFXCameraTexture
+{
+    RwCamera* cam;
+    RwRaster* raster;
+    RwRaster* bgraster;
+    RpWorld* world;
+    RwTexture* texture;
+    U32 vert_buffer_used;
+    xColor_tag bgcolor;
+    RwCamera* oldcam;
+    RpWorld* oldworld;
+    F32 rcz;
+    F32 w;
+    F32 h;
+    RwRaster* zraster;
+    S32 max_tw;
+    S32 max_th;
+    F32 old_near_plane;
+    F32 old_far_plane;
+    F32 old_znear;
+
+    void zbuffer_map_and_clear(RwRaster* fraster, RwRaster* zraster, U32 fbmsk, S32 clear_flags);
+    // void get_subview(xMat4x3& ltm, xVec2& view_window, xVec2& view_offset, RwCamera* src_cam,
+    //                  xFRect& src_rect, xFRect& dst_rect);
+    void setup_subview(RwCamera* src_cam, xFRect& src_rect, xFRect& dst_rect);
+    void end_render();
+    void begin_render(S32 clear_flags, U32 fbmsk_write, U32 fbmsk_finish, F32 near_plane,
+                      F32 far_plane);
+    void destroy();
+    U8 create(S32 w, S32 h, U8 need_zwrite, S32 bpp, S32 zbpp);
+};
+
 #define RING_COUNT 8
 
 extern xFXRing ringlist[RING_COUNT];

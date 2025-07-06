@@ -4,12 +4,18 @@
 #include "zEntPlayer.h"
 #include "zGameState.h"
 
-extern _CurrentPlayer gPendingPlayer;
+extern eSNDCurrentPlayer gPendingPlayer;
 extern F32 sTimeElapsed;
 extern U32 gLevelChanged;
 extern U32 startPressed;
 extern U8 sHackSmoothedUpdate;
 extern U32 gBusStopIsRunning;
+
+enum _tagGameVidMode
+{
+    eGameVidModeNTSC,
+    eGameVidModePAL
+};
 
 enum eGameWhereAmI
 {

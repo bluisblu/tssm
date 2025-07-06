@@ -2,6 +2,7 @@
 #define ZHUD_H
 
 #include <types.h>
+#include "xHud.h"
 
 namespace zhud
 {
