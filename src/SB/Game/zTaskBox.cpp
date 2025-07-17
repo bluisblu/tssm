@@ -177,7 +177,7 @@ void ztaskbox::complete()
     {
         this->state = STATE_INVALID;
         this->flag.enabled = false;
-        zEntEvent(this, this, eEventTaskBox_OnComplete);
+        zEntEvent(this, 0, this, eEventTaskBox_OnComplete, 0, NULL, 0, 1);
         this->current = (ztaskbox*)zSceneFindObject(this->asset->next_task);
 
         // Bruh
@@ -211,6 +211,14 @@ bool ztaskbox::exists(state_enum stage)
     return state != STATE_BEGIN && xSTFindAsset(state, NULL);
 }
 
+void ztaskbox::set_state(state_enum stage)
+{
+    this->state = stage;
+    this->current = this;
+
+    // todo
+}
+
 void ztaskbox::talk_callback::on_start()
 {
     this->task->on_talk_start();
@@ -219,4 +227,9 @@ void ztaskbox::talk_callback::on_start()
 void ztaskbox::talk_callback::on_stop()
 {
     this->task->on_talk_stop(answer);
+}
+
+void ztaskbox::talk_callback::on_answer(answer_enum answer)
+{
+    this->answer = answer;
 }
