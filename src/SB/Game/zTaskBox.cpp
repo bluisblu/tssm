@@ -16,7 +16,7 @@ extern ztaskbox* shared;
 void ztaskbox::load(const asset_type& a)
 {
     xBaseInit((xBase*)this, &(xBaseAsset)a);
-    this->baseType = eBaseTypeEnv;
+    this->baseType = eBaseTypeTaskBox;
     // FIXME: can't force const to non-const?
     // this->asset = &a;
 
@@ -219,9 +219,44 @@ void ztaskbox::set_state(state_enum stage)
     // todo
 }
 
+void ztaskbox::cb_dispatch(xBase*, xBase* to, U32 event, F32*, xBase*, U32)
+{
+    ztaskbox& taskbox = *(ztaskbox*)to;
+
+    switch (event)
+    {
+    case eEventReset:
+        taskbox.reset();
+        break;
+    case eEventStartConversation:
+        taskbox.start_talk(NULL);
+        break;
+    case eEventEndConversation:
+        taskbox.stop_talk();
+        break;
+    case eEventTaskBox_Initiate:
+        taskbox.initiate();
+        break;
+    case eEventTaskBox_SetSuccess:
+        taskbox.succeed();
+        break;
+    case eEventTaskBox_SetFailure:
+        taskbox.fail();
+        break;
+    case eEventTaskBox_OnAccept:
+    case eEventTaskBox_OnDecline:
+    case eEventTaskBox_OnComplete:
+        break;
+    }
+}
+
 void ztaskbox::talk_callback::on_start()
 {
-    this->task->on_talk_start();
+    this->task->flag.unk_11 = 1;
+    if (this->task->cb != nullptr)
+    {
+        this->task->cb->on_talk_start();
+    }
 }
 
 void ztaskbox::talk_callback::on_stop()

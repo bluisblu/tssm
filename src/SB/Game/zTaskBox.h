@@ -16,7 +16,8 @@ struct ztaskbox : xBase
     struct flagData
     {
         U8 enabled : 8;
-        U32 dummy : 24;
+        U8 unk_11 : 8;
+        U16 dummy : 16;
     };
 
     enum state_enum
@@ -90,6 +91,7 @@ struct ztaskbox : xBase
     void complete();
     static void init();
     bool exists(state_enum stage);
+    void cb_dispatch(xBase*, xBase* to, U32 event, F32*, xBase*, U32);
 };
 
 #endif
