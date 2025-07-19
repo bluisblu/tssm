@@ -495,10 +495,10 @@ S32 icompare(const substr& s1, const substr& s2)
     return result;
 }
 
-S32 imemcmp(U8* d1, U8* d2, U32 size)
+S32 imemcmp(char* d1, char* d2, U32 size)
 {
-	U8* s1 = d1;
-	U8* s2 = d2;
+	char* s1 = d1;
+	char* s2 = d2;
 	U32 i = 0;
     while (i < size)
     {
