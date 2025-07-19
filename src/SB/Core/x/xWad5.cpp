@@ -510,7 +510,7 @@ U32 xStrHashCat(U32 prefix, const char* str)
     while (i = *str, i != NULL)
     {
         str++;
-        hash = (i - (i & (S32)i >> 1 & 0x20) & 0xff) + hash * 0x83;
+        hash = (i - (i & (U8)i >> 1 & 0x20) & 0xff) + hash * 0x83;
     }
 
     return hash;
@@ -526,7 +526,7 @@ U32 xStrHash(const char* str, size_t size)
     {
         i++;
         str++;
-        hash = (c - (c & (S32)c >> 1 & 0x20) & 0xff) + hash * 0x83;
+        hash = (c - (c & (U8)c >> 1 & 0x20) & 0xff) + hash * 0x83;
     }
 
     return hash;
@@ -539,7 +539,7 @@ U32 xStrHash(const char* str)
 
     while (i = *str, i != NULL)
     {
-        hash = (i - (i & (S32)i >> 1 & 0x20) & 0xff) + hash * 0x83;
+        hash = (i - (i & (U8)i >> 1 & 0x20) & 0xff) + hash * 0x83;
         str++;
     }
 
