@@ -266,14 +266,41 @@ char* xUtil_idtag2string(U32 srctag, S32 bufidx)
 
 S32 xUtilShutdown()
 {
-    return g_xutilinit--;
+    return --g_xutilinit;
 }
 
 S32 xUtilStartup()
 {
     if (!g_xutilinit++)
     {
-        xUtil_crc_init();
+        // From xUtil_crc_init:
+
+        S32 i, j;
+        U32 crc_accum;
+    
+        if (g_crc_needinit)
+        {
+            for (i = 0; i < 256; i++)
+            {
+                crc_accum = (U32)i << 24;
+    
+                for (j = 0; j < 8; j++)
+                {
+                    if (crc_accum & (1 << 31))
+                    {
+                        crc_accum = (crc_accum << 1) ^ 0x04C11DB7;
+                    }
+                    else
+                    {
+                        crc_accum = (crc_accum << 1);
+                    }
+                }
+    
+                g_crc32_table[i] = crc_accum;
+            }
+    
+            g_crc_needinit = 0;
+        }
     }
 
     return g_xutilinit;
