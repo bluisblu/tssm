@@ -497,9 +497,9 @@ S32 icompare(const substr& s1, const substr& s2)
 
 S32 imemcmp(char* d1, char* d2, U32 size)
 {
-	char* s1 = d1;
-	char* s2 = d2;
-	U32 i = 0;
+    char* s1 = d1;
+    char* s2 = d2;
+    U32 i = 0;
     while (i < size)
     {
         S32 v1 = *s1 | ((*s1 >> 1) & 0x20);
