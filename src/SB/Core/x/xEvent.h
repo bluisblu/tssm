@@ -563,5 +563,7 @@ void zEntEvent(xBase* from, xBase* to, U32 toEvent);
 void zEntEvent(xBase* from, xBase* to, U32 toEvent, const F32* toParam);
 void zEntEvent(xBase* from, U32 fromEvent, xBase* to, U32 toEvent, const F32* toParam,
                xBase* toParamWidget, S32 forceEvent);
+void zEntEvent(xBase* from, U32 fromEvent, xBase* to, U32 toEvent, const F32* toParam,
+               xBase* toParamWidget, U32 unknown, S32 forceEvent);
 
 #endif

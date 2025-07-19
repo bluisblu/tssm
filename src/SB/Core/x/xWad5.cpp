@@ -1280,6 +1280,13 @@ void xCameraFXShake(F32 maxTime, F32 magnitude, F32 cycleMax, F32 rotate_magnitu
     }
 }
 
+void xCameraFXShakeEnd(cameraFX* fx, F32 fadeOutTime)
+{
+    fx->maxTime = fadeOutTime;
+    fx->elapsedTime = 0.0f;
+    fx->shake.dampenRate = (1.0f / fadeOutTime);
+}
+
 void xCameraFXZoomUpdate(cameraFX* f, F32 dt, const xMat4x3*, xMat4x3* m)
 {
     switch (f->zoom.mode)
