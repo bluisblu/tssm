@@ -468,6 +468,26 @@ S32 icompare(const substr& s1, const substr& s2)
     return result;
 }
 
+S32 imemcmp(U8* d1, U8* d2, U32 size)
+{
+	U8* s1 = d1;
+	U8* s2 = d2;
+	U32 i = 0;
+    while (i < size)
+    {
+        S32 v1 = *s1 | ((*s1 >> 1) & 0x20);
+        S32 v2 = *s2 | ((*s2 >> 1) & 0x20);
+        if (v1 != v2)
+        {
+            return v1 - v2;
+        }
+        s1++;
+        s2++;
+        i++;
+    }
+    return 0;
+}
+
 char* xStrupr(char* string)
 {
     char* p = string;
