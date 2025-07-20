@@ -16,6 +16,11 @@ void DCZeroRange(void* addr, u32 nBytes);
 void DCTouchRange(void* addr, u32 nBytes);
 void ICInvalidateRange(void* addr, u32 nBytes);
 
+// Instruction cache functions.
+void ICInvalidateRange(void* addr, u32 numBytes);
+void ICFlashInvalidate();
+void ICEnable();
+
 #define LC_BASE_PREFIX 0xE000
 #define LC_BASE (LC_BASE_PREFIX << 16)
 #define LCGetBase() ((void*)LC_BASE)
