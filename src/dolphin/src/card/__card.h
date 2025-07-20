@@ -3,6 +3,7 @@
 
 #include <dolphin/card.h>
 #include <dolphin/exi.h>
+#include <dolphin/CARDPriv.h>
 
 #ifdef __cplusplus
 extern "C" {
@@ -62,7 +63,7 @@ void __CARDCheckSum(void* ptr, int length, u16* checksum, u16* checksumInv);
 s32 __CARDVerify(CARDControl* card);
 
 // CARDBlock
-void* __CARDGetFatBlock(CARDControl* card);
+//void* __CARDGetFatBlock(CARDControl* card);
 s32 __CARDAllocBlock(s32 chan, u32 cBlock, CARDCallback callback);
 s32 __CARDFreeBlock(s32 chan, u16 nBlock, CARDCallback callback);
 s32 __CARDUpdateFatBlock(s32 chan, u16* fat, CARDCallback callback);

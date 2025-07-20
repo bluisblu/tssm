@@ -52,9 +52,9 @@ u8 GXTexImage2Ids[8] = { 0x90, 0x91, 0x92, 0x93, 0xB0, 0xB1, 0xB2, 0xB3 };
 u8 GXTexImage3Ids[8] = { 0x94, 0x95, 0x96, 0x97, 0xB4, 0xB5, 0xB6, 0xB7 };
 u8 GXTexTlutIds[8] = { 0x98, 0x99, 0x9A, 0x9B, 0xB8, 0xB9, 0xBA, 0xBB };
 static u8 GX2HWFiltConv[6] = { 0x00, 0x04, 0x01, 0x05, 0x02, 0x06 };
-static u8 HW2GXFiltConv[8] = { 0x00, 0x02, 0x04, 0x00, 0x01, 0x03, 0x05, 0x00 };
+//static u8 HW2GXFiltConv[8] = { 0x00, 0x02, 0x04, 0x00, 0x01, 0x03, 0x05, 0x00 };
 
-static void __GXGetTexTileShift(GXTexFmt fmt, u32* rowTileS, u32* colTileS)
+inline void __GXGetTexTileShift(GXTexFmt fmt, u32* rowTileS, u32* colTileS)
 {
     switch (fmt)
     {
@@ -101,54 +101,54 @@ static void __GXGetTexTileShift(GXTexFmt fmt, u32* rowTileS, u32* colTileS)
     }
 }
 
-u32 GXGetTexBufferSize(u16 width, u16 height, u32 format, GXBool mipmap, u8 max_lod)
-{
-    u32 tileShiftX;
-    u32 tileShiftY;
-    u32 tileBytes;
-    u32 bufferSize;
-    u32 nx;
-    u32 ny;
-    u32 level;
+// u32 GXGetTexBufferSize(u16 width, u16 height, u32 format, GXBool mipmap, u8 max_lod)
+// {
+//     u32 tileShiftX;
+//     u32 tileShiftY;
+//     u32 tileBytes;
+//     u32 bufferSize;
+//     u32 nx;
+//     u32 ny;
+//     u32 level;
 
-    __GXGetTexTileShift(format, &tileShiftX, &tileShiftY);
-    if (format == GX_TF_RGBA8 || format == GX_TF_Z24X8)
-    {
-        tileBytes = 64;
-    }
-    else
-    {
-        tileBytes = 32;
-    }
+//     __GXGetTexTileShift(format, &tileShiftX, &tileShiftY);
+//     if (format == GX_TF_RGBA8 || format == GX_TF_Z24X8)
+//     {
+//         tileBytes = 64;
+//     }
+//     else
+//     {
+//         tileBytes = 32;
+//     }
 
-    if (mipmap == GX_TRUE)
-    {
-        nx = 1 << (31 - __cntlzw(width));
-        ny = 1 << (31 - __cntlzw(height));
+//     if (mipmap == GX_TRUE)
+//     {
+//         nx = 1 << (31 - __cntlzw(width));
+//         ny = 1 << (31 - __cntlzw(height));
 
-        bufferSize = 0;
-        for (level = 0; level < max_lod; level++)
-        {
-            nx = (width + (1 << tileShiftX) - 1) >> tileShiftX;
-            ny = (height + (1 << tileShiftY) - 1) >> tileShiftY;
-            bufferSize += tileBytes * (nx * ny);
-            if (width == 1 && height == 1)
-            {
-                break;
-            }
-            width = (width > 1) ? width >> 1 : 1;
-            height = (height > 1) ? height >> 1 : 1;
-        }
-    }
-    else
-    {
-        nx = (width + (1 << tileShiftX) - 1) >> tileShiftX;
-        ny = (height + (1 << tileShiftY) - 1) >> tileShiftY;
-        bufferSize = nx * ny * tileBytes;
-    }
+//         bufferSize = 0;
+//         for (level = 0; level < max_lod; level++)
+//         {
+//             nx = (width + (1 << tileShiftX) - 1) >> tileShiftX;
+//             ny = (height + (1 << tileShiftY) - 1) >> tileShiftY;
+//             bufferSize += tileBytes * (nx * ny);
+//             if (width == 1 && height == 1)
+//             {
+//                 break;
+//             }
+//             width = (width > 1) ? width >> 1 : 1;
+//             height = (height > 1) ? height >> 1 : 1;
+//         }
+//     }
+//     else
+//     {
+//         nx = (width + (1 << tileShiftX) - 1) >> tileShiftX;
+//         ny = (height + (1 << tileShiftY) - 1) >> tileShiftY;
+//         bufferSize = nx * ny * tileBytes;
+//     }
 
-    return bufferSize;
-}
+//     return bufferSize;
+// }
 
 void __GetImageTileCount(GXTexFmt fmt, u16 wd, u16 ht, u32* rowTiles, u32* colTiles, u32* cmpTiles)
 {

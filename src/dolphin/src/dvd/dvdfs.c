@@ -144,7 +144,7 @@ s32 DVDConvertPathToEntrynum(const char* pathPtr)
             if (illegal)
             {
                 OSPanic(
-                    __FILE__, 383,
+                    __FILE__, 387,
                     "DVDConvertEntrynumToPath(possibly DVDOpen or DVDChangeDir or DVDOpenDir): "
                     "specified directory or file (%s) doesn't match standard 8.3 format. This is a "
                     "temporary restriction and will be removed soon\n",
@@ -313,15 +313,15 @@ BOOL DVDGetCurrentDir(char* path, u32 maxlen)
 BOOL DVDReadAsyncPrio(DVDFileInfo* fileInfo, void* addr, s32 length, s32 offset,
                       DVDCallback callback, s32 prio)
 {
-    if (!((0 <= offset) && (offset < fileInfo->length)))
+    if (!((0 <= offset) && (offset <= fileInfo->length)))
     {
-#line 746
+#line 750
         OSHalt("DVDReadAsync(): specified area is out of the file  ");
     }
 
     if (!((0 <= offset + length) && (offset + length < fileInfo->length + DVD_MIN_TRANSFER_SIZE)))
     {
-#line 752
+#line 756
         OSHalt("DVDReadAsync(): specified area is out of the file  ");
     }
 
@@ -346,76 +346,12 @@ static void cbForReadAsync(s32 result, DVDCommandBlock* block)
     }
 }
 
-s32 DVDReadPrio(DVDFileInfo* fileInfo, void* addr, s32 length, s32 offset, s32 prio)
-{
-    BOOL result;
-    DVDCommandBlock* block;
-    s32 state;
-    BOOL enabled;
-    s32 retVal;
-
-    if (!((0 <= offset) && (offset < fileInfo->length)))
-    {
-#line 816
-        OSHalt("DVDRead(): specified area is out of the file  ");
-    }
-
-    if (!((0 <= offset + length) && (offset + length < fileInfo->length + DVD_MIN_TRANSFER_SIZE)))
-    {
-#line 822
-        OSHalt("DVDRead(): specified area is out of the file  ");
-    }
-
-    block = &(fileInfo->cb);
-
-    result = DVDReadAbsAsyncPrio(block, addr, length, (s32)(fileInfo->startAddr + offset),
-                                 cbForReadSync, prio);
-
-    if (result == FALSE)
-    {
-        return -1;
-    }
-
-    enabled = OSDisableInterrupts();
-
-    while (1)
-    {
-        state = ((volatile DVDCommandBlock*)block)->state;
-
-        if (state == DVD_STATE_END)
-        {
-            retVal = (s32)block->transferredSize;
-            break;
-        }
-        if (state == DVD_STATE_FATAL_ERROR)
-        {
-            retVal = DVD_RESULT_FATAL_ERROR;
-            break;
-        }
-        if (state == DVD_STATE_CANCELED)
-        {
-            retVal = DVD_RESULT_CANCELED;
-            break;
-        }
-
-        OSSleepThread(&__DVDThreadQueue);
-    }
-
-    OSRestoreInterrupts(enabled);
-    return retVal;
-}
-
-/* This is based on the revolution SDK, these may not match in all cases */
-static void cbForReadSync(s32 result, DVDCommandBlock* block)
-{
-    OSWakeupThread(&__DVDThreadQueue);
-}
 /* This is based on the revolution SDK, these may not match in all cases */
 BOOL DVDSeekAsyncPrio(DVDFileInfo* fileInfo, s32 offset, DVDCallback callback, s32 prio)
 {
-    if (!((0 <= offset) && (offset < fileInfo->length)))
+    if (!((0 <= offset) && (offset <= fileInfo->length)))
     {
-        OSPanic(__FILE__, 0x387, "DVDSeek(): offset is out of the file  ");
+        OSPanic(__FILE__, 907, "DVDSeek(): offset is out of the file  ");
     }
 
     fileInfo->callback = callback;

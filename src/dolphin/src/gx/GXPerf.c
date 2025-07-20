@@ -362,3 +362,29 @@ void GXClearGPMetric(void)
     reg = 4;
     GX_SET_CP_REG(2, reg);
 }
+
+#pragma scheduling off
+void GXReadPixMetric(u32* top_pixels_in, u32* top_pixels_out, u32* bot_pixels_in,
+                     u32* bot_pixels_out, u32* clr_pixels_in, u32* copy_clks)
+{
+    *top_pixels_in = __GXReadPECounterU32(12, 13) * 4;
+    *top_pixels_out = __GXReadPECounterU32(14, 15) * 4;
+    *bot_pixels_in = __GXReadPECounterU32(16, 17) * 4;
+    *bot_pixels_out = __GXReadPECounterU32(18, 19) * 4;
+    *clr_pixels_in = __GXReadPECounterU32(20, 21) * 4;
+    *copy_clks = __GXReadPECounterU32(22, 23);
+}
+#pragma scheduling reset
+
+void GXClearPixMetric(void)
+{
+    u32 reg;
+
+    CHECK_GXBEGIN(1163, "GXClearPixMetric");
+
+    reg = 0x57000000;
+    GX_WRITE_RAS_REG(reg);
+    reg = 0x57000AAA;
+    GX_WRITE_RAS_REG(reg);
+    __GXData->bpSentNot = 0;
+}

@@ -11,6 +11,8 @@ static struct OSAlarmQueue
 static void DecrementerExceptionHandler(__OSException exception, OSContext* context);
 static BOOL OnReset(BOOL final);
 
+static OSResetFunctionInfo ResetFunctionInfo = { OnReset, 0xFFFFFFFF, NULL, NULL };
+
 inline void SetTimer(OSAlarm* alarm)
 {
     OSTime delta;
@@ -36,6 +38,7 @@ void OSInitAlarm(void)
     {
         AlarmQueue.head = AlarmQueue.tail = NULL;
         __OSSetExceptionHandler(8, DecrementerExceptionHandler);
+        OSRegisterResetFunction(&ResetFunctionInfo);
     }
 }
 
@@ -223,4 +226,29 @@ static asm void DecrementerExceptionHandler(register __OSException exception,
 	stwu r1, -8(r1)
 	b DecrementerExceptionCallback
     // clang-format on
+}
+
+static BOOL OnReset(BOOL final)
+{
+    OSAlarm* alarm;
+    OSAlarm* next;
+
+    if (final != FALSE)
+    {
+        alarm = AlarmQueue.head;
+        next = (alarm) ? alarm->next : NULL;
+
+        while (alarm != 0)
+        {
+            if (__DVDTestAlarm(alarm) == FALSE)
+            {
+                OSCancelAlarm(alarm);
+            }
+
+            alarm = next;
+            next = (alarm) ? alarm->next : NULL;
+        }
+    }
+
+    return TRUE;
 }

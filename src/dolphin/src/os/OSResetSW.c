@@ -38,6 +38,28 @@ void __OSResetSWInterruptHandler(__OSInterrupt interrupt, OSContext* context)
     __PIRegs[0] = 2;
 }
 
+OSResetCallback OSSetResetCallback(OSResetCallback callback)
+{
+    BOOL enabled;
+    OSResetCallback prevCallback;
+
+    enabled = OSDisableInterrupts();
+    prevCallback = ResetCallback;
+    ResetCallback = callback;
+
+    if (callback)
+    {
+        __PIRegs[0] = 2;
+        __OSUnmaskInterrupts(0x200);
+    }
+    else
+    {
+        __OSMaskInterrupts(0x200);
+    }
+    OSRestoreInterrupts(enabled);
+    return prevCallback;
+}
+
 BOOL OSGetResetButtonState(void)
 {
     BOOL enabled;
@@ -88,9 +110,9 @@ BOOL OSGetResetButtonState(void)
 
     LastState = state;
 
-    if (GameChoice & 0x3f)
+    if (GameChoice & 0x1f)
     {
-        OSTime fire = (GameChoice & 0x3f) * 60;
+        OSTime fire = (GameChoice & 0x1f) * 60;
         fire = __OSStartTime + OSSecondsToTicks(fire);
         if (fire < now)
         {

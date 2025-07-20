@@ -29,7 +29,7 @@ static void __GXWriteFifoIntReset(u8 hiWatermarkClr, u8 loWatermarkClr);
 static char __data_0[] = "[GXOverflowHandler]";
 #endif
 
-static void GXOverflowHandler(__OSInterrupt interrupt, OSContext* context)
+inline void GXOverflowHandler(__OSInterrupt interrupt, OSContext* context)
 {
 #if DEBUG
     if (__gxVerif->verifyLevel > GX_WARN_SEVERE)
@@ -37,7 +37,6 @@ static void GXOverflowHandler(__OSInterrupt interrupt, OSContext* context)
         OSReport(__data_0);
     }
 #endif
-    ASSERTLINE(LINE(377, 377, 381), !GXOverflowSuspendInProgress);
 
     __GXOverflowCount++;
     __GXWriteFifoIntEnable(0, 1);
@@ -53,7 +52,7 @@ static void GXOverflowHandler(__OSInterrupt interrupt, OSContext* context)
     OSSuspendThread(__GXCurrentThread);
 }
 
-static void GXUnderflowHandler(s16 interrupt, OSContext* context)
+inline void GXUnderflowHandler(s16 interrupt, OSContext* context)
 {
 #if DEBUG
     if (__gxVerif->verifyLevel > GX_WARN_SEVERE)
@@ -61,7 +60,6 @@ static void GXUnderflowHandler(s16 interrupt, OSContext* context)
         OSReport("[GXUnderflowHandler]");
     }
 #endif
-    ASSERTLINE(LINE(419, 419, 423), GXOverflowSuspendInProgress);
 
     OSResumeThread(__GXCurrentThread);
     GXOverflowSuspendInProgress = FALSE;
@@ -76,7 +74,7 @@ static void GXUnderflowHandler(s16 interrupt, OSContext* context)
             (u32)__rlwimi((u32)(reg), (val), (shift), (32 - (shift) - (size)), (31 - (shift)));    \
     } while (0);
 
-static void GXBreakPointHandler(__OSInterrupt interrupt, OSContext* context)
+inline void GXBreakPointHandler(__OSInterrupt interrupt, OSContext* context)
 {
     OSContext exceptionContext;
 

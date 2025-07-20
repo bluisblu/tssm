@@ -22,7 +22,13 @@ s32 __CARDGetStatusEx(s32 chan, s32 fileNo, CARDDir* dirent)
 
         dir = __CARDGetDirBlock(card);
         ent = &dir[fileNo];
-        result = __CARDIsReadable(card, ent);
+        result = __CARDAccess(card, ent);
+
+        if (result == -10)
+        {
+            result = __CARDIsPublic(ent);
+        }
+
         if (result >= 0)
         {
             memcpy(dirent, ent, 0x40);
@@ -54,7 +60,7 @@ s32 __CARDSetStatusExAsync(s32 chan, s32 fileNo, CARDDir* dirent, CARDCallback c
 
     dir = __CARDGetDirBlock(card);
     ent = &dir[fileNo];
-    result = __CARDIsWritable(card, ent);
+    result = __CARDAccess(card, ent);
     if (result < 0)
     {
         return __CARDPutControlBlock(card, result);
@@ -71,17 +77,6 @@ s32 __CARDSetStatusExAsync(s32 chan, s32 fileNo, CARDDir* dirent, CARDCallback c
             *p = 0;
         }
         break;
-    }
-
-    if (dirent->permission & 0x20)
-    {
-        memset(dirent->gameName, 0, sizeof(dirent->gameName));
-        memset(dirent->company, 0, sizeof(dirent->company));
-    }
-
-    if (dirent->permission & 0x40)
-    {
-        memset(dirent->gameName, 0, sizeof(dirent->gameName));
     }
 
     if ((memcmp(&ent->fileName, &dirent->fileName, 32) != 0) ||

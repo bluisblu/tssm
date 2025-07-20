@@ -24,7 +24,13 @@
     "gxmanage.h": "c",
     "__ax.h": "c",
     "math_api.h": "c",
-    "arith.h": "c"
+    "arith.h": "c",
+    "card.h": "c",
+    "dvd.h": "c",
+    "cardpriv.h": "c",
+    "__card.h": "c",
+    "osexec.h": "c",
+    "oscache.h": "c"
   },
   // Disable C/C++ IntelliSense, use clangd instead
   "C_Cpp.intelliSenseEngine": "default",

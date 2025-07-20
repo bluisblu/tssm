@@ -25,3 +25,16 @@ void OSSetArenaLo(void* addr)
 {
     __OSArenaLo = addr;
 }
+
+void* OSAllocFromArenaLo(u32 size, u32 align)
+{
+    void* ptr;
+    u8* arenaLo;
+
+    ptr = OSGetArenaLo();
+    arenaLo = ptr = (void*)ROUND(ptr, align);
+    arenaLo += size;
+    arenaLo = (u8*)ROUND(arenaLo, align);
+    OSSetArenaLo(arenaLo);
+    return ptr;
+}
