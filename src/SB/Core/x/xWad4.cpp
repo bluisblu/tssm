@@ -3590,26 +3590,7 @@ void xPadNormalizeAnalog(_tagxPad& pad, S32 inner_zone, S32 outer_zone)
 
             if (mag >= 0.0f)
             {
-                //                         Infinity
-                U32 bits = *((U32*)&mag) & 0x7f800000;
-
-                S32 case_id = 0;
-                if (bits == 0x7f800000)
-                {
-                    //                           NaN
-                    case_id = (((*((U32*)&mag) & 0x7fffff) == 0) ? 2 : 1);
-                }
-                else if ((bits < 0x7f800000) && (bits == 0))
-                {
-                    //                           NaN
-                    case_id = (((*((U32*)&mag) & 0x7fffff) == 0) ? 3 : 5);
-                }
-                else
-                {
-                    case_id = 4;
-                }
-                // ^matches better than just writing `if (!isinf(mag))` here
-                if (case_id != 2) 
+                if (!isinf(mag))
                 {
                     F32 inv_sqrt = 1.0 / sqrt(mag);
                     F32 val = -(inv_sqrt * inv_sqrt * mag - 3.0f) * inv_sqrt * 0.5f;
