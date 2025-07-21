@@ -1,4 +1,8 @@
 #include "xWad4.h"
+#include "xPad.h"
+#include "zGame.h"
+#include "zScene.h"
+#include <math.h>
 
 //                                              xRay / xScene
 
@@ -3453,8 +3457,8 @@ void xPadKill()
 
 void xPadRumbleEnable(S32 idx, S32 enable)
 {
-    _tagxPad* p = mPad + idx;
-    if (p->state != 2)
+    _tagxPad* p = &mPad[idx];
+    if (p->state != ePad_Enabled)
     {
         enable = 0;
     }
@@ -3470,7 +3474,7 @@ void xPadRumbleEnable(S32 idx, S32 enable)
         if (p->flags & 8)
         {
             p->flags ^= 8;
-            xPadDestroyRumbleChain(mPad + idx);
+            //xPadDestroyRumbleChain(mPad + idx);
         }
     }
 }
@@ -3478,10 +3482,21 @@ void xPadRumbleEnable(S32 idx, S32 enable)
 // WIP.
 _tagxPad* xPadEnable(S32 idx)
 {
-    _tagxPad* p = mPad + idx;
+    _tagxPad* p = &mPad[idx];
     if (p->state == ePad_Disabled && idx == 0)
     {
-        p = iPadEnable(mPad + idx, 0);
+        p = iPadEnable(p, 0);
+        if (p->state == ePad_Enabled)
+        {
+            if (p->flags & 4)
+            {
+                p->flags |= 8;
+            }
+            else if (p->flags & 8)
+            {
+                p->flags ^= 8;
+            }
+        }
     }
     return p;
 }
@@ -3489,12 +3504,130 @@ _tagxPad* xPadEnable(S32 idx)
 S32 xPadInit()
 {
     memset(mPad, 0, sizeof(mPad));
-    memset(mRumbleList, 0, sizeof(mRumbleList));
+    //memset(mRumbleList, 0, sizeof(mRumbleList));
     S32 code = iPadInit();
     if (!code)
     {
         return 0;
     }
-    gPlayerPad = mPad;
+    //gPlayerPad = mPad;
     return 1;
+}
+
+// WIP.
+S32 xPadUpdate(S32 idx, F32 time_passed)
+{
+	U32 new_on;
+	_tagxPad* p;
+	S32 ret;
+	U32 fake_dpad;
+	S32 i;
+
+    if (idx == 0)
+    {
+
+    }
+}
+
+void xPadNormalizeAnalog(_tagxPad& pad, S32 inner_zone, S32 outer_zone)
+{
+    _tagPadAnalog* src = &pad.analog1;
+    
+    for (S32 i = 0; i < 2; i++, src++)
+    {
+        analog_data* data = &pad.analog[i];
+        S8 x = src->x;
+        F32 normX = 0.0f;
+
+        if (x <= 1)
+        {
+            if ((x <= -inner_zone) && (-outer_zone <= x))
+            {
+                normX = F32(x + inner_zone) / F32(outer_zone - inner_zone);
+            }
+        }
+        else if ((inner_zone <= x) && (x <= outer_zone))
+        {
+            normX = F32(x - inner_zone) / F32(outer_zone - inner_zone);
+        }
+        data->offset.x = normX;
+
+        S8 y = src->y;
+        F32 normY = 0.0f;
+        if (y <= 1)
+        {
+            if ((y <= -inner_zone) && (-outer_zone <= y))
+            {
+                normY = F32(y + inner_zone) / F32(outer_zone - inner_zone);
+            }
+        }
+        else if ((inner_zone <= y) && (y <= outer_zone))
+        {
+            normY = F32(y - inner_zone) / F32(outer_zone - inner_zone);
+        }
+        data->offset.y = normY;
+
+        if ((data->offset.x == 0.0f) && (data->offset.y == 0.0f))
+        {
+            data->mag = 0.0f;
+            data->dir.x = 1.0f;
+            data->dir.y = 0.0f;
+            data->ang = 0.0f;
+        }
+        else
+        {
+            if (data->offset.x > 1.0f)
+                data->offset.x = 1.0f;
+            else if (data->offset.x < -1.0f)
+                data->offset.x = -1.0f;
+
+            if (data->offset.y > 1.0f)
+                data->offset.y = 1.0f;
+            else if (data->offset.y < -1.0f)
+                data->offset.y = -1.0f;
+
+            F32 mag = data->offset.x * data->offset.x + data->offset.y * data->offset.y;
+
+            if (mag >= 0.0f)
+            {
+                //                         Infinity
+                U32 bits = *((U32*)&mag) & 0x7f800000;
+
+                S32 case_id = 0;
+                if (bits == 0x7f800000)
+                {
+                    //                           NaN
+                    case_id = (((*((U32*)&mag) & 0x7fffff) == 0) ? 2 : 1);
+                }
+                else if ((bits < 0x7f800000) && (bits == 0))
+                {
+                    //                           NaN
+                    case_id = (((*((U32*)&mag) & 0x7fffff) == 0) ? 3 : 5);
+                }
+                else
+                {
+                    case_id = 4;
+                }
+                // ^matches better than just writing `if (!isinf(mag))` here
+                if (case_id != 2) 
+                {
+                    F32 inv_sqrt = 1.0 / sqrt(mag);
+                    F32 val = -(inv_sqrt * inv_sqrt * mag - 3.0f) * inv_sqrt * 0.5f;
+                    mag = 100000.0f;
+                    if (val > 0.0000099999997f)
+                    {
+                        mag = 1.0f / val;
+                    }
+                }
+            }
+
+            data->mag = mag;
+
+            F32 inv_mag = 1.0f / data->mag;
+            data->dir.x = data->offset.x * inv_mag;
+            data->dir.y = data->offset.y * inv_mag;
+
+            data->ang = xAngleClampFast(atan2(data->dir.y, data->dir.x));
+        }
+    }
 }
