@@ -3485,8 +3485,8 @@ _tagxPad* xPadEnable(S32 idx)
     _tagxPad* p = &mPad[idx];
     if (p->state == ePad_Disabled && idx == 0)
     {
-        p = iPadEnable(p, 0);
-        if (p->state == ePad_Enabled)
+        p = iPadEnable(&mPad[0], 0);
+        if (p->state == ePad_Enabled || p->state != ePad_Disabled)
         {
             if (p->flags & 4)
             {
@@ -3517,16 +3517,153 @@ S32 xPadInit()
 // WIP.
 S32 xPadUpdate(S32 idx, F32 time_passed)
 {
-	U32 new_on;
-	_tagxPad* p;
-	S32 ret;
-	U32 fake_dpad;
-	S32 i;
+    U32 new_on;
+    _tagxPad* p;
+    S32 ret;
+    U32 fake_dpad;
+    S32 i;
 
     if (idx == 0)
     {
+        if (zScene_ScreenAdjustMode() == 0)
+        {
+            if (/*!zMenuRunning() &&*/ !zGameIsPaused())
+            {
+                mPad[idx].flags &= ~0x10;
+            }
+            else
+            {
+                mPad[idx].flags |= 0x10;
+            }
+        }
+        else
+        {
+            mPad[idx].flags &= ~0x10;
+        }
 
+        if (mPad[idx].al2d_timer > 0.34999999f) mPad[idx].al2d_timer = 0.34999999f;
+        if (mPad[idx].ar2d_timer > 0.34999999f) mPad[idx].ar2d_timer = 0.34999999f;
+        if (mPad[idx].d_timer    > 0.34999999f) mPad[idx].d_timer    = 0.34999999f;
+
+        fake_dpad = 0;
+        ret = iPadUpdate(&mPad[idx], &new_on);
+
+        if (!ret)
+        {
+            mPad[idx].pressed = 0;
+            mPad[idx].released = 0;
+            return 1;
+        }
+
+        if (mPad[idx].flags & 0x10)
+        {
+            if (mPad[idx].flags & 0x01)
+            {
+                if (mPad[idx].analog1.x < -49)       fake_dpad |= 0x80;
+                else if (mPad[idx].analog1.x > 0x31) fake_dpad |= 0x20;
+
+                if (mPad[idx].analog1.y < -49)       fake_dpad |= 0x10;
+                else if (mPad[idx].analog1.y > 0x31) fake_dpad |= 0x40;
+
+                if (fake_dpad == 0)
+                {
+                    mPad[idx].al2d_timer = 0.0f;
+                }
+                else
+                {
+                    mPad[idx].al2d_timer -= time_passed;
+                    if (mPad[idx].al2d_timer <= 0.0f)
+                    {
+                        new_on |= fake_dpad;
+                        mPad[idx].al2d_timer = 0.34999999f;
+                    }
+                }
+            }
+
+            if (mPad[idx].flags & 0x02)
+            {
+                S32 a2x = mPad[idx].analog2.x;
+                S32 a2y = mPad[idx].analog2.y;
+                if (a2x < -49 || a2x > 0x31 || a2y < -49 || a2y > 0x31)
+                {
+                    mPad[idx].ar2d_timer -= time_passed;
+                    if (mPad[idx].ar2d_timer <= 0.0f)
+                    {
+                        mPad[idx].ar2d_timer = 0.34999999f;
+
+                        if (a2x < -49)       new_on |= 0x80;
+                        else if (a2x > 0x31) new_on |= 0x20;
+
+                        if (a2y < -49)       new_on |= 0x10;
+                        else if (a2y > 0x31) new_on |= 0x40;
+                    }
+                }
+                else
+                {
+                    mPad[idx].ar2d_timer = 0.0f;
+                }
+            }
+        }
+
+        mPad[idx].pressed  = new_on & ~mPad[idx].on;
+        mPad[idx].released = mPad[idx].on & ~new_on;
+        mPad[idx].on       = new_on;
+
+        p = &mPad[idx];
+        for (i = 0; i < 22; i += 2)
+        {
+            U32 mask0 = 1 << i;
+            U32 mask1 = 1 << (i + 1);
+
+            if (mPad[idx].pressed & mask0)
+                p->down_tmr[0] = 0.0f;
+            else if (mPad[idx].released & mask0)
+                p->up_tmr[0] = 0.0f;
+
+            if (mPad[idx].on & mask0)
+                p->down_tmr[0] += time_passed;
+            else
+                p->up_tmr[0] += time_passed;
+
+            if (mPad[idx].pressed & mask1)
+                p->down_tmr[1] = 0.0f;
+            else if (mPad[idx].released & mask1)
+                p->up_tmr[1] = 0.0f;
+
+            if (mPad[idx].on & mask1)
+                p->down_tmr[1] += time_passed;
+            else
+                p->up_tmr[1] += time_passed;
+
+            p = (_tagxPad*)((U8*)p + 8);
+        }
+
+        if (mPad[idx].flags & 0x10)
+        {
+            if (!(mPad[idx].on & (0x10 | 0x40 | 0x80 | 0x20)))
+            {
+                mPad[idx].d_timer = 0.0f;
+            }
+            else
+            {
+                mPad[idx].d_timer -= time_passed;
+                if (mPad[idx].d_timer <= 0.0f)
+                {
+                    mPad[idx].d_timer = 0.34999999f;
+
+                    if (mPad[idx].on & 0x10)       mPad[idx].pressed |= 0x10;
+                    else if (mPad[idx].on & 0x40)  mPad[idx].pressed |= 0x40;
+
+                    if (mPad[idx].on & 0x80)       mPad[idx].pressed |= 0x80;
+                    else if (mPad[idx].on & 0x20)  mPad[idx].pressed |= 0x20;
+                }
+            }
+        }
+
+        return 1;
     }
+
+    return 0;
 }
 
 void xPadNormalizeAnalog(_tagxPad& pad, S32 inner_zone, S32 outer_zone)
