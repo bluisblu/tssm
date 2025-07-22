@@ -1371,22 +1371,18 @@ RyzMemGrow* RyzMemGrow::Init(xBase* growuser)
 
 void xRenderFixIMEnd()
 {
-    return;
 }
 
 void xRenderFixIMBegin()
 {
-    return;
 }
 
 void xRenderFixUntexturedEnd(RpAtomic* atomic)
 {
-    return;
 }
 
 void xRenderFixUntexturedBegin(RpAtomic* atomic)
 {
-    return;
 }
 
 //void xRenderStateResetAlphaDiscard()
@@ -1394,17 +1390,14 @@ void xRenderFixUntexturedBegin(RpAtomic* atomic)
 
 void xRenderSceneExit()
 {
-    return;
 }
 
 void xRenderSceneEnter()
 {
-    return;
 }
 
 //                                                xRenderBuffer
 
-// 
 void xRenderBufferInit()
 {
     gRenderBuffer.m_mode = 0;
@@ -3590,9 +3583,12 @@ S32 xPadUpdate(S32 idx, F32 time_passed)
             p->flags &= ~0x10;
         }
 
-        if (p->al2d_timer >= 0.35f) p->al2d_timer = 0.35f;
-        if (p->ar2d_timer >= 0.35f) p->ar2d_timer = 0.35f;
-        if (p->d_timer    >= 0.35f) p->d_timer    = 0.35f;
+        if (p->al2d_timer >= 0.35f)
+            p->al2d_timer = 0.35f;
+        if (p->ar2d_timer >= 0.35f)
+            p->ar2d_timer = 0.35f;
+        if (p->d_timer >= 0.35f)
+            p->d_timer = 0.35f;
 
         fake_dpad = 0;
         ret = iPadUpdate(&mPad[idx], &new_on);
@@ -3608,11 +3604,15 @@ S32 xPadUpdate(S32 idx, F32 time_passed)
         {
             if (p->flags & 0x01)
             {
-                if (p->analog1.x < 50)       fake_dpad |= 0x80;
-                else if (p->analog1.x > 0x31) fake_dpad |= 0x20;
+                if (p->analog1.x < 50)
+                    fake_dpad |= 0x80;
+                else if (p->analog1.x > 0x31)
+                    fake_dpad |= 0x20;
 
-                if (p->analog1.y < 50)       fake_dpad |= 0x10;
-                else if (p->analog1.y > 0x31) fake_dpad |= 0x40;
+                if (p->analog1.y < 50)
+                    fake_dpad |= 0x10;
+                else if (p->analog1.y > 0x31)
+                    fake_dpad |= 0x40;
 
                 if (fake_dpad == 0)
                 {
@@ -3640,11 +3640,15 @@ S32 xPadUpdate(S32 idx, F32 time_passed)
                     {
                         p->ar2d_timer = 0.35f;
 
-                        if (a2x < 50)       new_on |= 0x80;
-                        else if (a2x > 0x31) new_on |= 0x20;
+                        if (a2x < 50)
+                            new_on |= 0x80;
+                        else if (a2x > 0x31)
+                            new_on |= 0x20;
 
-                        if (a2y < 50)       new_on |= 0x10;
-                        else if (a2y > 0x31) new_on |= 0x40;
+                        if (a2y < 50)
+                            new_on |= 0x10;
+                        else if (a2y > 0x31)
+                            new_on |= 0x40;
                     }
                 }
                 else
@@ -3654,9 +3658,9 @@ S32 xPadUpdate(S32 idx, F32 time_passed)
             }
         }
 
-        p->pressed  = new_on & ~p->on;
+        p->pressed = new_on & ~p->on;
         p->released = p->on & ~new_on;
-        p->on       = new_on;
+        p->on = new_on;
 
         for (i = 0; i < 22; i += 2)
         {
@@ -3699,11 +3703,15 @@ S32 xPadUpdate(S32 idx, F32 time_passed)
                 {
                     p->d_timer = 0.35f;
 
-                    if (p->on & 0x10)       p->pressed |= 0x10;
-                    else if (p->on & 0x40)  p->pressed |= 0x40;
+                    if (p->on & 0x10)
+                        p->pressed |= 0x10;
+                    else if (p->on & 0x40)
+                        p->pressed |= 0x40;
 
-                    if (p->on & 0x80)       p->pressed |= 0x80;
-                    else if (p->on & 0x20)  p->pressed |= 0x20;
+                    if (p->on & 0x80)
+                        p->pressed |= 0x80;
+                    else if (p->on & 0x20)
+                        p->pressed |= 0x20;
                 }
             }
         }
@@ -3717,7 +3725,7 @@ S32 xPadUpdate(S32 idx, F32 time_passed)
 void xPadNormalizeAnalog(_tagxPad& pad, S32 inner_zone, S32 outer_zone)
 {
     _tagPadAnalog* src = &pad.analog1;
-    
+
     for (S32 i = 0; i < 2; i++, src++)
     {
         analog_data* data = &pad.analog[i];
