@@ -358,7 +358,7 @@ config.libs = [
         "cflags": cflags_tssm,
         "progress_category": "game",
         "objects": [
-            Object(NonMatching, "SB/Core/x/xWad4.cpp", extra_cflags=["-inline on"]),
+            Object(NonMatching, "SB/Core/x/xWad4.cpp"),
             Object(NonMatching, "SB/Core/x/xWad2.cpp"),
             Object(NonMatching, "SB/Core/x/xWad3.cpp"),
             Object(NonMatching, "SB/Core/x/xWad1.cpp"),
