@@ -3518,7 +3518,7 @@ S32 xPadInit()
 S32 xPadUpdate(S32 idx, F32 time_passed)
 {
     U32 new_on;
-    _tagxPad* p;
+    _tagxPad* p = &mPad[idx];
     S32 ret;
     U32 fake_dpad;
     S32 i;
@@ -3529,133 +3529,132 @@ S32 xPadUpdate(S32 idx, F32 time_passed)
         {
             if (/*!zMenuRunning() &&*/ !zGameIsPaused())
             {
-                mPad[idx].flags &= ~0x10;
+                p->flags &= ~0x10;
             }
             else
             {
-                mPad[idx].flags |= 0x10;
+                p->flags |= 0x10;
             }
         }
         else
         {
-            mPad[idx].flags &= ~0x10;
+            p->flags &= ~0x10;
         }
 
-        if (mPad[idx].al2d_timer > 0.34999999f) mPad[idx].al2d_timer = 0.34999999f;
-        if (mPad[idx].ar2d_timer > 0.34999999f) mPad[idx].ar2d_timer = 0.34999999f;
-        if (mPad[idx].d_timer    > 0.34999999f) mPad[idx].d_timer    = 0.34999999f;
+        if (p->al2d_timer >= 0.35f) p->al2d_timer = 0.35f;
+        if (p->ar2d_timer >= 0.35f) p->ar2d_timer = 0.35f;
+        if (p->d_timer    >= 0.35f) p->d_timer    = 0.35f;
 
         fake_dpad = 0;
         ret = iPadUpdate(&mPad[idx], &new_on);
 
         if (!ret)
         {
-            mPad[idx].pressed = 0;
-            mPad[idx].released = 0;
+            p->pressed = 0;
+            p->released = 0;
             return 1;
         }
 
-        if (mPad[idx].flags & 0x10)
+        if (p->flags & 0x10)
         {
-            if (mPad[idx].flags & 0x01)
+            if (p->flags & 0x01)
             {
-                if (mPad[idx].analog1.x < -49)       fake_dpad |= 0x80;
-                else if (mPad[idx].analog1.x > 0x31) fake_dpad |= 0x20;
+                if (p->analog1.x < 50)       fake_dpad |= 0x80;
+                else if (p->analog1.x > 0x31) fake_dpad |= 0x20;
 
-                if (mPad[idx].analog1.y < -49)       fake_dpad |= 0x10;
-                else if (mPad[idx].analog1.y > 0x31) fake_dpad |= 0x40;
+                if (p->analog1.y < 50)       fake_dpad |= 0x10;
+                else if (p->analog1.y > 0x31) fake_dpad |= 0x40;
 
                 if (fake_dpad == 0)
                 {
-                    mPad[idx].al2d_timer = 0.0f;
+                    p->al2d_timer = 0.0f;
                 }
                 else
                 {
-                    mPad[idx].al2d_timer -= time_passed;
-                    if (mPad[idx].al2d_timer <= 0.0f)
+                    p->al2d_timer -= time_passed;
+                    if (p->al2d_timer <= 0.0f)
                     {
                         new_on |= fake_dpad;
-                        mPad[idx].al2d_timer = 0.34999999f;
+                        p->al2d_timer = 0.35f;
                     }
                 }
             }
 
-            if (mPad[idx].flags & 0x02)
+            if (p->flags & 0x02)
             {
-                S32 a2x = mPad[idx].analog2.x;
-                S32 a2y = mPad[idx].analog2.y;
-                if (a2x < -49 || a2x > 0x31 || a2y < -49 || a2y > 0x31)
+                S32 a2x = p->analog2.x;
+                S32 a2y = p->analog2.y;
+                if (a2x <= 50 || a2x >= 207 || a2y <= 50 || a2y >= 207)
                 {
-                    mPad[idx].ar2d_timer -= time_passed;
-                    if (mPad[idx].ar2d_timer <= 0.0f)
+                    p->ar2d_timer -= time_passed;
+                    if (p->ar2d_timer <= 0.0f)
                     {
-                        mPad[idx].ar2d_timer = 0.34999999f;
+                        p->ar2d_timer = 0.35f;
 
-                        if (a2x < -49)       new_on |= 0x80;
+                        if (a2x < 50)       new_on |= 0x80;
                         else if (a2x > 0x31) new_on |= 0x20;
 
-                        if (a2y < -49)       new_on |= 0x10;
+                        if (a2y < 50)       new_on |= 0x10;
                         else if (a2y > 0x31) new_on |= 0x40;
                     }
                 }
                 else
                 {
-                    mPad[idx].ar2d_timer = 0.0f;
+                    p->ar2d_timer = 0.0f;
                 }
             }
         }
 
-        mPad[idx].pressed  = new_on & ~mPad[idx].on;
-        mPad[idx].released = mPad[idx].on & ~new_on;
-        mPad[idx].on       = new_on;
+        p->pressed  = new_on & ~p->on;
+        p->released = p->on & ~new_on;
+        p->on       = new_on;
 
-        p = &mPad[idx];
         for (i = 0; i < 22; i += 2)
         {
             U32 mask0 = 1 << i;
             U32 mask1 = 1 << (i + 1);
 
-            if (mPad[idx].pressed & mask0)
+            if (p->pressed & mask0)
                 p->down_tmr[0] = 0.0f;
-            else if (mPad[idx].released & mask0)
+            else if (p->released & mask0)
                 p->up_tmr[0] = 0.0f;
 
-            if (mPad[idx].on & mask0)
+            if (p->on & mask0)
                 p->down_tmr[0] += time_passed;
             else
                 p->up_tmr[0] += time_passed;
 
-            if (mPad[idx].pressed & mask1)
+            if (p->pressed & mask1)
                 p->down_tmr[1] = 0.0f;
-            else if (mPad[idx].released & mask1)
+            else if (p->released & mask1)
                 p->up_tmr[1] = 0.0f;
 
-            if (mPad[idx].on & mask1)
+            if (p->on & mask1)
                 p->down_tmr[1] += time_passed;
             else
                 p->up_tmr[1] += time_passed;
 
-            p = (_tagxPad*)((U8*)p + 8);
+            p = (_tagxPad*)(p->value + 8);
         }
 
-        if (mPad[idx].flags & 0x10)
+        if (p->flags & 0x10)
         {
-            if (!(mPad[idx].on & (0x10 | 0x40 | 0x80 | 0x20)))
+            if (!(p->on & (0x10 | 0x40 | 0x80 | 0x20)))
             {
-                mPad[idx].d_timer = 0.0f;
+                p->d_timer = 0.0f;
             }
             else
             {
-                mPad[idx].d_timer -= time_passed;
-                if (mPad[idx].d_timer <= 0.0f)
+                p->d_timer -= time_passed;
+                if (p->d_timer <= 0.0f)
                 {
-                    mPad[idx].d_timer = 0.34999999f;
+                    p->d_timer = 0.35f;
 
-                    if (mPad[idx].on & 0x10)       mPad[idx].pressed |= 0x10;
-                    else if (mPad[idx].on & 0x40)  mPad[idx].pressed |= 0x40;
+                    if (p->on & 0x10)       p->pressed |= 0x10;
+                    else if (p->on & 0x40)  p->pressed |= 0x40;
 
-                    if (mPad[idx].on & 0x80)       mPad[idx].pressed |= 0x80;
-                    else if (mPad[idx].on & 0x20)  mPad[idx].pressed |= 0x20;
+                    if (p->on & 0x80)       p->pressed |= 0x80;
+                    else if (p->on & 0x20)  p->pressed |= 0x20;
                 }
             }
         }
