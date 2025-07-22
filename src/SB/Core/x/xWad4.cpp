@@ -1,4 +1,5 @@
 #include "xWad4.h"
+#include "rwplcore.h"
 #include "xPad.h"
 #include "zGame.h"
 #include "zScene.h"
@@ -1385,8 +1386,38 @@ void xRenderFixUntexturedBegin(RpAtomic* atomic)
 {
 }
 
-//void xRenderStateResetAlphaDiscard()
-//void xRenderStateSetAlphaDiscard(S32)
+S32 old_alpha_discard_value_gc;
+bool alphaDiscardCurrentlySet;
+
+void xRenderStateResetAlphaDiscard()
+{
+    alphaDiscardCurrentlySet = false;
+    RwGameCubeSetAlphaCompare(6, old_alpha_discard_value_gc, 0, 6, old_alpha_discard_value_gc);
+    if ((U8)old_alpha_discard_value_gc != 0)
+    {
+        _rwDlRenderStateSetZCompLoc(FALSE);
+    }
+    else
+    {
+        _rwDlRenderStateSetZCompLoc(TRUE);
+    }
+}
+
+void xRenderStateSetAlphaDiscard(S32 ref)
+{
+    alphaDiscardCurrentlySet = true;
+    RwEngineInstance->dOpenDevice.fpRenderStateGet(rwRENDERSTATEALPHATESTFUNCTIONREF,
+                                                   &old_alpha_discard_value_gc);
+    RwGameCubeSetAlphaCompare(6, ref, 0, 6, ref);
+    if (ref > 0)
+    {
+        _rwDlRenderStateSetZCompLoc(FALSE);
+    }
+    else
+    {
+        _rwDlRenderStateSetZCompLoc(TRUE);
+    }
+}
 
 void xRenderSceneExit()
 {
