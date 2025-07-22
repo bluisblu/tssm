@@ -1367,6 +1367,55 @@ RyzMemGrow* RyzMemGrow::Init(xBase* growuser)
 
 //                                                xRender
 
+//                                                xRenderState
+
+void xRenderFixIMEnd()
+{
+    return;
+}
+
+void xRenderFixIMBegin()
+{
+    return;
+}
+
+void xRenderFixUntexturedEnd(RpAtomic* atomic)
+{
+    return;
+}
+
+void xRenderFixUntexturedBegin(RpAtomic* atomic)
+{
+    return;
+}
+
+//void xRenderStateResetAlphaDiscard()
+//void xRenderStateSetAlphaDiscard(S32)
+
+void xRenderSceneExit()
+{
+    return;
+}
+
+void xRenderSceneEnter()
+{
+    return;
+}
+
+//                                                xRenderBuffer
+
+// 
+void xRenderBufferInit()
+{
+    gRenderBuffer.m_mode = 0;
+    gRenderBuffer.m_indexCount = 0;
+    gRenderBuffer.m_vertexCount = 0;
+    gRenderBuffer.m_vertexTypeSize = 36;
+    gRenderBuffer.m_index = gRenderArr.m_index;
+    gRenderBuffer.m_vertex = gRenderArr.m_vertex;
+    gRenderBuffer.m_vertexTZ = gRenderArr.m_vertexTZ;
+}
+
 //                                              xQuickCull cont.
 
 //                                                  xPTank
