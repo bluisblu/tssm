@@ -23,10 +23,12 @@ struct _iMotionBlurData
 {
     S32 motionBlurAlpha;
     RwRaster* motionBlurFrontBuffer;
-    RwSky2DVertex vertex[4];
+    // RwSky2DVertex vertex[4]; This doesn't seem right... Due to how the data is used, it only makes sense for this to be 96 only.
+    U8 vertex[96];
     U16 index[6];
     U32 w;
     U32 h;
+    U8 unk[10]; // There is something here to make this structure 0x88.
 };
 
 void iScrFxInit();
