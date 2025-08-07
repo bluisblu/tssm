@@ -3537,16 +3537,16 @@ void xPadRumbleEnable(S32 idx, S32 enable)
     }
     if (enable)
     {
-        if (p->flags & 4)
+        if (p->flags & ePadInit_EnableRumble4)
         {
-            p->flags |= 8;
+            p->flags |= ePadInit_Complete8a;
         }
     }
     else
     {
-        if (p->flags & 8)
+        if (p->flags & ePadInit_Complete8a)
         {
-            p->flags ^= 8;
+            p->flags ^= ePadInit_Complete8a;
             //xPadDestroyRumbleChain(mPad + idx);
         }
     }
@@ -3561,13 +3561,13 @@ _tagxPad* xPadEnable(S32 idx)
         p = iPadEnable(&mPad[0], 0);
         if (p->state == ePad_Enabled || p->state != ePad_Disabled)
         {
-            if (p->flags & 4)
+            if (p->flags & ePadInit_EnableRumble4)
             {
-                p->flags |= 8;
+                p->flags |= ePadInit_Complete8a;
             }
-            else if (p->flags & 8)
+            else if (p->flags & ePadInit_Complete8a)
             {
-                p->flags ^= 8;
+                p->flags ^= ePadInit_Complete8a;
             }
         }
     }
@@ -3600,9 +3600,10 @@ S32 xPadUpdate(S32 idx, F32 time_passed)
     {
         if (zScene_ScreenAdjustMode() == 0)
         {
+            // not yet implemented
             if (/*!zMenuRunning() &&*/ !zGameIsPaused())
             {
-                p->flags &= ~0x10;
+                p->flags &= ~0x10; // unknown flag 0x10
             }
             else
             {
@@ -3633,17 +3634,17 @@ S32 xPadUpdate(S32 idx, F32 time_passed)
 
         if (p->flags & 0x10)
         {
-            if (p->flags & 0x01)
+            if (p->flags & ePadInit_WaitStable2)
             {
                 if (p->analog1.x < 50)
-                    fake_dpad |= 0x80;
-                else if (p->analog1.x > 0x31)
-                    fake_dpad |= 0x20;
+                    fake_dpad |= XPAD_BUTTON_LEFT;
+                else if (p->analog1.x > 49)
+                    fake_dpad |= XPAD_BUTTON_RIGHT;
 
                 if (p->analog1.y < 50)
-                    fake_dpad |= 0x10;
-                else if (p->analog1.y > 0x31)
-                    fake_dpad |= 0x40;
+                    fake_dpad |= XPAD_BUTTON_UP;
+                else if (p->analog1.y > 49)
+                    fake_dpad |= XPAD_BUTTON_DOWN;
 
                 if (fake_dpad == 0)
                 {
@@ -3660,7 +3661,7 @@ S32 xPadUpdate(S32 idx, F32 time_passed)
                 }
             }
 
-            if (p->flags & 0x02)
+            if (p->flags & ePadInit_EnableAnalog3)
             {
                 S32 a2x = p->analog2.x;
                 S32 a2y = p->analog2.y;
@@ -3672,14 +3673,14 @@ S32 xPadUpdate(S32 idx, F32 time_passed)
                         p->ar2d_timer = 0.35f;
 
                         if (a2x < 50)
-                            new_on |= 0x80;
-                        else if (a2x > 0x31)
-                            new_on |= 0x20;
+                            new_on |= XPAD_BUTTON_LEFT;
+                        else if (a2x > 49)
+                            new_on |= XPAD_BUTTON_RIGHT;
 
                         if (a2y < 50)
-                            new_on |= 0x10;
-                        else if (a2y > 0x31)
-                            new_on |= 0x40;
+                            new_on |= XPAD_BUTTON_UP;
+                        else if (a2y > 49)
+                            new_on |= XPAD_BUTTON_DOWN;
                     }
                 }
                 else
@@ -3723,7 +3724,7 @@ S32 xPadUpdate(S32 idx, F32 time_passed)
 
         if (p->flags & 0x10)
         {
-            if (!(p->on & (0x10 | 0x40 | 0x80 | 0x20)))
+            if (!(p->on & (XPAD_BUTTON_UP | XPAD_BUTTON_DOWN | XPAD_BUTTON_LEFT | XPAD_BUTTON_RIGHT)))
             {
                 p->d_timer = 0.0f;
             }
@@ -3734,15 +3735,15 @@ S32 xPadUpdate(S32 idx, F32 time_passed)
                 {
                     p->d_timer = 0.35f;
 
-                    if (p->on & 0x10)
-                        p->pressed |= 0x10;
-                    else if (p->on & 0x40)
-                        p->pressed |= 0x40;
+                    if (p->on & XPAD_BUTTON_UP)
+                        p->pressed |= XPAD_BUTTON_UP;
+                    else if (p->on & XPAD_BUTTON_DOWN)
+                        p->pressed |= XPAD_BUTTON_DOWN;
 
-                    if (p->on & 0x80)
-                        p->pressed |= 0x80;
-                    else if (p->on & 0x20)
-                        p->pressed |= 0x20;
+                    if (p->on & XPAD_BUTTON_LEFT)
+                        p->pressed |= XPAD_BUTTON_LEFT;
+                    else if (p->on & XPAD_BUTTON_RIGHT)
+                        p->pressed |= XPAD_BUTTON_RIGHT;
                 }
             }
         }
