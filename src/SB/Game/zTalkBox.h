@@ -17,27 +17,27 @@ struct xEntNPCAssetIN : xEntNPCAsset
     U32 settings;
 };
 
-// Lives here temporarily
-struct base : xEnt, xFactoryInst
-{
-    S16 bound_bone;
-    U16 sound_id_offset;
-    U16 global_parameters_size;
-    U16 local_parameters_size;
-    U32 type;
-    xModelAssetParam* global_parameters;
-    xModelAssetParam* local_parameters;
-    union
-    {
-        xMovePoint* movepoint;
-        U32 movepoint_asset_id;
-    };
-    xEntNPCAssetIN* npc_asset;
-    xModelAssetInfo* model_asset;
-    F32 shadow_strength;
-    F32 shadow_cache_fudge_factor;
-    xVec3 bound_offset;
-};
+// // Lives here temporarily
+// struct base : xEnt, xFactoryInst
+// {
+//     S16 bound_bone;
+//     U16 sound_id_offset;
+//     U16 global_parameters_size;
+//     U16 local_parameters_size;
+//     U32 type;
+//     xModelAssetParam* global_parameters;
+//     xModelAssetParam* local_parameters;
+//     union
+//     {
+//         xMovePoint* movepoint;
+//         U32 movepoint_asset_id;
+//     };
+//     xEntNPCAssetIN* npc_asset;
+//     xModelAssetInfo* model_asset;
+//     F32 shadow_strength;
+//     F32 shadow_cache_fudge_factor;
+//     xVec3 bound_offset;
+// };
 
 struct ztalkbox : xBase
 {

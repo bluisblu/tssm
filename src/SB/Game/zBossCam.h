@@ -1,31 +1,13 @@
-#include "xNME.h"
-#include "xPlayer.h"
-
-enum xCamCoordType
-{
-    XCAM_COORD_CART,
-    XCAM_COORD_CYLINDER,
-    XCAM_COORD_SPHERE,
-    XCAM_COORD_MAX,
-    XCAM_COORD_INVALID = 0xffffffff,
-};
-
-enum xCamOrientType
-{
-    XCAM_ORIENT_QUAT,
-    XCAM_ORIENT_EULER,
-    XCAM_ORIENT_MAX,
-    XCAM_ORIENT_INVALID = 0xffffffff,
-};
+#include "zNMECommon.h"
+#include "xGlobals.h"
 
 struct xCamBlend;
 
-struct analog_data
+struct xCamCoordSphere
 {
-    xVec2 offset;
-    xVec2 dir;
-    F32 mag;
-    F32 ang;
+    xVec3 origin;
+    F32 dist;
+    xQuat dir;
 };
 
 struct xCamCoordCylinder
@@ -34,13 +16,6 @@ struct xCamCoordCylinder
     F32 dist;
     F32 height;
     F32 theta;
-};
-
-struct xCamCoordSphere
-{
-    xVec3 origin;
-    F32 dist;
-    xQuat dir;
 };
 
 struct _class_11
@@ -69,15 +44,6 @@ struct _class_16
     };
 };
 
-struct xCamConfigCommon
-{
-    U8 priority;
-    U8 pad1;
-    U8 pad2;
-    U8 pad3;
-    F32 blend_time;
-};
-
 struct zone_data_1
 {
     xVec3 offset;
@@ -92,59 +58,6 @@ struct xCamConfigFollow
     F32 speed_zone_offset;
     F32 speed_zone_face;
     F32 speed_move_orbit;
-};
-
-struct xCamGroup;
-
-struct xCam
-{
-    xMat4x3 mat;
-    F32 fov;
-    S32 flags;
-    U32 owner;
-    xCamGroup* group;
-    analog_data analog;
-    F32 motion_factor;
-    xCamCoordType coord_type;
-    xCamOrientType orient_type;
-    _class_11 coord;
-    _class_16 orient;
-    xCamConfigCommon cfg_common;
-    S32 group_index;
-    S32 group_flags;
-    xCamBlend* blender;
-
-    void destroy();
-    xCam* get_next();
-    xCamConfigFollow* config_follow();
-    void scene_exit();
-    void scene_enter();
-};
-
-struct xCamGroup
-{
-    xMat4x3 mat;
-    xVec3 vel;
-    F32 fov;
-    F32 fov_default;
-    S32 flags;
-    xCam* primary;
-    analog_data analog;
-    xCam* owned[32];
-    S32 size;
-    S32 primary_index;
-    S32 child_flags;
-    S32 child_flags_mask;
-    xCamBlend* blend_cam[4];
-};
-
-struct xCamBlend : xCam
-{
-    xCam* src;
-    xCam* dst;
-    F32 time;
-
-    void destroy();
 };
 
 struct zone_data_0

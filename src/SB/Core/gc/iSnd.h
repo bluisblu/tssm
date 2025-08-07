@@ -45,11 +45,20 @@ enum isound_effect
     iSND_EFFECT_CAVE
 };
 
-enum iSndHandle
+enum iSndGroupHandle
 {
 };
 
-enum iSndGroupHandle
+struct zNMESoundTable
+{
+    iSndGroupHandle sndGroupHandle[10];
+    char* assetNames[10];
+    F32 timer[10];
+    F32 time[10];
+    S32 flags[10];
+};
+
+enum iSndHandle
 {
 };
 
