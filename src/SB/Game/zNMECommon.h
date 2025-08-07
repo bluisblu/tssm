@@ -1,5 +1,5 @@
-#ifndef ZNPCTYPECOMMON_H
-#define ZNPCTYPECOMMON_H
+#ifndef ZNMECOMMON_H
+#define ZNMECOMMON_H
 
 #include "xNPCBasic.h"
 #include "xDynAsset.h"
@@ -7,7 +7,10 @@
 #include "xEntDrive.h"
 #include "xBehaveMgr.h"
 #include "xEnt.h"
+#include "xEvent.h"
 #include "xSFX.h"
+
+#include "iSnd.h"
 
 #include "zNPCSndTable.h"
 #include "zMovePoint.h"
@@ -112,29 +115,6 @@ enum en_NPC_CARRY_STATE
     zNPCCARRY_FORCEINT = 0x7fffffff
 };
 
-enum en_NPC_DAMAGE_TYPE
-{
-    DMGTYP_UNDECIDED,
-    DMGTYP_ABOVE,
-    DMGTYP_BELOW,
-    DMGTYP_SIDE,
-    DMGTYP_INSTAKILL,
-    DMGTYP_KILLEVENT,
-    DMGTYP_HITBYTOSS,
-    DMGTYP_NPCATTACK,
-    DMGTYP_ROPE,
-    DMGTYP_CRUISEBUBBLE,
-    DMGTYP_PROJECTILE,
-    DMGTYP_BOULDER,
-    DMGTYP_BUBBOWL,
-    DMGTYP_THUNDER_TIKI_EXPLOSION,
-    DMGTYP_DAMAGE_SURFACE,
-    DMGTYP_BUNGEED,
-    DMGTYP_SURFACE,
-    DMGTYP_NOMORE,
-    DMGTYP_FORCEINT = 0x7fffffff
-};
-
 enum en_npcvibe
 {
     NPC_VIBE_SOFT,
@@ -156,6 +136,12 @@ struct xEntNPCAsset
     U32 taskWidgetPrime;
     U32 taskWidgetSecond;
 };
+
+// struct xEntNPCAssetIN : xEntNPCAsset
+// {
+//     U32 navigation_mesh_id;
+//     U32 settings;
+// };
 
 enum en_npcbtyp
 {
@@ -355,6 +341,330 @@ enum en_SM_NOTICES
     SM_NOTE_FORCE = 0x7fffffff
 };
 
+enum en_allow
+{
+    ALLOW_NEVER,
+    ALLOW_NORMAL,
+    ALLOW_ALWAYS,
+    ALLOW_NOMORE
+};
+
+enum en_npcgol
+{
+    NME_GOAL_UNKNOWN,
+    NME_GOAL_CRIT_IDLE = 0x4e474300,
+    NME_GOAL_CRIT_PATROL,
+    NME_GOAL_CRIT_DYING,
+    NME_GOAL_CRIT_DEAD,
+    NME_GOAL_CRIT_BATTACK,
+    NME_GOAL_CRIT_JATTACK,
+    NME_GOAL_CRIT_JDYING,
+    NME_GOAL_TURR_IDLE = 0x4e474700,
+    NME_GOAL_TURR_RELOAD,
+    NME_GOAL_TURR_HURT,
+    NME_GOAL_TURR_DEAD,
+    NME_GOAL_TURR_TREADY,
+    NME_GOAL_TURR_TTURN,
+    NME_GOAL_TURR_TSHOOT,
+    NME_GOAL_TURR_PDORMANT,
+    NME_GOAL_TURR_PALERT,
+    NME_GOAL_TURR_PPATALPHA,
+    NME_GOAL_TURR_BIDLE,
+    NME_GOAL_TURR_BTURN,
+    NME_GOAL_TURR_BSHOOT,
+    NME_GOAL_TURR_BHURT,
+    NME_GOAL_TURR_SPIRAL,
+    NME_GOAL_IDLE = 0x4e474e00,
+    NME_GOAL_PATROL,
+    NME_GOAL_WANDER,
+    NME_GOAL_FIDGET,
+    NME_GOAL_WAITING,
+    NME_GOAL_DEAD,
+    NME_GOAL_NOMANLAND,
+    NME_GOAL_LIMBO,
+    NME_GOAL_DEV_ANIMVIEW = 0x4e474400,
+    NME_GOAL_DEV_HEROMODE,
+    NME_GOAL_TIKI_IDLE = 0x4e475400,
+    NME_GOAL_TIKI_PATROL,
+    NME_GOAL_TIKI_HIDE,
+    NME_GOAL_TIKI_COUNT,
+    NME_GOAL_TIKI_DYING,
+    NME_GOAL_TIKI_DEAD,
+    NME_GOAL_AFTERLIFE = 0x4e475300,
+    NME_GOAL_SPAWN,
+    NME_GOAL_WOUND,
+    NME_GOAL_SPOOKED,
+    NME_GOAL_NOTICE,
+    NME_GOAL_SCAREWAIT,
+    NME_GOAL_SCARE,
+    NME_GOAL_TAUNT,
+    NME_GOAL_EVILPAT = 0x4e475000,
+    NME_GOAL_STUNNED,
+    NME_GOAL_PATCARRY,
+    NME_GOAL_PATTWIRL,
+    NME_GOAL_PATTHROW,
+    NME_GOAL_TRIGGER_NORMAL = 0x4e475800,
+    NME_GOAL_TRIGGER_SCARY,
+    NME_GOAL_TRIGGER_DETECT,
+    NME_GOAL_TRIGGER_ALERT,
+    NME_GOAL_TRIGGER_BATTLE,
+    NME_GOAL_TRIGGER_WOUND,
+    NME_GOAL_TRIGGER_ATTACK,
+    NME_GOAL_TRIGGER_VINIVICIVIDI,
+    NME_GOAL_FOGGER_AWARE = 0x4e474500,
+    NME_GOAL_FOGGER_BATTLE,
+    NME_GOAL_FOGGER_ATTACK,
+    NME_GOAL_SLAMMER_AWARE,
+    NME_GOAL_SLAMMER_BATTLE,
+    NME_GOAL_SLAMMER_ATTACK,
+    NME_GOAL_SPINNER_AWARE,
+    NME_GOAL_SPINNER_BATTLE,
+    NME_GOAL_FLINGER_NORMAL,
+    NME_GOAL_FLINGER_AWARE,
+    NME_GOAL_FLINGER_BATTLE,
+    NME_GOAL_FLINGER_ATTACK,
+    NME_GOAL_FLINGER_BOING,
+    NME_GOAL_FLINGER_FLEE,
+    NME_GOAL_FLINGER_PANIC,
+    NME_GOAL_FLINGER_MOVE,
+    NME_GOAL_POPPER_NORMAL,
+    NME_GOAL_POPPER_AWARE,
+    NME_GOAL_POPPER_WOUND,
+    NME_GOAL_POPPER_EVADE,
+    NME_GOAL_POPPER_BATTLE,
+    NME_GOAL_POPPER_ATTACK,
+    NME_GOAL_ZAP_NORMAL,
+    NME_GOAL_ZAP_AWARE,
+    NME_GOAL_ZAP_BATTLE,
+    NME_GOAL_ZAP_WOUND,
+    NME_GOAL_ZAP_ZAP,
+    NME_GOAL_ZAP_MOVE,
+    NME_GOAL_MERV_NORMAL,
+    NME_GOAL_MERV_AWARE,
+    NME_GOAL_MERV_BATTLE,
+    NME_GOAL_MERV_ZAP,
+    NME_GOAL_MERV_BOMB,
+    NME_GOAL_MERV_BOWL,
+    NME_GOAL_MERV_WOUND,
+    NME_GOAL_MERV_MOVE,
+    NME_GOAL_BUCK_RUNNING,
+    NME_GOAL_BUCK_BIRTHING,
+    NME_GOAL_BUCK_DYING,
+    NME_GOAL_BUCK_DEAD,
+    NME_GOAL_DENNIS_NORMAL,
+    NME_GOAL_DENNIS_EVADE,
+    NME_GOAL_DENNIS_BATTLE,
+    NME_GOAL_DENNIS_ATTACK,
+    NME_GOAL_DENNIS_TAUNT,
+    NME_GOAL_DENNIS_DAMAGE,
+    NME_GOAL_DENNIS_DEAD,
+    NME_GOAL_DENTOO_NORMAL,
+    NME_GOAL_DENTOO_EVADE,
+    NME_GOAL_DENTOO_BATTLE,
+    NME_GOAL_DENTOO_ATTACK,
+    NME_GOAL_DENTOO_TAUNT,
+    NME_GOAL_DENTOO_DAMAGE,
+    NME_GOAL_DENTOO_DEAD,
+    NME_GOAL_SBBAT_IDLE,
+    NME_GOAL_SBBAT_DEAD,
+    NME_GOAL_NOMORE,
+    NME_GOAL_FORCE = 0x7fffffff
+};
+
+enum en_nmesimp
+{
+    NME_SIMP_HAPPY,
+    NME_SIMP_DEAD,
+    NME_SIMP_IGNORANT,
+    NME_SIMP_WARYDETECT,
+    NME_SIMP_WARY,
+    NME_SIMP_WORRIED,
+    NME_SIMP_CONFUSED,
+    NME_SIMP_BIGBULLY,
+    NPC_STAT_NOMORE
+};
+
+enum en_haztyp
+{
+    HAZ_TYP_UNKNOWN,
+    HAZ_TYP_EXPLODE,
+    HAZ_TYP_IMPACT,
+    HAZ_TYP_IMPACTWET,
+    HAZ_TYP_IMPACTBOOM,
+    HAZ_TYP_DAZED,
+    HAZ_TYP_SPAWNBALL_XX,
+    HAZ_TYP_SPAWNBALL_GG,
+    HAZ_TYP_SPAWNBALL_TR,
+    HAZ_TYP_SPAWNBALL_PT,
+    HAZ_TYP_SPAWNGROW,
+    HAZ_TYP_BUCKOBOOM_V1,
+    HAZ_TYP_TIKIBOOM,
+    HAZ_TYP_SLAMWAVE_V1,
+    HAZ_TYP_SLAMWAVE_V2,
+    HAZ_TYP_SLAMWAVE_V3,
+    HAZ_TYP_FLING_V1,
+    HAZ_TYP_FLING_V2,
+    HAZ_TYP_FLING_V3,
+    HAZ_TYP_FLING_FROGFISH,
+    HAZ_TYP_SPITPUDDLE_V1,
+    HAZ_TYP_SPITPUDDLE_V2,
+    HAZ_TYP_SPITPUDDLE_V3,
+    HAZ_TYP_ICECREAMSPLAT,
+    HAZ_TYP_SPITSTEAM,
+    HAZ_TYP_SPITSPLASH,
+    HAZ_TYP_POPPER_V1,
+    HAZ_TYP_POPPER_V2,
+    HAZ_TYP_POPPER_V3,
+    HAZ_TYP_MERVBOMB_V1,
+    HAZ_TYP_MERVBOMB_V2,
+    HAZ_TYP_MERVBOMB_V3,
+    HAZ_TYP_MERVLET_V1,
+    HAZ_TYP_MERVLET_V2,
+    HAZ_TYP_MERVLET_V3,
+    HAZ_TYP_ZAPBALL_V1,
+    HAZ_TYP_ZAPBALL_V2,
+    HAZ_TYP_ZAPBOOM_V1,
+    HAZ_TYP_ZAPBOOM_V2,
+    HAZ_TYP_TURBALL_V1,
+    HAZ_TYP_TURBALL_V2,
+    HAZ_TYP_TURBALL_V3,
+    HAZ_TYP_TURBOOM,
+    HAZ_TYP_GOLFBALL,
+    HAZ_TYP_GOLFBOOM,
+    HAZ_TYP_GOLFJUNK_A,
+    HAZ_TYP_GOLFJUNK_B,
+    HAZ_TYP_GOLFJUNK_C,
+    HAZ_TYP_GOLFJUNK_D,
+    HAZ_TYP_GOLFJUNK_E,
+    HAZ_TYP_DENNIS_KNIFE,
+    HAZ_TYP_DENNIS_KNIFEBOOM,
+    HAZ_TYP_TUNEBORN,
+    HAZ_TYP_TUNEBANG,
+    HAZ_TYP_TUNEBOOM,
+    HAZ_TYP_TUNEFLYT,
+    HAZ_TYP_SWIMWAKE,
+    HAZ_TYP_BOWWAVE,
+    HAZ_TYP_SPLASH_RING,
+    HAZ_TYP_SPLISH_DROP,
+    HAZ_TYP_VISSPLASH_WAVE,
+    HAZ_TYP_VISSPLASH_DROP,
+    HAZ_TYP_VISSPLASH_WATER,
+    HAZ_TYP_VISSPLASH_CHOC,
+    HAZ_TYP_VISSPLASH_LAVA,
+    HAZ_TYP_VISSPLASH_BILE,
+    HAZ_TYP_VISSPLASH_OIL,
+    HAZ_TYP_VISSPLASH_SAUCE,
+    HAZ_TYP_VISSPLASH_TOXIC,
+    HAZ_TYP_REFLECT_V1,
+    HAZ_TYP_PLYRBANG_V1,
+    HAZ_TYP_POWERUP_EXPLOSION_V1,
+    HAZ_TYP_NOMORE,
+    HAZ_TYP_FORCE = 0x7fffffff
+};
+
+enum en_npcdmg
+{
+    DMGTYP_UNDECIDED,
+    DMGTYP_ABOVE,
+    DMGTYP_BELOW,
+    DMGTYP_SIDE,
+    DMGTYP_INSTAKILL,
+    DMGTYP_WOUNDEVENT,
+    DMGTYP_KILLEVENT,
+    DMGTYP_NMEATTACK,
+    DMGTYP_HITBYTOSS,
+    DMGTYP_NMEKNOCKED,
+    DMGTYP_ROPE,
+    DMGTYP_CRUISEBUBBLE,
+    DMGTYP_FRIENDLYFIRE,
+    DMGTYP_REFLECTED,
+    DMGTYP_BOULDER,
+    DMGTYP_BUBBOWL,
+    DMGTYP_THUNDER_TIKI_EXPLOSION,
+    DMGTYP_DAMAGE_SURFACE,
+    DMGTYP_BUNGEED,
+    DMGTYP_SURFACE,
+    DMGTYP_CARTWHEEL,
+    DMGTYP_CARSMASH,
+    DMGTYP_SLIDE,
+    DMGTYP_EXPLOSION,
+    DMGTYP_BBOWLZAP,
+    DMGTYP_NOMORE,
+    DMGTYP_FORCEINT = 0x7fffffff
+};
+
+enum en_plyrpup
+{
+    ePowerupLevelDisabled,
+    ePowerupLevelNormal,
+    ePowerupLevelLevelMax,
+    ePowerupLevelHealthMax,
+    ePowerupLevelCount
+};
+
+enum en_carystat
+{
+    zNMECARRY_NONE,
+    zNMECARRY_PICKUP,
+    zNMECARRY_TWIRL,
+    zNMECARRY_THROW,
+    zNMECARRY_ATTEMPTPICKUP,
+    zNMECARRY_FORCEINT = 0x7fffffff
+};
+
+enum en_npcmsg
+{
+    NME_MID_NONE,
+    NME_MID_SYSEVENT,
+    NME_MID_RESPAWN,
+    NME_MID_DAMAGE,
+    NME_MID_EXPLOSION,
+    NME_MID_BUNNYHOP,
+    NME_MID_NEWDEST,
+    NME_MID_DTRON_NMEEMIT,
+    NME_MID_DTRON_NMEAVAIL,
+    NME_MID_DTRON_ISDEAD,
+    NME_MID_CHAT_REQUEST,
+    NME_MID_CHAT_DECLINE,
+    NME_MID_CHAT_ACCEPT,
+    NME_MID_CHAT_DONE,
+    NME_MID_CHAT_ABORT,
+    NME_MID_TALKSTART,
+    NME_MID_TALKON,
+    NME_MID_TALKOFF,
+    NME_MID_SAWPLYR,
+    NME_MID_NEEDMEDIC,
+    NME_MID_UNDERATTACK,
+    NME_MID_NMEDIED,
+    NME_MID_PLYRSPATULA,
+    NME_MID_BECOMESCARED,
+    NME_MID_NOLONGERSCARED,
+    NME_MID_CELEBRATE,
+    NME_MID_STUN,
+    NME_MID_SCRIPTBEGIN,
+    NME_MID_SCRIPTEND,
+    NME_MID_SCRIPTHALT,
+    NME_MID_NOMORE,
+    NME_MID_FORCE = 0x7fffffff
+};
+
+enum en_msgdata
+{
+    NME_MDAT_BLANK,
+    NME_MDAT_SYSEVENT,
+    NME_MDAT_BLAST,
+    NME_MDAT_CHAT,
+    NME_MDAT_SPAWN,
+    NME_MDAT_TARGET,
+    NME_MDAT_DAMAGE,
+    NME_MDAT_STUN,
+    NME_MDAT_SCRIPT,
+    NME_MDAT_MOUNT,
+    NME_MDAT_AREANOTIFY,
+    NME_MDAT_NOMORE,
+    NME_MDAT_FORCE = 0x7fffffff
+};
+
 struct zNPCLassoInfo
 {
     en_LASSO_STATUS stage;
@@ -495,6 +805,7 @@ struct zNPCCommon : xNPCBasic //Size of zNPCCommon: 0x2A0
     virtual void Destroy();
 
     // vTable (zNPCCommon)
+    // Not going to be correct, needs complete update
     virtual S32 NPCMessage(NPCMsg* mail);
     virtual void RenderExtra();
     virtual void RenderExtraPostParticles();
@@ -505,7 +816,7 @@ struct zNPCCommon : xNPCBasic //Size of zNPCCommon: 0x2A0
     virtual void SelfDestroy();
     virtual S32 IsHealthy();
     virtual S32 IsAlive();
-    virtual void Damage(en_NPC_DAMAGE_TYPE damtype, xBase* who, const xVec3* vec_hit);
+    //virtual void Damage(en_npcdmg damtype, xBase* who, const xVec3* vec_hit);
     virtual S32 Respawn(const xVec3* pos, zMovePoint* mvptFirst, zMovePoint* mvptSpawnRef);
     virtual void DuploOwner(zNPCCommon* duper);
     virtual void DuploNotice(en_SM_NOTICES, void*);
@@ -575,7 +886,10 @@ struct NPCTargetInfo
 
 struct NPCDamageInfo
 {
-    en_NPC_DAMAGE_TYPE dmg_type;
+    // This struct shouldnt exist, only here to keep building
+    // Needs removed as soon as the NMECommon revamp is done
+
+    //en_NPC_DAMAGE_TYPE dmg_type;
     xBase* dmg_from;
     xVec3 vec_dmghit;
 };
@@ -626,6 +940,458 @@ struct NPCMsg
     void* attached; // 0x38
     NPCMsg* next;
     F32 tmr_delay; // 0x40
+};
+
+struct zNMEAsset : xDynAsset
+{
+    xEntAsset ent_asset;
+};
+
+struct Damage_1
+{
+    F32 tym_invuln;
+};
+
+struct Physics
+{
+    F32 acc_grav;
+    F32 spd_maxFall;
+};
+
+struct Movement_1
+{
+    F32 spd_move;
+    F32 acc_move;
+    F32 dst_deviant;
+    F32 spd_turnrate;
+};
+
+struct NMECfgCommon
+{
+    Damage_1 damage;
+    Physics physics;
+    Movement_1 movement;
+};
+
+struct SimpShadParm
+{
+    F32 rad_shadow;
+    char* nam_shadowTexture;
+    RwRaster* rast_shadow;
+};
+
+struct FullShadParm
+{
+    S32 tobeDetermined;
+};
+
+struct ShadowRadii
+{
+    F32 rad_noShadow;
+    F32 rad_complexShadow;
+};
+
+struct NMEShadParms
+{
+    SimpShadParm simpshad;
+    FullShadParm fullshad;
+    ShadowRadii shadrad;
+};
+
+struct OriginalBackupData
+{
+    struct
+    {
+        S32 flg_enableWander : 1;
+        S32 flg_enablePatrol : 1;
+        S32 flg_enableDetect : 1;
+        S32 flg_activeOn : 1;
+        S32 flg_takeNoDamage : 1;
+        S32 flg_unused : 27;
+    };
+    union
+    {
+        en_allow overrideDetect;
+        S32 alignmeproperly;
+    };
+    union
+    {
+        en_allow overrideAttack;
+        S32 alignmeproperlyToo;
+    };
+};
+
+struct Restore
+{
+    U8 chkby;
+    U8 penby;
+    U8 padpad[2];
+    union
+    {
+        en_npcgol gid_compare;
+        S32 gid_COMPARE;
+    };
+};
+
+struct NMERuntime
+{
+    struct
+    {
+        S32 flg_enableWander : 1;
+        S32 flg_enablePatrol : 1;
+        S32 flg_enableDetect : 1;
+        S32 flg_activeOn : 1;
+        S32 flg_takeNoDamage : 1;
+        S32 flg_unused : 27;
+    };
+    union
+    {
+        en_allow overrideDetect;
+        S32 alignmeproperly;
+    };
+    union
+    {
+        en_allow overrideAttack;
+        S32 alignmeproperlyToo;
+    };
+    OriginalBackupData orig;
+    Restore restore;
+};
+
+struct zNMEDriver
+{
+    xEnt* ent_driver;
+    F32 tym_mount;
+    xMat4x3 mat_parLast;
+    xMat4x3 mat_ownerLast;
+    struct
+    {
+        S32 flg_inContact : 1;
+        S32 flg_matchOrient : 1;
+        S32 flg_unused : 30;
+    };
+
+    void WheelTurnsYou_C(xMat4x3* mat_owner);
+    void ReviewCollide(xEntCollis* npccol);
+};
+
+struct zNMECommon;
+
+struct zNMENavNet
+{
+    zMovePoint* nav_past;
+    zMovePoint* nav_curr;
+    zMovePoint* nav_dest;
+    zMovePoint* nav_lead;
+    xSpline3* spl_mvptspline;
+    F32 len_mvptspline;
+    F32 dst_curspline;
+    zNMECommon* nme_owner;
+
+    S32 MvptCycle();
+};
+
+struct xEntNPCAssetIN;
+
+struct base : xEnt, xFactoryInst
+{
+    S16 bound_bone;
+    U16 sound_id_offset;
+    U16 global_parameters_size;
+    U16 local_parameters_size;
+    U32 type;
+    xModelAssetParam* global_parameters;
+    xModelAssetParam* local_parameters;
+    union
+    {
+        xMovePoint* movepoint;
+        U32 movepoint_asset_id;
+    };
+    xEntNPCAssetIN* npc_asset;
+    xModelAssetInfo* model_asset;
+    F32 shadow_strength;
+    F32 shadow_cache_fudge_factor;
+    xVec3 bound_offset;
+};
+
+struct zNMENPCWrapper : base
+{
+    void (*fun_setup)(xEnt*);
+    void (*fun_reset)(xEnt*);
+    S32 colFreq;
+    U8 flg_colCheck;
+    U8 flg_penCheck;
+    U16 flg_unusedCollFlags;
+    struct
+    {
+        S32 aflg_basenme : 8;
+        S32 flg_upward : 8;
+        S32 flg_xtrarend : 1;
+        S32 flg_inUpdate : 1;
+        S32 flg_newtime : 1;
+        S32 flg_postproc : 1;
+        S32 flg_profProc : 1;
+        S32 flg_hudrend : 1;
+        S32 flg_moreUnusedSpace : 10;
+    };
+
+    void InitFromNPCMgr(xEntAsset* asset);
+    void Init(xEntAsset* asset);
+    void PostInit();
+    void PostSetup();
+    void Load();
+    void NewTime();
+    void RenderExtra();
+    void RenderHud();
+    void Move();
+    S32 ColFreqReset();
+    void init(xEntAsset* asset);
+    void SelfSetup();
+    void setup();
+    void Reset();
+    void Setup();
+    void reset();
+    void update_npc(F32 dt);
+    void Process();
+    void update_bound();
+    void change_bounds();
+    U8 system_event();
+    void render_npc();
+    void Render();
+    void debug_render();
+    void render_extra();
+    void damage();
+    void destroy();
+    void Destroy();
+    void scene_setup();
+    void add_states();
+    void add_transitions();
+    S32 SysEvent();
+    void BUpdate();
+    void UpdateWrapper(F32 dt);
+    void NMEWrap_Init(xEntAsset* asset);
+    xAnimTable* CreateAnimTable();
+    void SelfDestroy();
+    void CollideReview();
+};
+
+struct zNMEArena
+{
+    S32 flg_arena;
+    xVec3 pos_arena;
+    F32 rad_arena;
+    zMovePoint* nav_arena;
+    zMovePoint* nav_refer_dest;
+    zMovePoint* nav_refer_curr;
+
+    zMovePoint* NextBestNav(zMovePoint* nav_from);
+    S32 Cycle(zNMECommon* npc, S32 peek);
+};
+
+struct NMESysEvent
+{
+    S32 doLinkEvents;
+    S32 handled;
+    xBase* from;
+    xBase* to;
+    union
+    {
+        U32 toEvent;
+        en_xEventTags toEvent_asEnum;
+    };
+    F32 toParam[4];
+    xBase* toParamWidget;
+    U32 toParamWidgetID;
+};
+
+struct NMEBlastInfo
+{
+    xVec3 pos_blast;
+    F32 rad_blast;
+    F32 spd_expand;
+};
+
+struct NMEChatInfo
+{
+    xVec3 pos_chat;
+    F32 tym_chat;
+};
+
+struct NMESpawnInfo
+{
+    xVec3 pos_spawn;
+    zMovePoint* nav_firstMovepoint;
+    zMovePoint* nav_spawnReference;
+    S32 spawnSuccess;
+};
+
+struct NMETargetInfo
+{
+    xBase* bas_tgt;
+    xVec3 pos_tgt;
+};
+
+struct NMEDamageInfo
+{
+    en_npcdmg dmg_type;
+    xBase* dmg_from;
+    xVec3 vec_dmghit;
+    S32 amt_damage;
+    union
+    {
+        S32 fac_powerup;
+        en_plyrpup pup_player;
+    };
+};
+
+struct NMEStunInfo
+{
+    F32 tym_stuntime;
+    en_carystat carrystate;
+    S32 allowStun;
+};
+
+struct NMEScriptInfo
+{
+    U32 aid_playanim;
+};
+
+struct NMEMountInfo
+{
+    xEnt* ent_toMount;
+    xCollis* col_forMount;
+};
+
+struct NMEDestInfo
+{
+    xVec3 pos_there;
+    zMovePoint* nav_there;
+};
+
+struct NMEAreaInfo
+{
+    zNMECommon* npc_origin;
+    xVec3 pos_origin;
+};
+
+struct NMEMsg
+{
+    en_npcmsg msgid;
+    U32 sendto;
+    U32 from;
+    en_msgdata infotype;
+    union
+    {
+        NMESysEvent sysevent;
+        NMEBlastInfo blastarea;
+        NMEChatInfo chatter;
+        NMESpawnInfo spawning;
+        NMETargetInfo target;
+        NMEDamageInfo dmgdata;
+        NMEStunInfo stundata;
+        NMEScriptInfo scriptdata;
+        NMEMountInfo mountdata;
+        NMEDestInfo destdata;
+        NMEAreaInfo areadata;
+    };
+    void* attached;
+    NMEMsg* next;
+    F32 tmr_delay;
+};
+
+struct zNMECommon : zNMENPCWrapper
+{
+    zNMEAsset* nmeass;
+    S32 siz_nmeass; // 0x12c
+    xPsyche* psy_self; //0x130
+    NMECfgCommon* cfg_common;
+    NMEShadParms* cfg_shadparm;
+    S32 flg_vuln; // 0x13c
+    S32 flg_move;
+    S32 flg_misc;
+    S32 flg_able; // 0x148
+    F32 spd_throttle;
+    NMERuntime runtimeData;
+    zNMEDriver* drv_data;
+    zNMENavNet* navnet;
+    union
+    {
+        F32 tmr_common[3];
+        F32 tmr_invuln;
+    };
+    F32 tmr_scary;
+    F32 tmr_lastAlert;
+    zNMECommon* npc_duplodude;
+    zNMESoundTable* snd_table;
+    iSndHandle sndID[10];
+    zShrapnelAsset* shrapnelAsset;
+
+    void Destroy();
+    void Render();
+    void SelfDestroy();
+    void ProcessInvis();
+    void PostProcess();
+    S32 IsAlive();
+    S32 IsHealthy();
+    S32 IsPresent();
+    en_nmesimp SimpleStatus();
+    F32 HealthRatio();
+    void Boo();
+    void DuploOwner(zNMECommon* duper);
+    void SpeakBegin();
+    void SpeakEnd();
+    void SpeakStart();
+    void SpeakStop();
+    S32 CanRope();
+    void CollideReview();
+    zMovePoint* MvptFirstFollow();
+    zMovePoint* MvptFirstTarget();
+    xEntFrame* Gimme_xEntFrame();
+    zNMEDriver* Gimme_DriveData();
+    xEntShadow* Gimme_ShadowData();
+    zNMENavNet* Gimme_NavNet();
+    zNMEArena* Gimme_NMEArena();
+    xShadowSimpleCache* Gimme_SimpShadowCache();
+    void Reset();
+    void PoofOfBubbles();
+    S32 LaunchProjectile(en_haztyp haztyp, F32 spd_proj, F32 dst_minRange, xVec3* pos_launch,
+                         F32 tym_predictMax, F32 hyt_offset, F32 rad_min, F32 rad_max);
+    void GiveReward();
+    void DeathFXKick();
+    void DieTheGoodDeath();
+    F32 ThrottleAdjust(F32 dt, F32 spd_want, F32 accel);
+    xAnimTable* CreateAnimTable(xAnimTable* table);
+    xAnimTransition* AnimMakeSmackTran(U32 animID);
+    S32 AnimStart(U32 animID, S32 forceRestart);
+    S32 MatMoveToPos(xVec3* pos_tobe, F32 dt, F32 spd, S32 doTurn, F32 spd_turnrate);
+    F32 MatQRotTowards(F32 dt, xVec3* dir_face, F32 spd_turnrate);
+    xModelInstance* ModelAtomicFind(S32 index, S32 idx_prev, xModelInstance* mdl_prev);
+    S32 HaveLOSToPos(xVec3* pos, F32 dist, xScene* xscn, xBase* tgt, xCollis* colCallers);
+    S32 ReviewCollBounce(xEntCollis* npccol, xVec3* vel, F32 fac_elastic);
+    S32 ReviewCollSurfs(xEntCollis* npccol, zNMECommon* npc);
+    void RunCollision(F32 dt);
+    en_nmesimp Common_SimpStat();
+    void ApplyGlowDamp();
+    void ShadStufUpdate();
+    void FullShadAcquire();
+    void ShadowPrep();
+    S32 WannaPoolShadow();
+    void TellMeVisOnOff(xEnt* ent);
+    S32 Respawn(xVec3* pos, zMovePoint* mvptFirst, zMovePoint* mvptSpawnRef);
+    void Damage(en_npcdmg dmgtype, xBase* who, xVec3* vec_hit, S32 amt_dmgCaller,
+                en_plyrpup pup_fromCaller);
+    void ConvertHitEvent(NMESysEvent* sysmail);
+    S32 DfltSysEventMail(NMESysEvent* sysmail);
+    S32 SysEvent(xBase* from, xBase* to, U32 toEvent, F32* toParam, xBase* toParamWidget,
+                 U32 toParamWidgetID, S32* handled);
+    S32 NMEMessage(NMEMsg* mail);
+    S32 TypeHandleMail();
+    void CreateConfig();
+    void Setup();
+    void Common_Init();
+    void Process(F32 dt);
+    void BUpdate(xVec3* pos);
+    void Init(xEntAsset* entasset);
 };
 
 xFactoryInst* ZNPC_Create_Common(S32 who, RyzMemGrow* grow, void*);
