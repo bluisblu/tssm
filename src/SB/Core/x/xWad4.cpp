@@ -196,10 +196,10 @@ void xSceneInit(xScene* sc, U16 num_trigs, U16 num_stats, U16 num_dyns, U16 num_
     sc->num_ents_allocd = (U32)num_trigs + (U32)num_stats + (U32)num_dyns + (U32)num_npcs;
     sc->num_act_ents = 0;
     sc->act_ents = (xEnt**)xMemAllocSize(sc->num_ents_allocd * sizeof(xEnt*));
-    sc->num_nact_ents = 0;
-    sc->num_ents = 0;
     sc->num_trigs = 0;
     sc->num_stats = 0;
+    sc->num_dyns = 0;
+    sc->num_npcs = 0;
 
     sc->resolvID = NULL;
 
@@ -208,7 +208,7 @@ void xSceneInit(xScene* sc, U16 num_trigs, U16 num_stats, U16 num_dyns, U16 num_
     xAnimPoolInit(&sc->mempool, 50, 1, 0x1, 4);
     xModelPoolInit(49, 64);
     xModelPoolInit(74, 8);
-    xModelPoolInit(164, 1);
+    xModelPoolInit(324, 1);
 }
 
 //                                      xQuickCull WEAK
@@ -3724,7 +3724,8 @@ S32 xPadUpdate(S32 idx, F32 time_passed)
 
         if (p->flags & 0x10)
         {
-            if (!(p->on & (XPAD_BUTTON_UP | XPAD_BUTTON_DOWN | XPAD_BUTTON_LEFT | XPAD_BUTTON_RIGHT)))
+            if (!(p->on &
+                  (XPAD_BUTTON_UP | XPAD_BUTTON_DOWN | XPAD_BUTTON_LEFT | XPAD_BUTTON_RIGHT)))
             {
                 p->d_timer = 0.0f;
             }
