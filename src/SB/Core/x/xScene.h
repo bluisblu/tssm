@@ -12,17 +12,15 @@ typedef const char* (*xSceneID2NameCallback)(U32);
 typedef xBase* (*xSceneResolvIDCallback)(U32);
 typedef xEnt* (*xSceneEntCallback)(xEnt* ent, xScene* sc, void* data);
 
-struct xScene
+struct xScene // Updated Struct
 {
     U32 sceneID;
     U16 flags;
-    U16 num_ents;
     U16 num_trigs;
     U16 num_stats;
     U16 num_dyns;
     U16 num_npcs;
     U16 num_act_ents;
-    U16 num_nact_ents;
     F32 gravity;
     F32 drag;
     F32 friction;
@@ -36,7 +34,6 @@ struct xScene
     xEnt** dyns;
     xEnt** npcs;
     xEnt** act_ents;
-    xEnt** nact_ents;
     xEnv* env;
     xMemPool mempool;
     xSceneResolvIDCallback resolvID;
