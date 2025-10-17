@@ -1,5 +1,19 @@
 #include "zDispatcher.h"
 
+#include "iTRC.h"
+#include "iSystem.h"
+#include "iCutscene.h"
+#include "zNPCFXCinematic.h"
+#include "xCM.h"
+#include "zMusic.h"
+#include "xScrFx.h"
+#include "zSaveLoad.h"
+#include "zHud.h"
+#include "zRumble.h"
+#include "zVar.h"
+#include "zGameState.h"
+#include "xIni.h"
+
 extern st_ZDISPATCH_CONTEXT lbl_80254E00;
 extern char lbl_80254E10[512];
 
