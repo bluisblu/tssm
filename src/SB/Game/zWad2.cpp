@@ -9,7 +9,6 @@ char buffer[16];
 // Why is there a duplicate in dwarf?
 //char buffer[16];
 F32 scale;
-U32 gFXSurfaceFlags;
 basic_rect<F32> screen_bounds; // are these both correct?
 basic_rect<F32> default_adjust;
 xFXRing sPatrickStunRing[3];
@@ -47,18 +46,13 @@ F32 thresh;
 S32 sMemDepthJustHIPStartPlayer;
 U32 sPlayerMarkerStartID;
 F32 sGameOverTimer;
-F32 sTimeElapsed;
 F32 gRealTimeElapsed;
-S64 sTimeLast;
-S64 sTimeCurrent;
-U32 gLevelChanged;
 S32 g_hiphopReloadHIP;
 S32 g_hiphopForcePortal;
 S32 g_hiphopResetOnly;
 S32 g_hiphopEnabled;
 xColor_tag sFadeColor;
 U32 gzAsyncSceneID;
-U32 startPressed;
 xColor_tag black;
 xColor_tag clear;
 U32 gSoak;

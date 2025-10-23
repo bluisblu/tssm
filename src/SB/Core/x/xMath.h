@@ -21,7 +21,7 @@
 //     #undef ONEEIGHTY
 //     #define PI _771_1
 //     #define ONEEIGHTY _778_0
-#define PI 3.1415927f
+#define PI 3.141592653589793
 #define ONEEIGHTY 180.0f
 
 #define DEG2RAD(x) ((PI) * (x) / (ONEEIGHTY))
