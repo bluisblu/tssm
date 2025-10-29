@@ -404,16 +404,24 @@ void (*cb_dispatch)(xBase*, xBase*, U32, F32*, xBase*, U32);
 
 //
 
+#include "zNPCTypes.cpp"
 #include "zNPCMgr.cpp"
+#include "zNPC.cpp"
+#include "zMusic.cpp"
+#include "zMovePoint.cpp"
+#include "zMenuSB.cpp"
 #include "zMenu.cpp"
 #include "zLOD.cpp"
 #include "zLightWeight.cpp"
 #include "zLightning.cpp"
 #include "zLightEffect.cpp"
 #include "zLight.cpp"
-//                                              zPat / zLasso
+#include "zLasso.cpp"
 #include "zGrid.cpp"
 #include "zGoo.cpp"
 #include "zGameState.cpp"
 #include "zGameExtras.cpp"
 #include "zGame.cpp"
+#include "zFXRibbonPool.cpp"
+#include "zFX.cpp"
+#include "zFlameEmitter.cpp"
